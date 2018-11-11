@@ -101,7 +101,7 @@ public class Controller
                     System.out.println("Drawing from face down Deck");
                     // draw from face down and add to player hand
                     player.addTrainCardToHand(cards.getNextTrainCard());
-                    // player.displayTrainCards(); Doesnt work...
+                    // player.displayTrainCards();
                     ++timesDrawn;
                     break;
                 default:
@@ -131,6 +131,8 @@ public class Controller
         // draw 3 and show the player
 
         int desCards = 0;
+        int choice = 0;
+        boolean[] prevChoices = {false, false, false}; // marks true so that player does not choose same card
         Scanner input = new Scanner(System.in);
         System.out.println("Choose which destinations to keep...");
 
@@ -143,9 +145,9 @@ public class Controller
         System.out.println("2 - " + destinationCard2.toString());
         System.out.println("3 - " + destinationCard3.toString());
         System.out.println(("4 - for Done"));
-        // todo check that the player does not add the same destination card twice, also handle discarded destination cards
+        // todo handle discarded destination cards
 
-        int choice = 0;
+
         while((desCards < 3 && choice != 4) || desCards == 0) //while picked cards are < 3 then keep picking or if done = true stop loop
         {
             System.out.print("=> "); // pick an option
@@ -158,26 +160,29 @@ public class Controller
                 choice = input.nextInt();
             }
 
-            if( choice > 0 && choice < 4)
+            if( (choice > 0 && choice < 4) && prevChoices[choice-1] != true)
             {   // add destination card to players hand
                 switch(choice)
                 {
                     case 1:
                         player.addDestinationCardToHand(destinationCard1);
-                        ++desCards;
                         break;
                     case 2:
                         player.addDestinationCardToHand(destinationCard2);
-                        ++desCards;
                         break;
                     case 3:
                         player.addDestinationCardToHand(destinationCard3);
-                        ++desCards;
                         break;
                 }
+                ++desCards;
+                prevChoices[choice-1] = true;
+            }
+            else if(choice != 4)
+            {
+                System.out.println("Destination already selected.");
             }
         }
-        player.displayDestinationCards();
+        // player.displayDestinationCards();
 
     }
 
