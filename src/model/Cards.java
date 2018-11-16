@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -11,32 +12,41 @@ public class Cards
     public static final int TRAINCARDS_LIMIT = 110;
     public static final int DESTINATIONCARDS_LIMIT = 30;
 
-    private TrainCardOrRouteColor[] trainCardsArray;
-    private DestinationCard[] destinationCardsArray;
+    private static Random trainCardsRandomShuffler;
+    private static Random destinationCardsRandomShuffler;
 
     private List<TrainCardOrRouteColor> trainCardsList;
     private List<DestinationCard> destinationCardsList;
 
+    private TrainCardOrRouteColor[] trainCardsArray;
+    private DestinationCard[] destinationCardsArray;
+
+    // ============================== class ==============================
+
     public Cards()
     {
-        trainCardsArray = new TrainCardOrRouteColor[TRAINCARDS_LIMIT];
-        destinationCardsArray = new DestinationCard[DESTINATIONCARDS_LIMIT];
         trainCardsList = new ArrayList<>();
         destinationCardsList = new ArrayList<>();
 
-        fillCardsToPrivateArrays();
+        trainCardsArray = new TrainCardOrRouteColor[TRAINCARDS_LIMIT];
+        destinationCardsArray = new DestinationCard[DESTINATIONCARDS_LIMIT];
+
+        trainCardsRandomShuffler = new Random();
+        destinationCardsRandomShuffler = new Random();
+
+        createAndFillArraysToList();
 
         for (int i = 0; i < SHUFFLE_MULTIPLIER; ++i)
         {
-            randomizeArray(trainCardsArray);
-            randomizeArray(destinationCardsArray);
+            Collections.shuffle(trainCardsList, trainCardsRandomShuffler);
+            Collections.shuffle(destinationCardsList, destinationCardsRandomShuffler);
         }
-
-        for (TrainCardOrRouteColor i : trainCardsArray) trainCardsList.add(i);
-        for (DestinationCard i : destinationCardsArray) destinationCardsList.add(i);
     }
 
-    // ========== getters ==========
+    // ============================== getters ==============================
+
+    public static Random getTrainCardsRandomShuffler() { return trainCardsRandomShuffler; }
+    public static Random getDestinationCardsRandomShuffler() { return destinationCardsRandomShuffler; }
 
     public TrainCardOrRouteColor getNextTrainCard()
     {
@@ -52,7 +62,7 @@ public class Cards
         return destinationCardsList.remove(0);
     }
 
-    // ========== setters ==========
+    // ============================== setters ==============================
 
     public void addTrainCardToBottom(TrainCardOrRouteColor trainCard)
     {
@@ -82,25 +92,9 @@ public class Cards
         destinationCardsList.add(0, destinationCard);
     }
 
-    // ========== helpers  ==========
+    // ============================== helpers ==============================
 
-    private <T> void randomizeArray(T[] array)
-    {
-        if (array == null) throw new NullPointerException();
-
-        Random rand = new Random();
-
-        for (int i = 0; i < array.length; ++i)
-        {
-            int randomPosition = rand.nextInt(array.length);
-            T temp = array[i];
-
-            array[i] = array[randomPosition];
-            array[randomPosition] = temp;
-        }
-    }
-
-    private void fillCardsToPrivateArrays()
+    private void createAndFillArraysToList()
     {
         Arrays.fill(trainCardsArray, 0, 11, TrainCardOrRouteColor.PURPLE);
         Arrays.fill(trainCardsArray, 12, 23, TrainCardOrRouteColor.WHITE);
@@ -142,5 +136,8 @@ public class Cards
         destinationCardsArray[27] = new DestinationCard(Cities.LOS_ANGELES, Cities.MIAMI, 20);
         destinationCardsArray[28] = new DestinationCard(Cities.LOS_ANGELES, Cities.NEW_YORK, 21);
         destinationCardsArray[29] = new DestinationCard(Cities.SEATTLE, Cities.NEW_YORK, 22);
+
+        Collections.addAll(trainCardsList, trainCardsArray);
+        Collections.addAll(destinationCardsList, destinationCardsArray);
     }
 }

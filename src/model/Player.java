@@ -16,6 +16,8 @@ public class Player
     private List<TrainCardOrRouteColor> trainCards;
     private List<DestinationCard> destinationCards;
 
+    // ============================== class ==============================
+
     public Player(String name, TeamColor teamColor)
     {
         score = 0;
@@ -29,7 +31,7 @@ public class Player
         ++NUM_PLAYERS;
     }
 
-    // ========== other ==========
+    // ============================== other ==============================
 
     public void addTrainCardToHand(TrainCardOrRouteColor trainCardColor){ trainCards.add(trainCardColor); }
     public void addDestinationCardToHand(DestinationCard destinationCard) { destinationCards.add(destinationCard); }
@@ -62,7 +64,7 @@ public class Player
                 destinationCards.toString());
     }
 
-    // ========== getters ==========
+    // ============================== getters ==============================
 
     public String getName() { return name; }
     public TeamColor getTeamColor() { return teamColor; }
@@ -71,14 +73,14 @@ public class Player
     public List<TrainCardOrRouteColor> getTrainCards() { return trainCards; }
     public List<DestinationCard> getDestinationCards() { return destinationCards; }
 
-    // ========== setters ==========
+    // ============================== setters ==============================
 
     public void setName(String name) { this.name = name; }
     public void setTeamColor(TeamColor teamColor) { this.teamColor = teamColor; }
     public void setTrainPieces(int trainPieces) { this.trainPieces = trainPieces; }
     public void setScore(int score) { this.score = score; }
 
-    public void setTrainCards(List<TrainCardOrRouteColor> trainCards) { this.trainCards = new ArrayList<TrainCardOrRouteColor>(trainCards); }
+    public void setTrainCards(List<TrainCardOrRouteColor> trainCards) { this.trainCards = new ArrayList<>(trainCards); }
     public void setDestinationCards(List<DestinationCard> destinationCards) { this.destinationCards = new ArrayList<>(destinationCards); }
 
     public void addTrainPiece()
