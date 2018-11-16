@@ -1,9 +1,9 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.EmptyStackException;
+import java.util.List;
 import java.util.Random;
-import java.util.Stack;
 
 public class Cards
 {
@@ -11,18 +11,18 @@ public class Cards
     public static final int TRAINCARDS_LIMIT = 110;
     public static final int DESTINATIONCARDS_LIMIT = 30;
 
-    private RouteColor[] trainCardsArray;
+    private TrainCardOrRouteColor[] trainCardsArray;
     private DestinationCard[] destinationCardsArray;
 
-    private Stack<RouteColor> trainCardsStack;
-    private Stack<DestinationCard> destinationCardsStack;
+    private List<TrainCardOrRouteColor> trainCardsList;
+    private List<DestinationCard> destinationCardsList;
 
     public Cards()
     {
-        trainCardsArray = new RouteColor[TRAINCARDS_LIMIT];
+        trainCardsArray = new TrainCardOrRouteColor[TRAINCARDS_LIMIT];
         destinationCardsArray = new DestinationCard[DESTINATIONCARDS_LIMIT];
-        trainCardsStack = new Stack<>();
-        destinationCardsStack = new Stack<>();
+        trainCardsList = new ArrayList<>();
+        destinationCardsList = new ArrayList<>();
 
         fillCardsToPrivateArrays();
 
@@ -32,54 +32,54 @@ public class Cards
             randomizeArray(destinationCardsArray);
         }
 
-        for (RouteColor i : trainCardsArray) trainCardsStack.push(i);
-        for (DestinationCard i : destinationCardsArray) destinationCardsStack.push(i);
+        for (TrainCardOrRouteColor i : trainCardsArray) trainCardsList.add(i);
+        for (DestinationCard i : destinationCardsArray) destinationCardsList.add(i);
     }
 
     // ========== getters ==========
 
-    public RouteColor getNextTrainCard()
+    public TrainCardOrRouteColor getNextTrainCard()
     {
-        if (trainCardsStack.peek() == null) throw new EmptyStackException();
+        if (trainCardsList.isEmpty()) throw new NullPointerException();
 
-        return trainCardsStack.pop();
+        return trainCardsList.remove(0);
     }
 
     public DestinationCard getNextDestinationCard()
     {
-        if (destinationCardsStack.peek() == null) throw new EmptyStackException();
+        if (destinationCardsList.isEmpty()) throw new NullPointerException();
 
-        return destinationCardsStack.pop();
+        return destinationCardsList.remove(0);
     }
 
     // ========== setters ==========
 
-    public void addTrainCardToBottom(RouteColor trainCard)
+    public void addTrainCardToBottom(TrainCardOrRouteColor trainCard)
     {
-        if (this.trainCardsStack.size() >= TRAINCARDS_LIMIT) throw new ArithmeticException();
+        if (this.trainCardsList.size() >= TRAINCARDS_LIMIT) throw new NullPointerException();
 
-        trainCardsStack.add(trainCard);
+        trainCardsList.add(trainCard);
     }
 
-    public void addTrainCardToTop(RouteColor trainCard)
+    public void addTrainCardToTop(TrainCardOrRouteColor trainCard)
     {
-        if (this.trainCardsStack.size() >= TRAINCARDS_LIMIT) throw new ArithmeticException();
+        if (this.trainCardsList.size() >= TRAINCARDS_LIMIT) throw new NullPointerException();
 
-        trainCardsStack.add(0, trainCard);
+        trainCardsList.add(0, trainCard);
     }
 
     public void addDestinationCardToBottom(DestinationCard destinationCard)
     {
-        if (this.destinationCardsStack.size() >= DESTINATIONCARDS_LIMIT) throw new ArithmeticException();
+        if (this.destinationCardsList.size() >= DESTINATIONCARDS_LIMIT) throw new NullPointerException();
 
-        destinationCardsStack.add(destinationCard);
+        destinationCardsList.add(destinationCard);
     }
 
     public void addDestinationCardToTop(DestinationCard destinationCard)
     {
-        if (this.destinationCardsStack.size() >= DESTINATIONCARDS_LIMIT) throw new ArithmeticException();
+        if (this.destinationCardsList.size() >= DESTINATIONCARDS_LIMIT) throw new NullPointerException();
 
-        destinationCardsStack.add(0, destinationCard);
+        destinationCardsList.add(0, destinationCard);
     }
 
     // ========== helpers  ==========
@@ -102,15 +102,15 @@ public class Cards
 
     private void fillCardsToPrivateArrays()
     {
-        Arrays.fill(trainCardsArray, 0, 11, RouteColor.PURPLE);
-        Arrays.fill(trainCardsArray, 12, 23, RouteColor.WHITE);
-        Arrays.fill(trainCardsArray, 24, 35, RouteColor.BLUE);
-        Arrays.fill(trainCardsArray, 36, 47, RouteColor.YELLOW);
-        Arrays.fill(trainCardsArray, 48, 59, RouteColor.ORANGE);
-        Arrays.fill(trainCardsArray, 60, 71, RouteColor.BLACK);
-        Arrays.fill(trainCardsArray, 72, 83, RouteColor.RED);
-        Arrays.fill(trainCardsArray, 84, 95, RouteColor.GREEN);
-        Arrays.fill(trainCardsArray, 96, 110, RouteColor.ANY); // 14 wildcards
+        Arrays.fill(trainCardsArray, 0, 11, TrainCardOrRouteColor.PURPLE);
+        Arrays.fill(trainCardsArray, 12, 23, TrainCardOrRouteColor.WHITE);
+        Arrays.fill(trainCardsArray, 24, 35, TrainCardOrRouteColor.BLUE);
+        Arrays.fill(trainCardsArray, 36, 47, TrainCardOrRouteColor.YELLOW);
+        Arrays.fill(trainCardsArray, 48, 59, TrainCardOrRouteColor.ORANGE);
+        Arrays.fill(trainCardsArray, 60, 71, TrainCardOrRouteColor.BLACK);
+        Arrays.fill(trainCardsArray, 72, 83, TrainCardOrRouteColor.RED);
+        Arrays.fill(trainCardsArray, 84, 95, TrainCardOrRouteColor.GREEN);
+        Arrays.fill(trainCardsArray, 96, 110, TrainCardOrRouteColor.ANY); // 14 wildcards
 
         destinationCardsArray[0] = new DestinationCard(Cities.DENVER, Cities.EL_PASO, 4);
         destinationCardsArray[1] = new DestinationCard(Cities.KANSAS_CITY, Cities.HOUSTON, 5);

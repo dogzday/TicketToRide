@@ -1,15 +1,12 @@
 package model;
-import model.Controller;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
-public class ControllerTest
+public class ControllerModelTest
 {
     @Test
     public void drawTrainCardsTest()
     {
-//        Controller con = new Controller();
+//        ControllerModel con = new ControllerModel();
 //        con.setAccessible(true);
 //
 //

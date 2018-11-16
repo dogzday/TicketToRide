@@ -6,14 +6,13 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class Main extends Application
+public class ControllerView extends Application
 {
-
     @Override
-    public void start(Stage primaryStage) throws Exception
+    public void start(Stage primaryStage) // throws Exception
     {
         // Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello world.");
+        primaryStage.setTitle("Ticket To Ride");
 
         GridPane grid = new GridPane();
         Label label = new Label("Hello world.");

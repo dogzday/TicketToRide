@@ -7,13 +7,13 @@ public class Player
 {
     public static final int TRAINPIECE_LIMIT = 45;
 
-    public static int NUM_PLAYERS = 0;
+    private static int NUM_PLAYERS = 0;
 
     private String name;
     private TeamColor teamColor;
     private int trainPieces;
     private int score;
-    private List<RouteColor> trainCards;
+    private List<TrainCardOrRouteColor> trainCards;
     private List<DestinationCard> destinationCards;
 
     public Player(String name, TeamColor teamColor)
@@ -31,9 +31,11 @@ public class Player
 
     // ========== other ==========
 
-    public void addTrainCardToHand(RouteColor routeColor){ trainCards.add(routeColor); }
+    public void addTrainCardToHand(TrainCardOrRouteColor trainCardColor){ trainCards.add(trainCardColor); }
     public void addDestinationCardToHand(DestinationCard destinationCard) { destinationCards.add(destinationCard); }
-    public void displayTrainCards() { for (RouteColor i : trainCards) System.out.println(i); }
+
+    public void displayTrainCards() { for (TrainCardOrRouteColor i : trainCards) System.out.println(i); }
+
     public void displayDestinationCards()
     {
         String sourceString;
@@ -66,7 +68,7 @@ public class Player
     public TeamColor getTeamColor() { return teamColor; }
     public int getTrainPieces() { return trainPieces; }
     public int getScore() { return score; }
-    public List<RouteColor> getTrainCards() { return trainCards; }
+    public List<TrainCardOrRouteColor> getTrainCards() { return trainCards; }
     public List<DestinationCard> getDestinationCards() { return destinationCards; }
 
     // ========== setters ==========
@@ -76,7 +78,7 @@ public class Player
     public void setTrainPieces(int trainPieces) { this.trainPieces = trainPieces; }
     public void setScore(int score) { this.score = score; }
 
-    public void setTrainCards(List<RouteColor> trainCards) { this.trainCards = new ArrayList<>(trainCards); }
+    public void setTrainCards(List<TrainCardOrRouteColor> trainCards) { this.trainCards = new ArrayList<TrainCardOrRouteColor>(trainCards); }
     public void setDestinationCards(List<DestinationCard> destinationCards) { this.destinationCards = new ArrayList<>(destinationCards); }
 
     public void addTrainPiece()
@@ -93,16 +95,16 @@ public class Player
         --this.trainPieces;
     }
 
-    public boolean containsTrainCards(RouteColor trainCard, int quantity)
+    public boolean containsTrainCards(TrainCardOrRouteColor trainCard, int quantity)
     {
         int trainCardQuantity = 0;
 
-        for (RouteColor i : this.trainCards) if (this.trainCards.contains(trainCard)) ++trainCardQuantity;
+        for (TrainCardOrRouteColor i : this.trainCards) if (this.trainCards.contains(trainCard)) ++trainCardQuantity;
 
         return (trainCardQuantity == quantity);
     }
 
-    public void removeTrainCards(RouteColor trainCard, int quantity)
+    public void removeTrainCards(TrainCardOrRouteColor trainCard, int quantity)
     {
         if (!containsTrainCards(trainCard, quantity)) throw new ArithmeticException();
 
