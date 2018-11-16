@@ -1,9 +1,5 @@
 package model;
 
-/**
- * This provides a list of cities. <br>
- * Do not change unless necessary.
- */
 public enum Cities
 {
     ATLANTA,
@@ -42,4 +38,8 @@ public enum Cities
     VANCOUVER,
     WASHINGTON,
     WINNIPEG;
+
+    private static Cities[] allValues = values();
+
+    public static Cities fromOrdinal(int n) { return allValues[n]; }
 }

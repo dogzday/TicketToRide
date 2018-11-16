@@ -4,7 +4,6 @@ public class DestinationCard
 {
     private Cities source;
     private Cities destination;
-
     private int score;
 
     public Cities getSource() { return source; }

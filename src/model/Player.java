@@ -1,76 +1,39 @@
 package model;
 
-import javax.print.attribute.standard.Destination;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Player
 {
+    public static final int TRAINPIECE_LIMIT = 45;
+
+    public static int NUM_PLAYERS = 0;
+
     private String name;
     private TeamColor teamColor;
-    private RouteColor[] trainCards;
-    private DestinationCard[] destinationCards;
     private int trainPieces;
     private int score;
+    private List<RouteColor> trainCards;
+    private List<DestinationCard> destinationCards;
 
-    private int trainCardsStackPointer;
-    private int destinationCardsStackPointer;
-
-    /**
-     * L - Blue <br>
-     * R - Red <br>
-     * G - Green <br>
-     * Y - Yellow <br>
-     * B - Black
-     * @param name Player's name.
-     * @param teamColor Character representing train color.
-     */
     public Player(String name, TeamColor teamColor)
     {
-        trainCardsStackPointer = 0;
-        destinationCardsStackPointer = 0;
-
         score = 0;
-        trainPieces = 45;
-        trainCards = new RouteColor[Cards.TRAINCARDS_LIMIT];
-        destinationCards = new DestinationCard[Cards.DESTINATIONCARDS_LIMIT];
+        trainPieces = TRAINPIECE_LIMIT;
+        trainCards = new ArrayList<>(Cards.TRAINCARDS_LIMIT);
+        destinationCards = new ArrayList<>(Cards.DESTINATIONCARDS_LIMIT);
 
         this.name = name;
         this.teamColor = teamColor;
 
+        ++NUM_PLAYERS;
     }
 
     // ========== other ==========
 
-    /**
-     * G - Green <br>
-     * P - Pink <br>
-     * W - White <br>
-     * ! - Wildcard <br>
-     * R - Red <br>
-     * Y - Yellow <br>
-     * B - Blue <br>
-     * O - Orange <br>
-     * L - Blue
-     * @param routeColor The color character representing color <br>
-     * of card.
-     */
-    public void addTrainCardToHand(RouteColor routeColor){ trainCards[trainCardsStackPointer++] = routeColor; }
-    public void addDestinationCardToHand(DestinationCard destinationCard) { destinationCards[destinationCardsStackPointer++] = destinationCard; }
-
-    public void displayTrainCards()
-    {
-        int[] numOfEachCard = new int[9];
-
-        for (RouteColor card : trainCards) ++numOfEachCard[card.ordinal()];
-
-        for (int i : numOfEachCard)
-        {
-            if (numOfEachCard[i] != 0)
-            {
-                System.out.println(RouteColor.fromOrdinal(i).toString() + " " + numOfEachCard[i]);
-            }
-        }
-    }
-
+    public void addTrainCardToHand(RouteColor routeColor){ trainCards.add(routeColor); }
+    public void addDestinationCardToHand(DestinationCard destinationCard) { destinationCards.add(destinationCard); }
+    public void displayTrainCards() { for (RouteColor i : trainCards) System.out.println(i); }
     public void displayDestinationCards()
     {
         String sourceString;
@@ -89,53 +52,60 @@ public class Player
     @Override
     public String toString()
     {
-        return (name + " " + teamColor.toString() + " " + Integer.toString(trainPieces) + " " + Integer.toString(score));
+        return (name + "\n" +
+                teamColor.toString() + "\n" +
+                Integer.toString(trainPieces) + "\n" +
+                Integer.toString(score) + "\n" +
+                trainCards.toString() + "\n" +
+                destinationCards.toString());
     }
 
     // ========== getters ==========
 
-    /**
-     * @return Player's name.
-     */
     public String getName() { return name; }
-    public DestinationCard[] getDestinationCards() { return destinationCards; }
-    /**
-     * @return Player's score.
-     */
-    public int getScore() { return score; }
-    /**
-     * L - Blue <br>
-     * R - Red <br>
-     * G - Green <br>
-     * Y - Yellow <br>
-     * B - Black <br>
-     * @return Player's train color.
-     */
     public TeamColor getTeamColor() { return teamColor; }
-    /**
-     * @return Player's remaining trains.
-     */
     public int getTrainPieces() { return trainPieces; }
-    /**
-     * @return Player's trainCards.
-     */
-    public RouteColor[] getTrainCards() { return trainCards; }
+    public int getScore() { return score; }
+    public List<RouteColor> getTrainCards() { return trainCards; }
+    public List<DestinationCard> getDestinationCards() { return destinationCards; }
 
     // ========== setters ==========
 
-    /**
-     * @param score Initialize score.
-     */
-    public void setScore(int score) { this.score = score; }
-    /**
-     * @param trainPieces Player's remaining trains.
-     */
-    public void setTrainPieces(int trainPieces) { this.trainPieces = trainPieces; }
-    /**
-     * @param trainCards Player's trainCards.
-     */
-    public void setTrainCards(RouteColor[] trainCards) { this.trainCards = trainCards; }
     public void setName(String name) { this.name = name; }
     public void setTeamColor(TeamColor teamColor) { this.teamColor = teamColor; }
-    public void setDestinationCards(DestinationCard[] destinationCards) { this.destinationCards = destinationCards; }
+    public void setTrainPieces(int trainPieces) { this.trainPieces = trainPieces; }
+    public void setScore(int score) { this.score = score; }
+
+    public void setTrainCards(List<RouteColor> trainCards) { this.trainCards = new ArrayList<>(trainCards); }
+    public void setDestinationCards(List<DestinationCard> destinationCards) { this.destinationCards = new ArrayList<>(destinationCards); }
+
+    public void addTrainPiece()
+    {
+        if (this.trainPieces >= TRAINPIECE_LIMIT) throw new ArithmeticException();
+
+        ++this.trainPieces;
+    }
+
+    public void removeTrainPiece()
+    {
+        if (this.trainPieces <= 0) throw new ArithmeticException();
+
+        --this.trainPieces;
+    }
+
+    public boolean containsTrainCards(RouteColor trainCard, int quantity)
+    {
+        int trainCardQuantity = 0;
+
+        for (RouteColor i : this.trainCards) if (this.trainCards.contains(trainCard)) ++trainCardQuantity;
+
+        return (trainCardQuantity == quantity);
+    }
+
+    public void removeTrainCards(RouteColor trainCard, int quantity)
+    {
+        if (!containsTrainCards(trainCard, quantity)) throw new ArithmeticException();
+
+        for (int i = 0; i < quantity; ++i) this.trainCards.remove(trainCard);
+    }
 }
