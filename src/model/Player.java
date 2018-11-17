@@ -8,6 +8,7 @@ public class Player
     public static final int TRAINPIECE_LIMIT = 45;
 
     private static int NUM_PLAYERS = 0;
+    private static int TOTAL_SCORE = 0;
 
     private String name;
     private TeamColor teamColor;
@@ -33,9 +34,6 @@ public class Player
 
     // ============================== other ==============================
 
-    public void addTrainCardToHand(TrainCardOrRouteColor trainCardColor){ trainCards.add(trainCardColor); }
-    public void addDestinationCardToHand(DestinationCard destinationCard) { destinationCards.add(destinationCard); }
-
     public void displayTrainCards() { for (TrainCardOrRouteColor i : trainCards) System.out.println(i); }
 
     public void displayDestinationCards()
@@ -51,6 +49,15 @@ public class Player
             scoreString = Integer.toString(card.getScore());
             System.out.println(sourceString + " " + destinationString + " " + scoreString);
         }
+    }
+
+    public boolean containsTrainCards(TrainCardOrRouteColor trainCard, int quantity)
+    {
+        int trainCardQuantity = 0;
+
+        for (TrainCardOrRouteColor i : this.trainCards) if (this.trainCards.contains(trainCard)) ++trainCardQuantity;
+
+        return (trainCardQuantity == quantity);
     }
 
     @Override
@@ -75,10 +82,40 @@ public class Player
 
     // ============================== setters ==============================
 
+    public void addTrainCardToHand(TrainCardOrRouteColor trainCardColor){ trainCards.add(trainCardColor); }
+    public void addDestinationCardToHand(DestinationCard destinationCard) { destinationCards.add(destinationCard); }
+
     public void setName(String name) { this.name = name; }
     public void setTeamColor(TeamColor teamColor) { this.teamColor = teamColor; }
-    public void setTrainPieces(int trainPieces) { this.trainPieces = trainPieces; }
-    public void setScore(int score) { this.score = score; }
+
+    public void setTrainPieces(int trainPieces)
+    {
+        if (trainPieces < 0) throw new ArithmeticException();
+
+        this.trainPieces = trainPieces;
+    }
+
+    public void setScore(int score)
+    {
+        if (score < 0) throw new ArithmeticException();
+
+        TOTAL_SCORE -= this.score;
+        this.score = score;
+    }
+
+    public void addPointToScore()
+    {
+        ++TOTAL_SCORE;
+        ++this.score;
+    }
+
+    public void subtractPointFromScore()
+    {
+        if ((score - 1) < 0) throw new ArithmeticException();
+
+        --TOTAL_SCORE;
+        --this.score;
+    }
 
     public void setTrainCards(List<TrainCardOrRouteColor> trainCards) { this.trainCards = new ArrayList<>(trainCards); }
     public void setDestinationCards(List<DestinationCard> destinationCards) { this.destinationCards = new ArrayList<>(destinationCards); }
@@ -95,15 +132,6 @@ public class Player
         if (this.trainPieces <= 0) throw new ArithmeticException();
 
         --this.trainPieces;
-    }
-
-    public boolean containsTrainCards(TrainCardOrRouteColor trainCard, int quantity)
-    {
-        int trainCardQuantity = 0;
-
-        for (TrainCardOrRouteColor i : this.trainCards) if (this.trainCards.contains(trainCard)) ++trainCardQuantity;
-
-        return (trainCardQuantity == quantity);
     }
 
     public void removeTrainCards(TrainCardOrRouteColor trainCard, int quantity)
