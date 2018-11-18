@@ -1,5 +1,11 @@
 package model;
 
+/**
+ * Contains all the cities which serve as endpoints of a route in the game. Edge and DestinationCard
+ * uses this. Edge creates a route between the two Cities. DestinationCard does the same but does
+ * not create a new Edge - rather it is used for gameplay for the placement of a Player's
+ * trainPieces given they have enough trainCards.
+ */
 public enum Cities
 {
     ATLANTA,

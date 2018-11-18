@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * Contains all colors used to represent a Player's team. TeamColor is used by Player.
+ */
 public enum TeamColor
 {
     BLUE,

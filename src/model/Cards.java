@@ -12,8 +12,8 @@ public class Cards
     public static final int TRAINCARDS_LIMIT = 110;
     public static final int DESTINATIONCARDS_LIMIT = 30;
 
-    private static Random trainCardsRandomShuffler;
-    private static Random destinationCardsRandomShuffler;
+    private Random trainCardsRandomShuffler;
+    private Random destinationCardsRandomShuffler;
 
     private List<TrainCardOrRouteColor> trainCardsList;
     private List<DestinationCard> destinationCardsList;
@@ -23,6 +23,11 @@ public class Cards
 
     // ============================== class ==============================
 
+    /**
+     * Create a Cards object which holds all of the cards of the game. Players may have some of
+     * these cards in their hand. Players normally draw TrainCards and DestinationCards from the
+     * deck.
+     */
     public Cards()
     {
         trainCardsList = new ArrayList<>();
@@ -45,9 +50,28 @@ public class Cards
 
     // ============================== getters ==============================
 
-    public static Random getTrainCardsRandomShuffler() { return trainCardsRandomShuffler; }
-    public static Random getDestinationCardsRandomShuffler() { return destinationCardsRandomShuffler; }
+    /**
+     * The trainCardsRandomShuffler is a Random object used to shuffle the Cards such that we
+     * can produce unique matches each time the game is played.
+     * @return The Random seed that is fed into the shuffling of the cards.
+     */
+    public Random getTrainCardsRandomShuffler() { return trainCardsRandomShuffler; }
 
+    /**
+     * The trainCardsRandomShuffler is a Random object used to shuffle the Cards such that we
+     * can produce unique matches each time the game is played.
+     * @return The Random seed that is fed into the shuffling of the cards.
+     */
+    public Random getDestinationCardsRandomShuffler() { return destinationCardsRandomShuffler; }
+
+    /**
+     * This method gives the next trainCard from the deck as if you were drawing a card from the
+     * top of the deck. This method is used to return a TrainCardOrRouteColor enum (it simply
+     * returns the color specifying the TrainCard color of the TrainCard that a Player drew). The
+     * Player will add this to their hand. Typical usage:<br>
+     *     player.addTrainCardToHand(cards.getNextTrainCard());
+     * @return The next TrainCard from the top of the deck.
+     */
     public TrainCardOrRouteColor getNextTrainCard()
     {
         if (trainCardsList.isEmpty()) throw new NullPointerException();
@@ -55,6 +79,13 @@ public class Cards
         return trainCardsList.remove(0);
     }
 
+    /**
+     * This method gives the next destinationCard from the deck as if you were drawing a card from
+     * the top of the deck. This method is used to return a DestinationCard object. The Player will
+     * add this to their hand. Typical usage:<br>
+     *     player.addDestinationCardToHand(cards.getNextDestinationCard());
+     * @return The next DestinationCard from the top of the deck.
+     */
     public DestinationCard getNextDestinationCard()
     {
         if (destinationCardsList.isEmpty()) throw new NullPointerException();
@@ -64,6 +95,13 @@ public class Cards
 
     // ============================== setters ==============================
 
+    /**
+     * This method is used in any event where we need to store a TrainCard to the bottom of the
+     * deck. An example of this would be if a Player wishes to discard a card for some reason or to
+     * create a complex game rule where, for example, a Player can discard 9 TrainCards to the
+     * bottom of the deck and redraw up to half that many rounded down (draw 4).
+     * @param trainCard The trainCard to add to the bottom of the deck.
+     */
     public void addTrainCardToBottom(TrainCardOrRouteColor trainCard)
     {
         if (this.trainCardsList.size() >= TRAINCARDS_LIMIT) throw new NullPointerException();
@@ -71,6 +109,11 @@ public class Cards
         trainCardsList.add(trainCard);
     }
 
+    /**
+     * This method is used in any event where we need to store a TrainCard to the top of the
+     * deck. An example of this would be if a Player wishes to "peek" or "scry."
+     * @param trainCard The trainCard to add to the top of the deck.
+     */
     public void addTrainCardToTop(TrainCardOrRouteColor trainCard)
     {
         if (this.trainCardsList.size() >= TRAINCARDS_LIMIT) throw new NullPointerException();
@@ -78,6 +121,16 @@ public class Cards
         trainCardsList.add(0, trainCard);
     }
 
+    /**
+     * This method is used in any event where we need to store a DestinationCard to the bottom of
+     * the deck. An example of this would be, in vanilla, if a Player draws 3 DestinationCards but
+     * they only wish to keep 1 or 2, the remaining 2 or 1 cards would have to be placed back into
+     * the destinationCards list. A Player would not want to keep DestinationCards if the routes
+     * those cards have are not favorable to a Player's score - which is determined in vanilla, at
+     * the end of the game.
+     * @param destinationCard The destinationCard to add to the bottom of the deck, if for example,
+     * the Player wishes not to keep some of the cards they drew.
+     */
     public void addDestinationCardToBottom(DestinationCard destinationCard)
     {
         if (this.destinationCardsList.size() >= DESTINATIONCARDS_LIMIT) throw new NullPointerException();
@@ -85,6 +138,15 @@ public class Cards
         destinationCardsList.add(destinationCard);
     }
 
+    /**
+     * This method is used in any event where we need to store a DestinationCard to the top of the
+     * deck. An example of this would be if there were some game rule where DestinationCards would
+     * have to be discarded to the top of the DestinationCard deck. The gameplay this produces makes
+     * players hesitant on discarding DestinationCards because redrawing would give them those same
+     * DestinationCards again.
+     * @param destinationCard The destinationCard to add back to the top of the deck where a Player
+     * drew it from.
+     */
     public void addDestinationCardToTop(DestinationCard destinationCard)
     {
         if (this.destinationCardsList.size() >= DESTINATIONCARDS_LIMIT) throw new NullPointerException();
