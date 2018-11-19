@@ -84,7 +84,10 @@ public class Player
     {
         int trainCardQuantity = 0;
 
-        for (GameColor i : this.trainCards) if (this.trainCards.contains(trainCard)) ++trainCardQuantity;
+        for (int i = 0; i < this.trainCards.size(); ++i)
+        {
+            if (this.trainCards.get(i) == trainCard) ++trainCardQuantity;
+        }
 
         return (trainCardQuantity == quantity);
     }
