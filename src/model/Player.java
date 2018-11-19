@@ -14,7 +14,7 @@ public class Player
     private TeamColor teamColor;
     private int trainPieces;
     private int score;
-    private List<TrainCardOrRouteColor> trainCards;
+    private List<GameColor> trainCards;
     private List<DestinationCard> destinationCards;
 
     // ============================== class ==============================
@@ -26,7 +26,7 @@ public class Player
      *     <li>private TeamColor teamColor;</li>
      *     <li>private int trainPieces;</li>
      *     <li>private int score;</li>
-     *     <li>private List&lt;TrainCardOrRouteColor&gt; trainCards;</li>
+     *     <li>private List&lt;GameColor&gt; trainCards;</li>
      *     <li>private List&lt;DestinationCard&gt; destinationCards;</li>
      * </ul>
      *
@@ -51,7 +51,7 @@ public class Player
     /**
      * Prints all of a player's trainCards to console, 1 per line.
      */
-    public void displayTrainCards() { for (TrainCardOrRouteColor i : trainCards) System.out.println(i); }
+    public void displayTrainCards() { for (GameColor i : trainCards) System.out.println(i); }
 
     /**
      * Prints all of a player's destinationCards to console, 1 per line. It is formatted:<br>
@@ -75,16 +75,16 @@ public class Player
     /**
      * This method is used to test if a Player contains quantity of a certain color trainCard. If
      * you want to check if a player has 3 red TrainCards, evoke this method with
-     * player.containsTrainCards(TrainCardOrRouteColor.RED, 3);
-     * @param trainCard TrainCardOrRouteColor enum.
+     * player.containsTrainCards(GameColor.RED, 3);
+     * @param trainCard GameColor enum.
      * @param quantity Number of occurrences to check for.
      * @return If Player has quantity trainCards, return true, else false.
      */
-    public boolean containsTrainCards(TrainCardOrRouteColor trainCard, int quantity)
+    public boolean containsTrainCards(GameColor trainCard, int quantity)
     {
         int trainCardQuantity = 0;
 
-        for (TrainCardOrRouteColor i : this.trainCards) if (this.trainCards.contains(trainCard)) ++trainCardQuantity;
+        for (GameColor i : this.trainCards) if (this.trainCards.contains(trainCard)) ++trainCardQuantity;
 
         return (trainCardQuantity == quantity);
     }
@@ -127,7 +127,7 @@ public class Player
     /**
      * @return A List of a Player's trainCards.
      */
-    public List<TrainCardOrRouteColor> getTrainCards() { return this.trainCards; }
+    public List<GameColor> getTrainCards() { return this.trainCards; }
 
     /**
      * @return A List of a Player's destinationCards.
@@ -137,13 +137,13 @@ public class Player
     // ============================== setters ==============================
 
     /**
-     * Adds a single trainCard of a specific TrainCardOrRouteColor to a Player's hand. This is
+     * Adds a single trainCard of a specific GameColor to a Player's hand. This is
      * useful for whenever a Player needs to draw a card. The cards are guaranteed to always be
      * shuffled if they are from Cards. You will need to add a trainCard from Cards which contains
      * the entire deck of cards.
-     * @param trainCardColor Enum TrainCardOrRouteColor.
+     * @param trainCardColor Enum GameColor.
      */
-    public void addTrainCardToHand(TrainCardOrRouteColor trainCardColor) { trainCards.add(trainCardColor); }
+    public void addTrainCardToHand(GameColor trainCardColor) { trainCards.add(trainCardColor); }
 
     /**
      * Adds a single destinationCard to a Player's hand. This is useful for whenever a Player needs
@@ -223,9 +223,9 @@ public class Player
      * draw a lot of cards without a loop. The cards are guaranteed to always be shuffled if they
      * are from Cards. You will need to add a trainCard from Cards which contains the entire deck of
      * cards.
-     * @param trainCards List containing TrainCardOrRouteColor enum objects.
+     * @param trainCards List containing GameColor enum objects.
      */
-    public void setTrainCards(List<TrainCardOrRouteColor> trainCards) { this.trainCards = new ArrayList<>(trainCards); }
+    public void setTrainCards(List<GameColor> trainCards) { this.trainCards = new ArrayList<>(trainCards); }
 
     /**
      * Sets a Player's destinationCards (a Player's hand). This is useful for whenever a Player
@@ -261,15 +261,15 @@ public class Player
     }
 
     /**
-     * Removes trainCards of a specific TrainCardOrRouteColor from a Player's hand. This is useful
+     * Removes trainCards of a specific GameColor from a Player's hand. This is useful
      * for whenever a Player needs to place trainPieces on the game board - in vanilla a Player can
-     * play trainPieces if the Player has enough trainCards of the TrainCardOrRouteColor the
+     * play trainPieces if the Player has enough trainCards of the GameColor the
      * trainPieces will be place on. The cards are guaranteed to always be shuffled if they are from
      * Cards. You will need to add a trainCard from Cards which contains the entire deck of cards.
      * @param trainCard The trainCard of a color to remove from a Player's hand.
      * @param quantity The amount of the trainCards to remove from a Player's hand.
      */
-    public void removeTrainCardsFromHand(TrainCardOrRouteColor trainCard, int quantity)
+    public void removeTrainCardsFromHand(GameColor trainCard, int quantity)
     {
         if (!containsTrainCards(trainCard, quantity)) throw new ArithmeticException();
 

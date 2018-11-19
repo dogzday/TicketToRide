@@ -188,138 +188,138 @@ public class ControllerModel
 
     private static void createMap(Graph graph)
     {
-        graph.addEdge(Cities.VANCOUVER, Cities.CALGARY, TrainCardOrRouteColor.ANY, 3);
-        graph.addEdge(Cities.VANCOUVER, Cities.SEATTLE, TrainCardOrRouteColor.ANY, 1);
-        graph.addEdge(Cities.VANCOUVER, Cities.SEATTLE, TrainCardOrRouteColor.ANY, 1);
+        graph.addEdge(Cities.VANCOUVER, Cities.CALGARY, GameColor.ANY, 3);
+        graph.addEdge(Cities.VANCOUVER, Cities.SEATTLE, GameColor.ANY, 1);
+        graph.addEdge(Cities.VANCOUVER, Cities.SEATTLE, GameColor.ANY, 1);
 
-        graph.addEdge(Cities.SEATTLE, Cities.CALGARY, TrainCardOrRouteColor.ANY, 4);
-        graph.addEdge(Cities.SEATTLE, Cities.PORTLAND, TrainCardOrRouteColor.ANY, 1);
-        graph.addEdge(Cities.SEATTLE, Cities.PORTLAND, TrainCardOrRouteColor.ANY, 1);
-        graph.addEdge(Cities.SEATTLE, Cities.HELENA, TrainCardOrRouteColor.YELLOW, 6);
+        graph.addEdge(Cities.SEATTLE, Cities.CALGARY, GameColor.ANY, 4);
+        graph.addEdge(Cities.SEATTLE, Cities.PORTLAND, GameColor.ANY, 1);
+        graph.addEdge(Cities.SEATTLE, Cities.PORTLAND, GameColor.ANY, 1);
+        graph.addEdge(Cities.SEATTLE, Cities.HELENA, GameColor.YELLOW, 6);
 
-        graph.addEdge(Cities.PORTLAND, Cities.SAN_FRANCISCO, TrainCardOrRouteColor.GREEN, 5);
-        graph.addEdge(Cities.PORTLAND, Cities.SAN_FRANCISCO, TrainCardOrRouteColor.PURPLE, 5);
-        graph.addEdge(Cities.PORTLAND, Cities.SALT_LAKE_CITY, TrainCardOrRouteColor.BLUE, 6);
+        graph.addEdge(Cities.PORTLAND, Cities.SAN_FRANCISCO, GameColor.GREEN, 5);
+        graph.addEdge(Cities.PORTLAND, Cities.SAN_FRANCISCO, GameColor.PURPLE, 5);
+        graph.addEdge(Cities.PORTLAND, Cities.SALT_LAKE_CITY, GameColor.BLUE, 6);
 
-        graph.addEdge(Cities.SAN_FRANCISCO, Cities.LOS_ANGELES, TrainCardOrRouteColor.YELLOW, 3);
-        graph.addEdge(Cities.SAN_FRANCISCO, Cities.LOS_ANGELES, TrainCardOrRouteColor.PURPLE, 3);
-        graph.addEdge(Cities.SAN_FRANCISCO, Cities.SALT_LAKE_CITY, TrainCardOrRouteColor.WHITE, 5);
-        graph.addEdge(Cities.SAN_FRANCISCO, Cities.SALT_LAKE_CITY, TrainCardOrRouteColor.ORANGE, 5);
+        graph.addEdge(Cities.SAN_FRANCISCO, Cities.LOS_ANGELES, GameColor.YELLOW, 3);
+        graph.addEdge(Cities.SAN_FRANCISCO, Cities.LOS_ANGELES, GameColor.PURPLE, 3);
+        graph.addEdge(Cities.SAN_FRANCISCO, Cities.SALT_LAKE_CITY, GameColor.WHITE, 5);
+        graph.addEdge(Cities.SAN_FRANCISCO, Cities.SALT_LAKE_CITY, GameColor.ORANGE, 5);
 
-        graph.addEdge(Cities.HELENA, Cities.SALT_LAKE_CITY, TrainCardOrRouteColor.PURPLE, 3);
+        graph.addEdge(Cities.HELENA, Cities.SALT_LAKE_CITY, GameColor.PURPLE, 3);
 
-        graph.addEdge(Cities.SALT_LAKE_CITY, Cities.LAS_VEGAS, TrainCardOrRouteColor.ORANGE, 3);
+        graph.addEdge(Cities.SALT_LAKE_CITY, Cities.LAS_VEGAS, GameColor.ORANGE, 3);
 
-        graph.addEdge(Cities.LAS_VEGAS, Cities.LOS_ANGELES, TrainCardOrRouteColor.ANY, 2);
+        graph.addEdge(Cities.LAS_VEGAS, Cities.LOS_ANGELES, GameColor.ANY, 2);
 
-        graph.addEdge(Cities.LOS_ANGELES, Cities.PHOENIX, TrainCardOrRouteColor.ANY, 3);
-        graph.addEdge(Cities.LOS_ANGELES, Cities.EL_PASO, TrainCardOrRouteColor.BLACK, 6);
+        graph.addEdge(Cities.LOS_ANGELES, Cities.PHOENIX, GameColor.ANY, 3);
+        graph.addEdge(Cities.LOS_ANGELES, Cities.EL_PASO, GameColor.BLACK, 6);
 
-        graph.addEdge(Cities.EL_PASO, Cities.PHOENIX, TrainCardOrRouteColor.ANY, 3);
-        graph.addEdge(Cities.EL_PASO, Cities.HOUSTON, TrainCardOrRouteColor.GREEN, 6);
+        graph.addEdge(Cities.EL_PASO, Cities.PHOENIX, GameColor.ANY, 3);
+        graph.addEdge(Cities.EL_PASO, Cities.HOUSTON, GameColor.GREEN, 6);
 
-        graph.addEdge(Cities.PHOENIX, Cities.SANTA_FE, TrainCardOrRouteColor.ANY, 3);
-        graph.addEdge(Cities.PHOENIX, Cities.DENVER, TrainCardOrRouteColor.WHITE, 5);
+        graph.addEdge(Cities.PHOENIX, Cities.SANTA_FE, GameColor.ANY, 3);
+        graph.addEdge(Cities.PHOENIX, Cities.DENVER, GameColor.WHITE, 5);
 
-        graph.addEdge(Cities.DENVER, Cities.SALT_LAKE_CITY, TrainCardOrRouteColor.YELLOW, 3);
-        graph.addEdge(Cities.DENVER, Cities.SALT_LAKE_CITY, TrainCardOrRouteColor.RED, 3);
-        graph.addEdge(Cities.DENVER, Cities.KANSAS_CITY, TrainCardOrRouteColor.BLACK, 4);
-        graph.addEdge(Cities.DENVER, Cities.KANSAS_CITY, TrainCardOrRouteColor.ORANGE, 4);
-        graph.addEdge(Cities.DENVER, Cities.OKLAHOMA_CITY, TrainCardOrRouteColor.RED, 4);
-        graph.addEdge(Cities.DENVER, Cities.SANTA_FE, TrainCardOrRouteColor.ANY, 2);
-        graph.addEdge(Cities.DENVER, Cities.HELENA, TrainCardOrRouteColor.GREEN, 4);
-        graph.addEdge(Cities.DENVER, Cities.OMAHA, TrainCardOrRouteColor.PURPLE, 4);
+        graph.addEdge(Cities.DENVER, Cities.SALT_LAKE_CITY, GameColor.YELLOW, 3);
+        graph.addEdge(Cities.DENVER, Cities.SALT_LAKE_CITY, GameColor.RED, 3);
+        graph.addEdge(Cities.DENVER, Cities.KANSAS_CITY, GameColor.BLACK, 4);
+        graph.addEdge(Cities.DENVER, Cities.KANSAS_CITY, GameColor.ORANGE, 4);
+        graph.addEdge(Cities.DENVER, Cities.OKLAHOMA_CITY, GameColor.RED, 4);
+        graph.addEdge(Cities.DENVER, Cities.SANTA_FE, GameColor.ANY, 2);
+        graph.addEdge(Cities.DENVER, Cities.HELENA, GameColor.GREEN, 4);
+        graph.addEdge(Cities.DENVER, Cities.OMAHA, GameColor.PURPLE, 4);
 
-        graph.addEdge(Cities.SANTA_FE, Cities.EL_PASO, TrainCardOrRouteColor.ANY, 2);
+        graph.addEdge(Cities.SANTA_FE, Cities.EL_PASO, GameColor.ANY, 2);
 
-        graph.addEdge(Cities.OKLAHOMA_CITY, Cities.SANTA_FE, TrainCardOrRouteColor.BLUE, 3);
-        graph.addEdge(Cities.OKLAHOMA_CITY, Cities.EL_PASO, TrainCardOrRouteColor.YELLOW, 5);
-        graph.addEdge(Cities.OKLAHOMA_CITY, Cities.DALLAS, TrainCardOrRouteColor.ANY, 2);
-        graph.addEdge(Cities.OKLAHOMA_CITY, Cities.DALLAS, TrainCardOrRouteColor.ANY, 2);
-        graph.addEdge(Cities.OKLAHOMA_CITY, Cities.LITTLE_ROCK, TrainCardOrRouteColor.ANY, 2);
-        graph.addEdge(Cities.OKLAHOMA_CITY, Cities.KANSAS_CITY, TrainCardOrRouteColor.ANY, 2);
-        graph.addEdge(Cities.OKLAHOMA_CITY, Cities.KANSAS_CITY, TrainCardOrRouteColor.ANY, 2);
+        graph.addEdge(Cities.OKLAHOMA_CITY, Cities.SANTA_FE, GameColor.BLUE, 3);
+        graph.addEdge(Cities.OKLAHOMA_CITY, Cities.EL_PASO, GameColor.YELLOW, 5);
+        graph.addEdge(Cities.OKLAHOMA_CITY, Cities.DALLAS, GameColor.ANY, 2);
+        graph.addEdge(Cities.OKLAHOMA_CITY, Cities.DALLAS, GameColor.ANY, 2);
+        graph.addEdge(Cities.OKLAHOMA_CITY, Cities.LITTLE_ROCK, GameColor.ANY, 2);
+        graph.addEdge(Cities.OKLAHOMA_CITY, Cities.KANSAS_CITY, GameColor.ANY, 2);
+        graph.addEdge(Cities.OKLAHOMA_CITY, Cities.KANSAS_CITY, GameColor.ANY, 2);
 
-        graph.addEdge(Cities.DALLAS, Cities.EL_PASO, TrainCardOrRouteColor.RED, 4);
-        graph.addEdge(Cities.DALLAS, Cities.HOUSTON, TrainCardOrRouteColor.ANY, 1);
-        graph.addEdge(Cities.DALLAS, Cities.HOUSTON, TrainCardOrRouteColor.ANY, 1);
-        graph.addEdge(Cities.DALLAS, Cities.LITTLE_ROCK, TrainCardOrRouteColor.ANY, 2);
+        graph.addEdge(Cities.DALLAS, Cities.EL_PASO, GameColor.RED, 4);
+        graph.addEdge(Cities.DALLAS, Cities.HOUSTON, GameColor.ANY, 1);
+        graph.addEdge(Cities.DALLAS, Cities.HOUSTON, GameColor.ANY, 1);
+        graph.addEdge(Cities.DALLAS, Cities.LITTLE_ROCK, GameColor.ANY, 2);
 
-        graph.addEdge(Cities.HOUSTON, Cities.NEW_ORLEANS, TrainCardOrRouteColor.ANY, 2);
+        graph.addEdge(Cities.HOUSTON, Cities.NEW_ORLEANS, GameColor.ANY, 2);
 
-        graph.addEdge(Cities.NEW_ORLEANS, Cities.LITTLE_ROCK, TrainCardOrRouteColor.GREEN, 3);
-        graph.addEdge(Cities.NEW_ORLEANS, Cities.ATLANTA, TrainCardOrRouteColor.YELLOW, 4);
-        graph.addEdge(Cities.NEW_ORLEANS, Cities.ATLANTA, TrainCardOrRouteColor.ORANGE, 4);
-        graph.addEdge(Cities.NEW_ORLEANS, Cities.MIAMI, TrainCardOrRouteColor.RED, 6);
+        graph.addEdge(Cities.NEW_ORLEANS, Cities.LITTLE_ROCK, GameColor.GREEN, 3);
+        graph.addEdge(Cities.NEW_ORLEANS, Cities.ATLANTA, GameColor.YELLOW, 4);
+        graph.addEdge(Cities.NEW_ORLEANS, Cities.ATLANTA, GameColor.ORANGE, 4);
+        graph.addEdge(Cities.NEW_ORLEANS, Cities.MIAMI, GameColor.RED, 6);
 
-        graph.addEdge(Cities.ATLANTA, Cities.MIAMI, TrainCardOrRouteColor.BLUE, 5);
-        graph.addEdge(Cities.ATLANTA, Cities.CHARLESTON, TrainCardOrRouteColor.ANY, 2);
-        graph.addEdge(Cities.ATLANTA, Cities.RALEIGH, TrainCardOrRouteColor.ANY, 2);
-        graph.addEdge(Cities.ATLANTA, Cities.RALEIGH, TrainCardOrRouteColor.ANY, 2);
-        graph.addEdge(Cities.ATLANTA, Cities.NASHVILLE, TrainCardOrRouteColor.ANY, 1);
+        graph.addEdge(Cities.ATLANTA, Cities.MIAMI, GameColor.BLUE, 5);
+        graph.addEdge(Cities.ATLANTA, Cities.CHARLESTON, GameColor.ANY, 2);
+        graph.addEdge(Cities.ATLANTA, Cities.RALEIGH, GameColor.ANY, 2);
+        graph.addEdge(Cities.ATLANTA, Cities.RALEIGH, GameColor.ANY, 2);
+        graph.addEdge(Cities.ATLANTA, Cities.NASHVILLE, GameColor.ANY, 1);
 
-        graph.addEdge(Cities.LITTLE_ROCK, Cities.NASHVILLE, TrainCardOrRouteColor.WHITE, 3);
-        graph.addEdge(Cities.LITTLE_ROCK, Cities.SAINT_LOUIS, TrainCardOrRouteColor.ANY, 2);
+        graph.addEdge(Cities.LITTLE_ROCK, Cities.NASHVILLE, GameColor.WHITE, 3);
+        graph.addEdge(Cities.LITTLE_ROCK, Cities.SAINT_LOUIS, GameColor.ANY, 2);
 
-        graph.addEdge(Cities.SAINT_LOUIS, Cities.PITTSBURG, TrainCardOrRouteColor.GREEN, 5);
-        graph.addEdge(Cities.SAINT_LOUIS, Cities.NASHVILLE, TrainCardOrRouteColor.ANY, 2);
+        graph.addEdge(Cities.SAINT_LOUIS, Cities.PITTSBURG, GameColor.GREEN, 5);
+        graph.addEdge(Cities.SAINT_LOUIS, Cities.NASHVILLE, GameColor.ANY, 2);
 
-        graph.addEdge(Cities.KANSAS_CITY, Cities.SAINT_LOUIS, TrainCardOrRouteColor.PURPLE, 2);
-        graph.addEdge(Cities.KANSAS_CITY, Cities.SAINT_LOUIS, TrainCardOrRouteColor.BLUE, 2);
-        graph.addEdge(Cities.KANSAS_CITY, Cities.OMAHA, TrainCardOrRouteColor.ANY, 1);
-        graph.addEdge(Cities.KANSAS_CITY, Cities.OMAHA, TrainCardOrRouteColor.ANY, 1);
+        graph.addEdge(Cities.KANSAS_CITY, Cities.SAINT_LOUIS, GameColor.PURPLE, 2);
+        graph.addEdge(Cities.KANSAS_CITY, Cities.SAINT_LOUIS, GameColor.BLUE, 2);
+        graph.addEdge(Cities.KANSAS_CITY, Cities.OMAHA, GameColor.ANY, 1);
+        graph.addEdge(Cities.KANSAS_CITY, Cities.OMAHA, GameColor.ANY, 1);
 
-        graph.addEdge(Cities.OMAHA, Cities.CHICAGO, TrainCardOrRouteColor.BLUE, 4);
-        graph.addEdge(Cities.OMAHA, Cities.DULUTH, TrainCardOrRouteColor.ANY, 2);
-        graph.addEdge(Cities.OMAHA, Cities.DULUTH, TrainCardOrRouteColor.ANY, 2);
-        graph.addEdge(Cities.OMAHA, Cities.HELENA, TrainCardOrRouteColor.RED, 5);
+        graph.addEdge(Cities.OMAHA, Cities.CHICAGO, GameColor.BLUE, 4);
+        graph.addEdge(Cities.OMAHA, Cities.DULUTH, GameColor.ANY, 2);
+        graph.addEdge(Cities.OMAHA, Cities.DULUTH, GameColor.ANY, 2);
+        graph.addEdge(Cities.OMAHA, Cities.HELENA, GameColor.RED, 5);
 
-        graph.addEdge(Cities.DULUTH, Cities.HELENA, TrainCardOrRouteColor.ORANGE, 6);
-        graph.addEdge(Cities.DULUTH, Cities.WINNIPEG, TrainCardOrRouteColor.BLACK, 4);
-        graph.addEdge(Cities.DULUTH, Cities.SAULT_ST_MARIE, TrainCardOrRouteColor.ANY, 3);
-        graph.addEdge(Cities.DULUTH, Cities.TORONTO, TrainCardOrRouteColor.PURPLE, 6);
-        graph.addEdge(Cities.DULUTH, Cities.CHICAGO, TrainCardOrRouteColor.RED, 3);
+        graph.addEdge(Cities.DULUTH, Cities.HELENA, GameColor.ORANGE, 6);
+        graph.addEdge(Cities.DULUTH, Cities.WINNIPEG, GameColor.BLACK, 4);
+        graph.addEdge(Cities.DULUTH, Cities.SAULT_ST_MARIE, GameColor.ANY, 3);
+        graph.addEdge(Cities.DULUTH, Cities.TORONTO, GameColor.PURPLE, 6);
+        graph.addEdge(Cities.DULUTH, Cities.CHICAGO, GameColor.RED, 3);
 
-        graph.addEdge(Cities.CHICAGO, Cities.TORONTO, TrainCardOrRouteColor.WHITE, 4);
-        graph.addEdge(Cities.CHICAGO, Cities.PITTSBURG, TrainCardOrRouteColor.ORANGE, 3);
-        graph.addEdge(Cities.CHICAGO, Cities.PITTSBURG, TrainCardOrRouteColor.BLACK, 3);
-        graph.addEdge(Cities.CHICAGO, Cities.SAINT_LOUIS, TrainCardOrRouteColor.GREEN, 2);
+        graph.addEdge(Cities.CHICAGO, Cities.TORONTO, GameColor.WHITE, 4);
+        graph.addEdge(Cities.CHICAGO, Cities.PITTSBURG, GameColor.ORANGE, 3);
+        graph.addEdge(Cities.CHICAGO, Cities.PITTSBURG, GameColor.BLACK, 3);
+        graph.addEdge(Cities.CHICAGO, Cities.SAINT_LOUIS, GameColor.GREEN, 2);
 
-        graph.addEdge(Cities.PITTSBURG, Cities.NASHVILLE, TrainCardOrRouteColor.YELLOW, 4);
-        graph.addEdge(Cities.PITTSBURG, Cities.RALEIGH, TrainCardOrRouteColor.ANY, 2);
-        graph.addEdge(Cities.PITTSBURG, Cities.WASHINGTON, TrainCardOrRouteColor.ANY, 2);
-        graph.addEdge(Cities.PITTSBURG, Cities.NEW_YORK, TrainCardOrRouteColor.GREEN, 2);
-        graph.addEdge(Cities.PITTSBURG, Cities.NEW_YORK, TrainCardOrRouteColor.WHITE, 2);
-        graph.addEdge(Cities.PITTSBURG, Cities.TORONTO, TrainCardOrRouteColor.ANY, 2);
+        graph.addEdge(Cities.PITTSBURG, Cities.NASHVILLE, GameColor.YELLOW, 4);
+        graph.addEdge(Cities.PITTSBURG, Cities.RALEIGH, GameColor.ANY, 2);
+        graph.addEdge(Cities.PITTSBURG, Cities.WASHINGTON, GameColor.ANY, 2);
+        graph.addEdge(Cities.PITTSBURG, Cities.NEW_YORK, GameColor.GREEN, 2);
+        graph.addEdge(Cities.PITTSBURG, Cities.NEW_YORK, GameColor.WHITE, 2);
+        graph.addEdge(Cities.PITTSBURG, Cities.TORONTO, GameColor.ANY, 2);
 
-        graph.addEdge(Cities.NASHVILLE, Cities.RALEIGH, TrainCardOrRouteColor.BLACK, 3);
+        graph.addEdge(Cities.NASHVILLE, Cities.RALEIGH, GameColor.BLACK, 3);
 
-        graph.addEdge(Cities.RALEIGH, Cities.WASHINGTON, TrainCardOrRouteColor.ANY, 2);
-        graph.addEdge(Cities.RALEIGH, Cities.WASHINGTON, TrainCardOrRouteColor.ANY, 2);
-        graph.addEdge(Cities.RALEIGH, Cities.CHARLESTON, TrainCardOrRouteColor.ANY, 2);
+        graph.addEdge(Cities.RALEIGH, Cities.WASHINGTON, GameColor.ANY, 2);
+        graph.addEdge(Cities.RALEIGH, Cities.WASHINGTON, GameColor.ANY, 2);
+        graph.addEdge(Cities.RALEIGH, Cities.CHARLESTON, GameColor.ANY, 2);
 
-        graph.addEdge(Cities.CHARLESTON, Cities.MIAMI, TrainCardOrRouteColor.PURPLE, 4);
+        graph.addEdge(Cities.CHARLESTON, Cities.MIAMI, GameColor.PURPLE, 4);
 
-        graph.addEdge(Cities.WASHINGTON, Cities.NEW_YORK, TrainCardOrRouteColor.ORANGE, 2);
-        graph.addEdge(Cities.WASHINGTON, Cities.NEW_YORK, TrainCardOrRouteColor.BLACK, 2);
+        graph.addEdge(Cities.WASHINGTON, Cities.NEW_YORK, GameColor.ORANGE, 2);
+        graph.addEdge(Cities.WASHINGTON, Cities.NEW_YORK, GameColor.BLACK, 2);
 
-        graph.addEdge(Cities.NEW_YORK, Cities.BOSTON, TrainCardOrRouteColor.RED, 2);
-        graph.addEdge(Cities.NEW_YORK, Cities.BOSTON, TrainCardOrRouteColor.YELLOW, 2);
-        graph.addEdge(Cities.NEW_YORK, Cities.MONTREAL, TrainCardOrRouteColor.BLUE, 3);
+        graph.addEdge(Cities.NEW_YORK, Cities.BOSTON, GameColor.RED, 2);
+        graph.addEdge(Cities.NEW_YORK, Cities.BOSTON, GameColor.YELLOW, 2);
+        graph.addEdge(Cities.NEW_YORK, Cities.MONTREAL, GameColor.BLUE, 3);
 
-        graph.addEdge(Cities.BOSTON, Cities.MONTREAL, TrainCardOrRouteColor.ANY, 2);
-        graph.addEdge(Cities.BOSTON, Cities.MONTREAL, TrainCardOrRouteColor.ANY, 2);
+        graph.addEdge(Cities.BOSTON, Cities.MONTREAL, GameColor.ANY, 2);
+        graph.addEdge(Cities.BOSTON, Cities.MONTREAL, GameColor.ANY, 2);
 
-        graph.addEdge(Cities.MONTREAL, Cities.TORONTO, TrainCardOrRouteColor.ANY, 3);
-        graph.addEdge(Cities.MONTREAL, Cities.SAULT_ST_MARIE, TrainCardOrRouteColor.BLACK, 5);
+        graph.addEdge(Cities.MONTREAL, Cities.TORONTO, GameColor.ANY, 3);
+        graph.addEdge(Cities.MONTREAL, Cities.SAULT_ST_MARIE, GameColor.BLACK, 5);
 
-        graph.addEdge(Cities.SAULT_ST_MARIE, Cities.TORONTO, TrainCardOrRouteColor.ANY, 2);
-        graph.addEdge(Cities.SAULT_ST_MARIE, Cities.WINNIPEG, TrainCardOrRouteColor.ANY, 6);
+        graph.addEdge(Cities.SAULT_ST_MARIE, Cities.TORONTO, GameColor.ANY, 2);
+        graph.addEdge(Cities.SAULT_ST_MARIE, Cities.WINNIPEG, GameColor.ANY, 6);
 
-        graph.addEdge(Cities.WINNIPEG, Cities.HELENA, TrainCardOrRouteColor.BLUE, 4);
+        graph.addEdge(Cities.WINNIPEG, Cities.HELENA, GameColor.BLUE, 4);
 
-        graph.addEdge(Cities.HELENA, Cities.CALGARY, TrainCardOrRouteColor.ANY, 4);
+        graph.addEdge(Cities.HELENA, Cities.CALGARY, GameColor.ANY, 4);
 
-        graph.addEdge(Cities.CALGARY, Cities.WINNIPEG, TrainCardOrRouteColor.WHITE, 6);
+        graph.addEdge(Cities.CALGARY, Cities.WINNIPEG, GameColor.WHITE, 6);
     }
 }

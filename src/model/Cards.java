@@ -15,10 +15,10 @@ public class Cards
     private Random trainCardsRandomShuffler;
     private Random destinationCardsRandomShuffler;
 
-    private List<TrainCardOrRouteColor> trainCardsList;
+    private List<GameColor> trainCardsList;
     private List<DestinationCard> destinationCardsList;
 
-    private TrainCardOrRouteColor[] trainCardsArray;
+    private GameColor[] trainCardsArray;
     private DestinationCard[] destinationCardsArray;
 
     // ============================== class ==============================
@@ -33,7 +33,7 @@ public class Cards
         trainCardsList = new ArrayList<>();
         destinationCardsList = new ArrayList<>();
 
-        trainCardsArray = new TrainCardOrRouteColor[TRAINCARDS_LIMIT];
+        trainCardsArray = new GameColor[TRAINCARDS_LIMIT];
         destinationCardsArray = new DestinationCard[DESTINATIONCARDS_LIMIT];
 
         trainCardsRandomShuffler = new Random();
@@ -66,13 +66,13 @@ public class Cards
 
     /**
      * This method gives the next trainCard from the deck as if you were drawing a card from the
-     * top of the deck. This method is used to return a TrainCardOrRouteColor enum (it simply
+     * top of the deck. This method is used to return a GameColor enum (it simply
      * returns the color specifying the TrainCard color of the TrainCard that a Player drew). The
      * Player will add this to their hand. Typical usage:<br>
      *     player.addTrainCardToHand(cards.getNextTrainCard());
      * @return The next TrainCard from the top of the deck.
      */
-    public TrainCardOrRouteColor getNextTrainCard()
+    public GameColor getNextTrainCard()
     {
         if (trainCardsList.isEmpty()) throw new NullPointerException();
 
@@ -102,7 +102,7 @@ public class Cards
      * bottom of the deck and redraw up to half that many rounded down (draw 4).
      * @param trainCard The trainCard to add to the bottom of the deck.
      */
-    public void addTrainCardToBottom(TrainCardOrRouteColor trainCard)
+    public void addTrainCardToBottom(GameColor trainCard)
     {
         if (this.trainCardsList.size() >= TRAINCARDS_LIMIT) throw new NullPointerException();
 
@@ -114,7 +114,7 @@ public class Cards
      * deck. An example of this would be if a Player wishes to "peek" or "scry."
      * @param trainCard The trainCard to add to the top of the deck.
      */
-    public void addTrainCardToTop(TrainCardOrRouteColor trainCard)
+    public void addTrainCardToTop(GameColor trainCard)
     {
         if (this.trainCardsList.size() >= TRAINCARDS_LIMIT) throw new NullPointerException();
 
@@ -158,15 +158,15 @@ public class Cards
 
     private void createAndFillArraysToList()
     {
-        Arrays.fill(trainCardsArray, 0, 11, TrainCardOrRouteColor.PURPLE);
-        Arrays.fill(trainCardsArray, 12, 23, TrainCardOrRouteColor.WHITE);
-        Arrays.fill(trainCardsArray, 24, 35, TrainCardOrRouteColor.BLUE);
-        Arrays.fill(trainCardsArray, 36, 47, TrainCardOrRouteColor.YELLOW);
-        Arrays.fill(trainCardsArray, 48, 59, TrainCardOrRouteColor.ORANGE);
-        Arrays.fill(trainCardsArray, 60, 71, TrainCardOrRouteColor.BLACK);
-        Arrays.fill(trainCardsArray, 72, 83, TrainCardOrRouteColor.RED);
-        Arrays.fill(trainCardsArray, 84, 95, TrainCardOrRouteColor.GREEN);
-        Arrays.fill(trainCardsArray, 96, 110, TrainCardOrRouteColor.ANY); // 14 wildcards
+        Arrays.fill(trainCardsArray, 0, 11, GameColor.PURPLE);
+        Arrays.fill(trainCardsArray, 12, 23, GameColor.WHITE);
+        Arrays.fill(trainCardsArray, 24, 35, GameColor.BLUE);
+        Arrays.fill(trainCardsArray, 36, 47, GameColor.YELLOW);
+        Arrays.fill(trainCardsArray, 48, 59, GameColor.ORANGE);
+        Arrays.fill(trainCardsArray, 60, 71, GameColor.BLACK);
+        Arrays.fill(trainCardsArray, 72, 83, GameColor.RED);
+        Arrays.fill(trainCardsArray, 84, 95, GameColor.GREEN);
+        Arrays.fill(trainCardsArray, 96, 110, GameColor.ANY); // 14 wildcards
 
         destinationCardsArray[0] = new DestinationCard(Cities.DENVER, Cities.EL_PASO, 4);
         destinationCardsArray[1] = new DestinationCard(Cities.KANSAS_CITY, Cities.HOUSTON, 5);

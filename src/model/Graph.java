@@ -43,7 +43,7 @@ public class Graph
         System.out.println(numberOfEdges);
     }
 
-    public void addEdge(Cities source, Cities destination, TrainCardOrRouteColor routeColor, int weight)
+    public void addEdge(Cities source, Cities destination, GameColor routeColor, int weight)
     {
         Edge edge = new Edge(source, destination, routeColor, weight);
         adjList[source.ordinal()].addFirst(edge);
