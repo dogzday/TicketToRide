@@ -38,9 +38,9 @@ public class Edge
     public void setDestination(Cities destination) { this.destination = destination; }
     public void setRouteColor(GameColor routeColor) { this.routeColor = routeColor; }
 
-    public void setWeight(int weight)
+    public void setWeight(int weight) throws IllegalArgumentException
     {
-        if (weight <= 0) throw new ArithmeticException();
+        if (weight <= 0) throw new IllegalArgumentException();
 
         weightOfAllEdges -= this.weight;
         weightOfAllEdges += weight;

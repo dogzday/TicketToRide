@@ -176,9 +176,9 @@ public class Player
      * turn, then the scores are calculated.
      * @param trainPieces Set the number of trainPieces a player has.
      */
-    public void setTrainPieces(int trainPieces)
+    public void setTrainPieces(int trainPieces) throws IllegalArgumentException
     {
-        if (trainPieces < 0) throw new ArithmeticException();
+        if (trainPieces < 0) throw new IllegalArgumentException();
 
         this.trainPieces = trainPieces;
     }
@@ -189,9 +189,9 @@ public class Player
      * Player's score at the end is the determiner of who won the game.
      * @param score Sets the Player's score with a nonnegative integer.
      */
-    public void setScore(int score)
+    public void setScore(int score) throws IllegalArgumentException
     {
-        if (score < 0) throw new ArithmeticException();
+        if (score < 0) throw new IllegalArgumentException();
 
         TOTAL_SCORE -= this.score;
         this.score = score;
@@ -213,7 +213,7 @@ public class Player
      * occurs after the final turn. The final turn triggers when a Player has 2 or less trainPieces
      * remaining. A Player's score at the end is the determiner of who won the game.
      */
-    public void subtractPointFromScore()
+    public void subtractPointFromScore() throws ArithmeticException
     {
         if ((score - 1) < 0) throw new ArithmeticException();
 
@@ -244,7 +244,7 @@ public class Player
      * game is when a Player has 2 or less trainPieces remaining - then all Players will have 1 more
      * turn, then the scores are calculated.
      */
-    public void addTrainPiece()
+    public void addTrainPiece() throws ArithmeticException
     {
         if (this.trainPieces >= TRAINPIECE_LIMIT) throw new ArithmeticException();
 
@@ -256,7 +256,7 @@ public class Player
      * the game is when a Player has 2 or less trainPieces remaining - then all Players will have 1
      * more turn, then the scores are calculated.
      */
-    public void removeTrainPiece()
+    public void removeTrainPiece() throws ArithmeticException
     {
         if (this.trainPieces <= 0) throw new ArithmeticException();
 
@@ -272,7 +272,7 @@ public class Player
      * @param trainCard The trainCard of a color to remove from a Player's hand.
      * @param quantity The amount of the trainCards to remove from a Player's hand.
      */
-    public void removeTrainCardsFromHand(GameColor trainCard, int quantity)
+    public void removeTrainCardsFromHand(GameColor trainCard, int quantity) throws ArithmeticException
     {
         if (!containsTrainCards(trainCard, quantity)) throw new ArithmeticException();
 

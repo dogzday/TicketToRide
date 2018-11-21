@@ -72,7 +72,7 @@ public class Cards
      *     player.addTrainCardToHand(cards.getNextTrainCard());
      * @return The next TrainCard from the top of the deck.
      */
-    public GameColor getNextTrainCard()
+    public GameColor getNextTrainCard() throws NullPointerException
     {
         if (trainCardsList.isEmpty()) throw new NullPointerException();
 
@@ -86,7 +86,7 @@ public class Cards
      *     player.addDestinationCardToHand(cards.getNextDestinationCard());
      * @return The next DestinationCard from the top of the deck.
      */
-    public DestinationCard getNextDestinationCard()
+    public DestinationCard getNextDestinationCard() throws NullPointerException
     {
         if (destinationCardsList.isEmpty()) throw new NullPointerException();
 
@@ -102,7 +102,7 @@ public class Cards
      * bottom of the deck and redraw up to half that many rounded down (draw 4).
      * @param trainCard The trainCard to add to the bottom of the deck.
      */
-    public void addTrainCardToBottom(GameColor trainCard)
+    public void addTrainCardToBottom(GameColor trainCard) throws NullPointerException
     {
         if (this.trainCardsList.size() >= TRAINCARDS_LIMIT) throw new NullPointerException();
 
@@ -114,7 +114,7 @@ public class Cards
      * deck. An example of this would be if a Player wishes to "peek" or "scry."
      * @param trainCard The trainCard to add to the top of the deck.
      */
-    public void addTrainCardToTop(GameColor trainCard)
+    public void addTrainCardToTop(GameColor trainCard) throws NullPointerException
     {
         if (this.trainCardsList.size() >= TRAINCARDS_LIMIT) throw new NullPointerException();
 
@@ -131,7 +131,7 @@ public class Cards
      * @param destinationCard The destinationCard to add to the bottom of the deck, if for example,
      * the Player wishes not to keep some of the cards they drew.
      */
-    public void addDestinationCardToBottom(DestinationCard destinationCard)
+    public void addDestinationCardToBottom(DestinationCard destinationCard) throws NullPointerException
     {
         if (this.destinationCardsList.size() >= DESTINATIONCARDS_LIMIT) throw new NullPointerException();
 
@@ -147,7 +147,7 @@ public class Cards
      * @param destinationCard The destinationCard to add back to the top of the deck where a Player
      * drew it from.
      */
-    public void addDestinationCardToTop(DestinationCard destinationCard)
+    public void addDestinationCardToTop(DestinationCard destinationCard) throws NullPointerException
     {
         if (this.destinationCardsList.size() >= DESTINATIONCARDS_LIMIT) throw new NullPointerException();
 
