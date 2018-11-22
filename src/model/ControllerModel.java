@@ -8,8 +8,8 @@ public class ControllerModel
     {
         Graph gameBoard = new Graph(Cities.values().length);
         Cards cards = new Cards();
-        createMap(gameBoard);
 
+        gameBoard.createTicketToRideDefaultBoard();
         gameBoard.printGraph();
 
         Player jas = new Player("Jas", TeamColor.BLACK);
@@ -147,7 +147,6 @@ public class ControllerModel
         System.out.println(("4 - for Done"));
         // todo handle discarded destination cards
 
-
         while((desCards < 3 && choice != 4) || desCards == 0) //while picked cards are < 3 then keep picking or if done = true stop loop
         {
             System.out.print("=> "); // pick an option
@@ -182,144 +181,7 @@ public class ControllerModel
                 System.out.println("Destination already selected.");
             }
         }
+
         // player.displayDestinationCards();
-
-    }
-
-    private static void createMap(Graph graph)
-    {
-        graph.addEdge(Cities.VANCOUVER, Cities.CALGARY, GameColor.ANY, 3);
-        graph.addEdge(Cities.VANCOUVER, Cities.SEATTLE, GameColor.ANY, 1);
-        graph.addEdge(Cities.VANCOUVER, Cities.SEATTLE, GameColor.ANY, 1);
-
-        graph.addEdge(Cities.SEATTLE, Cities.CALGARY, GameColor.ANY, 4);
-        graph.addEdge(Cities.SEATTLE, Cities.PORTLAND, GameColor.ANY, 1);
-        graph.addEdge(Cities.SEATTLE, Cities.PORTLAND, GameColor.ANY, 1);
-        graph.addEdge(Cities.SEATTLE, Cities.HELENA, GameColor.YELLOW, 6);
-
-        graph.addEdge(Cities.PORTLAND, Cities.SAN_FRANCISCO, GameColor.GREEN, 5);
-        graph.addEdge(Cities.PORTLAND, Cities.SAN_FRANCISCO, GameColor.PURPLE, 5);
-        graph.addEdge(Cities.PORTLAND, Cities.SALT_LAKE_CITY, GameColor.BLUE, 6);
-
-        graph.addEdge(Cities.SAN_FRANCISCO, Cities.LOS_ANGELES, GameColor.YELLOW, 3);
-        graph.addEdge(Cities.SAN_FRANCISCO, Cities.LOS_ANGELES, GameColor.PURPLE, 3);
-        graph.addEdge(Cities.SAN_FRANCISCO, Cities.SALT_LAKE_CITY, GameColor.WHITE, 5);
-        graph.addEdge(Cities.SAN_FRANCISCO, Cities.SALT_LAKE_CITY, GameColor.ORANGE, 5);
-
-        graph.addEdge(Cities.HELENA, Cities.SALT_LAKE_CITY, GameColor.PURPLE, 3);
-
-        graph.addEdge(Cities.SALT_LAKE_CITY, Cities.LAS_VEGAS, GameColor.ORANGE, 3);
-
-        graph.addEdge(Cities.LAS_VEGAS, Cities.LOS_ANGELES, GameColor.ANY, 2);
-
-        graph.addEdge(Cities.LOS_ANGELES, Cities.PHOENIX, GameColor.ANY, 3);
-        graph.addEdge(Cities.LOS_ANGELES, Cities.EL_PASO, GameColor.BLACK, 6);
-
-        graph.addEdge(Cities.EL_PASO, Cities.PHOENIX, GameColor.ANY, 3);
-        graph.addEdge(Cities.EL_PASO, Cities.HOUSTON, GameColor.GREEN, 6);
-
-        graph.addEdge(Cities.PHOENIX, Cities.SANTA_FE, GameColor.ANY, 3);
-        graph.addEdge(Cities.PHOENIX, Cities.DENVER, GameColor.WHITE, 5);
-
-        graph.addEdge(Cities.DENVER, Cities.SALT_LAKE_CITY, GameColor.YELLOW, 3);
-        graph.addEdge(Cities.DENVER, Cities.SALT_LAKE_CITY, GameColor.RED, 3);
-        graph.addEdge(Cities.DENVER, Cities.KANSAS_CITY, GameColor.BLACK, 4);
-        graph.addEdge(Cities.DENVER, Cities.KANSAS_CITY, GameColor.ORANGE, 4);
-        graph.addEdge(Cities.DENVER, Cities.OKLAHOMA_CITY, GameColor.RED, 4);
-        graph.addEdge(Cities.DENVER, Cities.SANTA_FE, GameColor.ANY, 2);
-        graph.addEdge(Cities.DENVER, Cities.HELENA, GameColor.GREEN, 4);
-        graph.addEdge(Cities.DENVER, Cities.OMAHA, GameColor.PURPLE, 4);
-
-        graph.addEdge(Cities.SANTA_FE, Cities.EL_PASO, GameColor.ANY, 2);
-
-        graph.addEdge(Cities.OKLAHOMA_CITY, Cities.SANTA_FE, GameColor.BLUE, 3);
-        graph.addEdge(Cities.OKLAHOMA_CITY, Cities.EL_PASO, GameColor.YELLOW, 5);
-        graph.addEdge(Cities.OKLAHOMA_CITY, Cities.DALLAS, GameColor.ANY, 2);
-        graph.addEdge(Cities.OKLAHOMA_CITY, Cities.DALLAS, GameColor.ANY, 2);
-        graph.addEdge(Cities.OKLAHOMA_CITY, Cities.LITTLE_ROCK, GameColor.ANY, 2);
-        graph.addEdge(Cities.OKLAHOMA_CITY, Cities.KANSAS_CITY, GameColor.ANY, 2);
-        graph.addEdge(Cities.OKLAHOMA_CITY, Cities.KANSAS_CITY, GameColor.ANY, 2);
-
-        graph.addEdge(Cities.DALLAS, Cities.EL_PASO, GameColor.RED, 4);
-        graph.addEdge(Cities.DALLAS, Cities.HOUSTON, GameColor.ANY, 1);
-        graph.addEdge(Cities.DALLAS, Cities.HOUSTON, GameColor.ANY, 1);
-        graph.addEdge(Cities.DALLAS, Cities.LITTLE_ROCK, GameColor.ANY, 2);
-
-        graph.addEdge(Cities.HOUSTON, Cities.NEW_ORLEANS, GameColor.ANY, 2);
-
-        graph.addEdge(Cities.NEW_ORLEANS, Cities.LITTLE_ROCK, GameColor.GREEN, 3);
-        graph.addEdge(Cities.NEW_ORLEANS, Cities.ATLANTA, GameColor.YELLOW, 4);
-        graph.addEdge(Cities.NEW_ORLEANS, Cities.ATLANTA, GameColor.ORANGE, 4);
-        graph.addEdge(Cities.NEW_ORLEANS, Cities.MIAMI, GameColor.RED, 6);
-
-        graph.addEdge(Cities.ATLANTA, Cities.MIAMI, GameColor.BLUE, 5);
-        graph.addEdge(Cities.ATLANTA, Cities.CHARLESTON, GameColor.ANY, 2);
-        graph.addEdge(Cities.ATLANTA, Cities.RALEIGH, GameColor.ANY, 2);
-        graph.addEdge(Cities.ATLANTA, Cities.RALEIGH, GameColor.ANY, 2);
-        graph.addEdge(Cities.ATLANTA, Cities.NASHVILLE, GameColor.ANY, 1);
-
-        graph.addEdge(Cities.LITTLE_ROCK, Cities.NASHVILLE, GameColor.WHITE, 3);
-        graph.addEdge(Cities.LITTLE_ROCK, Cities.SAINT_LOUIS, GameColor.ANY, 2);
-
-        graph.addEdge(Cities.SAINT_LOUIS, Cities.PITTSBURG, GameColor.GREEN, 5);
-        graph.addEdge(Cities.SAINT_LOUIS, Cities.NASHVILLE, GameColor.ANY, 2);
-
-        graph.addEdge(Cities.KANSAS_CITY, Cities.SAINT_LOUIS, GameColor.PURPLE, 2);
-        graph.addEdge(Cities.KANSAS_CITY, Cities.SAINT_LOUIS, GameColor.BLUE, 2);
-        graph.addEdge(Cities.KANSAS_CITY, Cities.OMAHA, GameColor.ANY, 1);
-        graph.addEdge(Cities.KANSAS_CITY, Cities.OMAHA, GameColor.ANY, 1);
-
-        graph.addEdge(Cities.OMAHA, Cities.CHICAGO, GameColor.BLUE, 4);
-        graph.addEdge(Cities.OMAHA, Cities.DULUTH, GameColor.ANY, 2);
-        graph.addEdge(Cities.OMAHA, Cities.DULUTH, GameColor.ANY, 2);
-        graph.addEdge(Cities.OMAHA, Cities.HELENA, GameColor.RED, 5);
-
-        graph.addEdge(Cities.DULUTH, Cities.HELENA, GameColor.ORANGE, 6);
-        graph.addEdge(Cities.DULUTH, Cities.WINNIPEG, GameColor.BLACK, 4);
-        graph.addEdge(Cities.DULUTH, Cities.SAULT_ST_MARIE, GameColor.ANY, 3);
-        graph.addEdge(Cities.DULUTH, Cities.TORONTO, GameColor.PURPLE, 6);
-        graph.addEdge(Cities.DULUTH, Cities.CHICAGO, GameColor.RED, 3);
-
-        graph.addEdge(Cities.CHICAGO, Cities.TORONTO, GameColor.WHITE, 4);
-        graph.addEdge(Cities.CHICAGO, Cities.PITTSBURG, GameColor.ORANGE, 3);
-        graph.addEdge(Cities.CHICAGO, Cities.PITTSBURG, GameColor.BLACK, 3);
-        graph.addEdge(Cities.CHICAGO, Cities.SAINT_LOUIS, GameColor.GREEN, 2);
-
-        graph.addEdge(Cities.PITTSBURG, Cities.NASHVILLE, GameColor.YELLOW, 4);
-        graph.addEdge(Cities.PITTSBURG, Cities.RALEIGH, GameColor.ANY, 2);
-        graph.addEdge(Cities.PITTSBURG, Cities.WASHINGTON, GameColor.ANY, 2);
-        graph.addEdge(Cities.PITTSBURG, Cities.NEW_YORK, GameColor.GREEN, 2);
-        graph.addEdge(Cities.PITTSBURG, Cities.NEW_YORK, GameColor.WHITE, 2);
-        graph.addEdge(Cities.PITTSBURG, Cities.TORONTO, GameColor.ANY, 2);
-
-        graph.addEdge(Cities.NASHVILLE, Cities.RALEIGH, GameColor.BLACK, 3);
-
-        graph.addEdge(Cities.RALEIGH, Cities.WASHINGTON, GameColor.ANY, 2);
-        graph.addEdge(Cities.RALEIGH, Cities.WASHINGTON, GameColor.ANY, 2);
-        graph.addEdge(Cities.RALEIGH, Cities.CHARLESTON, GameColor.ANY, 2);
-
-        graph.addEdge(Cities.CHARLESTON, Cities.MIAMI, GameColor.PURPLE, 4);
-
-        graph.addEdge(Cities.WASHINGTON, Cities.NEW_YORK, GameColor.ORANGE, 2);
-        graph.addEdge(Cities.WASHINGTON, Cities.NEW_YORK, GameColor.BLACK, 2);
-
-        graph.addEdge(Cities.NEW_YORK, Cities.BOSTON, GameColor.RED, 2);
-        graph.addEdge(Cities.NEW_YORK, Cities.BOSTON, GameColor.YELLOW, 2);
-        graph.addEdge(Cities.NEW_YORK, Cities.MONTREAL, GameColor.BLUE, 3);
-
-        graph.addEdge(Cities.BOSTON, Cities.MONTREAL, GameColor.ANY, 2);
-        graph.addEdge(Cities.BOSTON, Cities.MONTREAL, GameColor.ANY, 2);
-
-        graph.addEdge(Cities.MONTREAL, Cities.TORONTO, GameColor.ANY, 3);
-        graph.addEdge(Cities.MONTREAL, Cities.SAULT_ST_MARIE, GameColor.BLACK, 5);
-
-        graph.addEdge(Cities.SAULT_ST_MARIE, Cities.TORONTO, GameColor.ANY, 2);
-        graph.addEdge(Cities.SAULT_ST_MARIE, Cities.WINNIPEG, GameColor.ANY, 6);
-
-        graph.addEdge(Cities.WINNIPEG, Cities.HELENA, GameColor.BLUE, 4);
-
-        graph.addEdge(Cities.HELENA, Cities.CALGARY, GameColor.ANY, 4);
-
-        graph.addEdge(Cities.CALGARY, Cities.WINNIPEG, GameColor.WHITE, 6);
     }
 }
