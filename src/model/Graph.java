@@ -26,8 +26,7 @@ public class Graph
     {
         for (int i = 0; i < this.adjList.length; ++i)
         {
-            if (this.adjList[i] != null) break;
-            throw new UnsupportedOperationException();
+            if (this.adjList[i] != null) throw new UnsupportedOperationException();
         }
 
         this.addEdge(Cities.VANCOUVER, Cities.CALGARY, GameColor.ANY, 3);
@@ -165,6 +164,19 @@ public class Graph
         this.addEdge(Cities.CALGARY, Cities.WINNIPEG, GameColor.WHITE, 6);
     }
 
+    public void createTicketToRideSampleBoard() throws  UnsupportedOperationException
+    {
+        for (int i = 0; i < this.adjList.length; ++i)
+        {
+            if (this.adjList[i] != null) throw new UnsupportedOperationException();
+        }
+
+        this.addEdge(Cities.SAN_FRANCISCO, Cities.LOS_ANGELES, GameColor.RED, 6);
+        this.addEdge(Cities.SAN_FRANCISCO, Cities.SEATTLE, GameColor.GREEN, 10);
+        this.addEdge(Cities.SAN_FRANCISCO, Cities.LAS_VEGAS, GameColor.ANY, 4);
+        this.addEdge(Cities.LAS_VEGAS, Cities.PHOENIX, GameColor.ORANGE, 10);
+    }
+
     public void printGraph()
     {
         String sourceString;
@@ -192,8 +204,10 @@ public class Graph
 
     public void addEdge(Cities source, Cities destination, GameColor routeColor, int weight)
     {
-        Edge edge = new Edge(source, destination, routeColor, weight);
-        this.adjList[source.ordinal()].add(0, edge);
+        Edge sourceToDestination = new Edge(source, destination, routeColor, weight);
+        Edge destinationToSource = new Edge(destination, source, routeColor, weight);
+        this.adjList[source.ordinal()].add(0, sourceToDestination);
+        this.adjList[destination.ordinal()].add(0, destinationToSource);
     }
 
     public void removeEdge(Cities source, Cities destination, GameColor routeColor, int weight)
