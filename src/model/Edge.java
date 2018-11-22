@@ -26,16 +26,23 @@ public class Edge
     // ============================== getters ==============================
 
     public Cities getSource() { return this.source; }
+
     public Cities getDestination() { return this.destination; }
+
     public GameColor getRouteColor() { return this.routeColor; }
+
     public int getWeight() { return this.weight; }
+
     public static int getNumberOfEdges() { return numberOfEdges; }
+
     public static int getWeightOfAllEdges() { return weightOfAllEdges; }
 
     // ============================== setters ==============================
 
     public void setSource(Cities source) { this.source = source; }
+
     public void setDestination(Cities destination) { this.destination = destination; }
+
     public void setRouteColor(GameColor routeColor) { this.routeColor = routeColor; }
 
     public void setWeight(int weight) throws IllegalArgumentException

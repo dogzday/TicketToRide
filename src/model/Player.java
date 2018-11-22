@@ -96,11 +96,11 @@ public class Player
     public String toString()
     {
         return (name + "\n" +
-                teamColor.toString() + "\n" +
-                Integer.toString(trainPieces) + "\n" +
-                Integer.toString(score) + "\n" +
-                trainCards.toString() + "\n" +
-                destinationCards.toString());
+                "Name: " + teamColor.toString() + "\n" +
+                "Pieces: " + Integer.toString(trainPieces) + "\n" +
+                "Score: " + Integer.toString(score) + "\n" +
+                "TrainCards: " + trainCards.toString() + "\n" +
+                "DestinationCards" + destinationCards.toString());
     }
 
     // ============================== getters ==============================

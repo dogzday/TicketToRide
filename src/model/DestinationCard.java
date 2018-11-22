@@ -32,14 +32,20 @@ public class DestinationCard
     // ============================== getters ==============================
 
     public Cities getSource() { return source; }
+
     public Cities getDestination() { return destination; }
+
     public int getScore() { return score; }
+
     public static int getNumberOfDestinationCards() { return numberOfDestinationCards; }
+
     public static int getScoreOfAllCards() { return scoreOfAllCards; }
 
     // ============================== setters ==============================
 
     public void setSource(Cities source) { this.source = source; }
+
     public void setDestination(Cities destination) { this.destination= destination; }
+
     public void setScore(int score) { this.score= score; }
 }
