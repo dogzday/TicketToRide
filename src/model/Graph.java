@@ -203,9 +203,33 @@ public class Graph
         this.adjList[source.ordinal()].add(0, sourceToDestination);
     }
 
-    public void removeEdge(Cities source, Cities destination, GameColor routeColor, int weight)
+    public void removeEdge(Cities source, Cities destination, GameColor routeColor)
     {
         // todo
         throw new UnsupportedOperationException();
+    }
+
+    /**
+     *
+     * @param source Cities enum specifiying first node.
+     * @param destination Cities enum specifiying last node.
+     * @param routeColor GameColor enum specifying route's color.
+     * @return 1 IF FOUND.<br>
+     * 0 OR ANY NEGATIVE INTEGER IF NOT FOUND.<br>
+     * -1 if no such source exists.<br>
+     * -2 if no adjacency list exists.<br>
+     */
+    public int findEdge(Cities source, Cities destination, GameColor routeColor)
+    {
+        if (this.adjList[source.ordinal()] == null ) return -1;
+        if (this.adjList[source.ordinal()].size() == 0) return -2;
+
+        for (int i = 0; i < this.adjList[source.ordinal()].size(); ++i)
+        {
+            if ((this.adjList[source.ordinal()].get(i).getDestination() == destination) &&
+                (this.adjList[source.ordinal()].get(i).getRouteColor() == routeColor)) return 1;
+        }
+
+        return 0;
     }
 }
