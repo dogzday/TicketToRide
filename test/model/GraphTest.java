@@ -16,16 +16,14 @@ public class GraphTest
     }
 
     @Test
-    public void findCorrectEdge()
+    public void correctEdgeTest()
     {
-        System.out.println(Edge.getNumberOfEdges());
-        Assert.assertEquals(1, graph.findEdge(Cities.SAN_FRANCISCO, Cities.LOS_ANGELES, GameColor.YELLOW));
+        Assert.assertEquals(3, graph.findEdge(Cities.SAN_FRANCISCO, Cities.LOS_ANGELES, GameColor.YELLOW));
     }
 
     @Test
-    public void findIncorrectEdge()
+    public void incorrectEdgeTest()
     {
-        System.out.println(Edge.getNumberOfEdges());
-        Assert.assertEquals(0, graph.findEdge(Cities.SAN_FRANCISCO, Cities.LOS_ANGELES, GameColor.BLACK));
+        Assert.assertEquals(-1, graph.findEdge(Cities.SAN_FRANCISCO, Cities.LOS_ANGELES, GameColor.BLACK));
     }
 }

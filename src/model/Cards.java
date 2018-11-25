@@ -8,8 +8,10 @@ import java.util.Random;
 
 public class Cards
 {
-    public static final int SHUFFLE_MULTIPLIER = 1;
+    public static final int SHUFFLE_MULTIPLIER = 2;
     public static final int TRAINCARDS_LIMIT = 110;
+    public static final int COLORED_TRAINCARDS_LIMIT = 12;
+    public static final int WILDCARD_TRAINCARDS_LIMIT = 14;
     public static final int DESTINATIONCARDS_LIMIT = 30;
 
     private Random trainCardsRandomShuffler;
@@ -93,6 +95,10 @@ public class Cards
         return destinationCardsList.remove(0);
     }
 
+    public List<GameColor> getTrainCardsList() { return trainCardsList; }
+
+    public List<DestinationCard> getDestinationCardsList() { return destinationCardsList; }
+
     // ============================== setters ==============================
 
     /**
@@ -158,14 +164,14 @@ public class Cards
 
     private void createAndFillArraysToList()
     {
-        Arrays.fill(trainCardsArray, 0, 11, GameColor.PURPLE);
-        Arrays.fill(trainCardsArray, 12, 23, GameColor.WHITE);
-        Arrays.fill(trainCardsArray, 24, 35, GameColor.BLUE);
-        Arrays.fill(trainCardsArray, 36, 47, GameColor.YELLOW);
-        Arrays.fill(trainCardsArray, 48, 59, GameColor.ORANGE);
-        Arrays.fill(trainCardsArray, 60, 71, GameColor.BLACK);
-        Arrays.fill(trainCardsArray, 72, 83, GameColor.RED);
-        Arrays.fill(trainCardsArray, 84, 95, GameColor.GREEN);
+        Arrays.fill(trainCardsArray, 0, 12, GameColor.PURPLE);
+        Arrays.fill(trainCardsArray, 12, 24, GameColor.WHITE);
+        Arrays.fill(trainCardsArray, 24, 36, GameColor.BLUE);
+        Arrays.fill(trainCardsArray, 36, 48, GameColor.YELLOW);
+        Arrays.fill(trainCardsArray, 48, 60, GameColor.ORANGE);
+        Arrays.fill(trainCardsArray, 60, 72, GameColor.BLACK);
+        Arrays.fill(trainCardsArray, 72, 88, GameColor.RED);
+        Arrays.fill(trainCardsArray, 84, 96, GameColor.GREEN);
         Arrays.fill(trainCardsArray, 96, 110, GameColor.ANY); // 14 wildcards
 
         destinationCardsArray[0] = new DestinationCard(Cities.DENVER, Cities.EL_PASO, 4);

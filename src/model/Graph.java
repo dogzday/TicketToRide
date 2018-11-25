@@ -9,6 +9,10 @@ public class Graph
 
     // ============================== class ==============================
 
+    /**
+     * Creates a graph with specified number of vertices/nodes.
+     * @param vertices Number of vertices/nodes.
+     */
     public Graph(int vertices)
     {
         this.vertices = vertices;
@@ -22,7 +26,11 @@ public class Graph
 
     // ============================== other ==============================
 
-    public void createTicketToRideDefaultBoard() // throws UnsupportedOperationException
+    /**
+     * Creates the full Ticket To Ride game board automatically.
+     * @throws UnsupportedOperationException If board is initialized already, cannot create another.
+     */
+    public void createTicketToRideDefaultBoard() throws UnsupportedOperationException
     {
         // todo add check, if an Edge exists, throw UnsupportedOperationException
 
@@ -161,14 +169,24 @@ public class Graph
         this.addUndirectedEdge(Cities.CALGARY, Cities.WINNIPEG, GameColor.WHITE, 6);
     }
 
-    public void createTicketToRideSampleBoard() throws  UnsupportedOperationException
+    /**
+     * Creates a small game board to experiment on.
+     * @throws UnsupportedOperationException If board is initialized already, cannot create another.
+     */
+    public void createTicketToRideSampleBoard() throws UnsupportedOperationException
     {
+        // todo add check, if an Edge exists, throw UnsupportedOperationException
+
         this.addUndirectedEdge(Cities.SAN_FRANCISCO, Cities.LOS_ANGELES, GameColor.RED, 6);
         this.addUndirectedEdge(Cities.SAN_FRANCISCO, Cities.SEATTLE, GameColor.GREEN, 10);
         this.addUndirectedEdge(Cities.SAN_FRANCISCO, Cities.LAS_VEGAS, GameColor.ANY, 4);
         this.addUndirectedEdge(Cities.LAS_VEGAS, Cities.PHOENIX, GameColor.ORANGE, 10);
     }
 
+    /**
+     * Lists the graph 1 per line in the format:<br>
+     * source + destination + weight + color
+     */
     public void printGraph()
     {
         String sourceString;
@@ -196,6 +214,13 @@ public class Graph
         System.out.println(numberOfEdges);
     }
 
+    /**
+     * Creates a new Edge and adds it to the Graph.
+     * @param source Cities source node.
+     * @param destination Cities destination node.
+     * @param routeColor GameColor enum route's color.
+     * @param weight Weight of route.
+     */
     public void addUndirectedEdge(Cities source, Cities destination, GameColor routeColor, int weight)
     {
         Edge sourceToDestination = new Edge(source, destination, routeColor, weight);
@@ -203,33 +228,63 @@ public class Graph
         this.adjList[source.ordinal()].add(0, sourceToDestination);
     }
 
-    public void removeEdge(Cities source, Cities destination, GameColor routeColor)
+    public void removeUndirectedEdge(Cities source, Cities destination, GameColor routeColor)
     {
         // todo
         throw new UnsupportedOperationException();
     }
 
     /**
-     *
+     * Returns the edge/route specified with a source, destination, and a color. TIn this method, 3
+     * keys are used to find a unique edge. An example of this would be there are no "shortcuts" nor
+     * "alternate paths" between the same source and destination.
      * @param source Cities enum specifiying first node.
      * @param destination Cities enum specifiying last node.
      * @param routeColor GameColor enum specifying route's color.
-     * @return 1 IF FOUND.<br>
-     * 0 OR ANY NEGATIVE INTEGER IF NOT FOUND.<br>
-     * -1 if no such source exists.<br>
-     * -2 if no adjacency list exists.<br>
+     * @return INDEX IF FOUND.<br>
+     * -1 IF NOT FOUND. Other negative integers specify a specific code.<br>
+     * -2 if no such source exists.<br>
+     * -3 if no adjacency list exists.<br>
      */
     public int findEdge(Cities source, Cities destination, GameColor routeColor)
     {
-        if (this.adjList[source.ordinal()] == null ) return -1;
-        if (this.adjList[source.ordinal()].size() == 0) return -2;
+        if (this.adjList[source.ordinal()] == null ) return -2;
+        if (this.adjList[source.ordinal()].size() == 0) return -3;
 
         for (int i = 0; i < this.adjList[source.ordinal()].size(); ++i)
         {
             if ((this.adjList[source.ordinal()].get(i).getDestination() == destination) &&
-                (this.adjList[source.ordinal()].get(i).getRouteColor() == routeColor)) return 1;
+                (this.adjList[source.ordinal()].get(i).getRouteColor() == routeColor)) return i;
         }
 
-        return 0;
+        return -1;
+    }
+
+    /**
+     * Returns the edge/route specified with a source, destination, and a color. In this method, 4
+     * keys are used to find a unique edge. An example of this would be there are "shortcuts"
+     * or an "alternate path" between the same source and destination.
+     * @param source Cities enum specifiying first node.
+     * @param destination Cities enum specifiying last node.
+     * @param routeColor GameColor enum specifying route's color.
+     * @param weight Weight int specifying route's weight.
+     * @return INDEX IF FOUND.<br>
+     * -1 IF NOT FOUND. Other negative integers specify a specific code.<br>
+     * -2 if no such source exists.<br>
+     * -3 if no adjacency list exists.<br>
+     */
+    public int findEdge(Cities source, Cities destination, GameColor routeColor, int weight)
+    {
+        if (this.adjList[source.ordinal()] == null ) return -2;
+        if (this.adjList[source.ordinal()].size() == 0) return -3;
+
+        for (int i = 0; i < this.adjList[source.ordinal()].size(); ++i)
+        {
+            if ((this.adjList[source.ordinal()].get(i).getDestination() == destination) &&
+                (this.adjList[source.ordinal()].get(i).getRouteColor() == routeColor) &&
+                (this.adjList[source.ordinal()].get(i).getWeight() == weight)) return i;
+        }
+
+        return -1;
     }
 }
