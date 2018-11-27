@@ -13,7 +13,7 @@ import model.TeamColor;
 // this is mainly a quick example using cards
 // players draw cards until they have enough cards of a specific color they specify for their team
 
-public class ControllerExample
+public class UsingCards
 {
     public static void main(String[] args)
     {

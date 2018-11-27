@@ -5,14 +5,14 @@ public class Edge
     private static int numberOfEdges = 0;
     private static int weightOfAllEdges = 0;
 
-    private Cities source;
-    private Cities destination;
+    private City source;
+    private City destination;
     private GameColor routeColor;
     private int weight;
 
     // ============================== class ==============================
 
-    public Edge(Cities source, Cities destination, GameColor routeColor, int weight)
+    public Edge(City source, City destination, GameColor routeColor, int weight)
     {
         this.source = source;
         this.destination = destination;
@@ -25,9 +25,9 @@ public class Edge
 
     // ============================== getters ==============================
 
-    public Cities getSource() { return this.source; }
+    public City getSource() { return this.source; }
 
-    public Cities getDestination() { return this.destination; }
+    public City getDestination() { return this.destination; }
 
     public GameColor getRouteColor() { return this.routeColor; }
 
@@ -39,9 +39,9 @@ public class Edge
 
     // ============================== setters ==============================
 
-    public void setSource(Cities source) { this.source = source; }
+    public void setSource(City source) { this.source = source; }
 
-    public void setDestination(Cities destination) { this.destination = destination; }
+    public void setDestination(City destination) { this.destination = destination; }
 
     public void setRouteColor(GameColor routeColor) { this.routeColor = routeColor; }
 

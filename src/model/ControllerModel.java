@@ -6,7 +6,7 @@ public class ControllerModel
 {
     public static void main(String[] args)
     {
-        Graph gameBoard = new Graph(Cities.values().length);
+        Graph gameBoard = new Graph(City.values().length);
         Cards cards = new Cards();
 
         gameBoard.createTicketToRideDefaultBoard();

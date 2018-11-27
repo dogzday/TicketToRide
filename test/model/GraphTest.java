@@ -11,19 +11,19 @@ public class GraphTest
     @BeforeClass
     public static void before()
     {
-        graph = new Graph(Cities.values().length);
+        graph = new Graph(City.values().length);
         graph.createTicketToRideDefaultBoard();
     }
 
     @Test
     public void correctEdgeTest()
     {
-        Assert.assertEquals(3, graph.findEdge(Cities.SAN_FRANCISCO, Cities.LOS_ANGELES, GameColor.YELLOW));
+        Assert.assertEquals(3, graph.findEdge(City.SAN_FRANCISCO, City.LOS_ANGELES, GameColor.YELLOW));
     }
 
     @Test
     public void incorrectEdgeTest()
     {
-        Assert.assertEquals(-1, graph.findEdge(Cities.SAN_FRANCISCO, Cities.LOS_ANGELES, GameColor.BLACK));
+        Assert.assertEquals(-1, graph.findEdge(City.SAN_FRANCISCO, City.LOS_ANGELES, GameColor.BLACK));
     }
 }

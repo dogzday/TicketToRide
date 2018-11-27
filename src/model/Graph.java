@@ -34,139 +34,139 @@ public class Graph
     {
         // todo add check, if an Edge exists, throw UnsupportedOperationException
 
-        this.addUndirectedEdge(Cities.VANCOUVER, Cities.CALGARY, GameColor.ANY, 3);
-        this.addUndirectedEdge(Cities.VANCOUVER, Cities.SEATTLE, GameColor.ANY, 1);
-        this.addUndirectedEdge(Cities.VANCOUVER, Cities.SEATTLE, GameColor.ANY, 1);
+        this.addUndirectedEdge(City.VANCOUVER, City.CALGARY, GameColor.ANY, 3);
+        this.addUndirectedEdge(City.VANCOUVER, City.SEATTLE, GameColor.ANY, 1);
+        this.addUndirectedEdge(City.VANCOUVER, City.SEATTLE, GameColor.ANY, 1);
 
-        this.addUndirectedEdge(Cities.SEATTLE, Cities.CALGARY, GameColor.ANY, 4);
-        this.addUndirectedEdge(Cities.SEATTLE, Cities.PORTLAND, GameColor.ANY, 1);
-        this.addUndirectedEdge(Cities.SEATTLE, Cities.PORTLAND, GameColor.ANY, 1);
-        this.addUndirectedEdge(Cities.SEATTLE, Cities.HELENA, GameColor.YELLOW, 6);
+        this.addUndirectedEdge(City.SEATTLE, City.CALGARY, GameColor.ANY, 4);
+        this.addUndirectedEdge(City.SEATTLE, City.PORTLAND, GameColor.ANY, 1);
+        this.addUndirectedEdge(City.SEATTLE, City.PORTLAND, GameColor.ANY, 1);
+        this.addUndirectedEdge(City.SEATTLE, City.HELENA, GameColor.YELLOW, 6);
 
-        this.addUndirectedEdge(Cities.PORTLAND, Cities.SAN_FRANCISCO, GameColor.GREEN, 5);
-        this.addUndirectedEdge(Cities.PORTLAND, Cities.SAN_FRANCISCO, GameColor.PURPLE, 5);
-        this.addUndirectedEdge(Cities.PORTLAND, Cities.SALT_LAKE_CITY, GameColor.BLUE, 6);
+        this.addUndirectedEdge(City.PORTLAND, City.SAN_FRANCISCO, GameColor.GREEN, 5);
+        this.addUndirectedEdge(City.PORTLAND, City.SAN_FRANCISCO, GameColor.PURPLE, 5);
+        this.addUndirectedEdge(City.PORTLAND, City.SALT_LAKE_CITY, GameColor.BLUE, 6);
 
-        this.addUndirectedEdge(Cities.SAN_FRANCISCO, Cities.LOS_ANGELES, GameColor.YELLOW, 3);
-        this.addUndirectedEdge(Cities.SAN_FRANCISCO, Cities.LOS_ANGELES, GameColor.PURPLE, 3);
-        this.addUndirectedEdge(Cities.SAN_FRANCISCO, Cities.SALT_LAKE_CITY, GameColor.WHITE, 5);
-        this.addUndirectedEdge(Cities.SAN_FRANCISCO, Cities.SALT_LAKE_CITY, GameColor.ORANGE, 5);
+        this.addUndirectedEdge(City.SAN_FRANCISCO, City.LOS_ANGELES, GameColor.YELLOW, 3);
+        this.addUndirectedEdge(City.SAN_FRANCISCO, City.LOS_ANGELES, GameColor.PURPLE, 3);
+        this.addUndirectedEdge(City.SAN_FRANCISCO, City.SALT_LAKE_CITY, GameColor.WHITE, 5);
+        this.addUndirectedEdge(City.SAN_FRANCISCO, City.SALT_LAKE_CITY, GameColor.ORANGE, 5);
 
-        this.addUndirectedEdge(Cities.HELENA, Cities.SALT_LAKE_CITY, GameColor.PURPLE, 3);
+        this.addUndirectedEdge(City.HELENA, City.SALT_LAKE_CITY, GameColor.PURPLE, 3);
 
-        this.addUndirectedEdge(Cities.SALT_LAKE_CITY, Cities.LAS_VEGAS, GameColor.ORANGE, 3);
+        this.addUndirectedEdge(City.SALT_LAKE_CITY, City.LAS_VEGAS, GameColor.ORANGE, 3);
 
-        this.addUndirectedEdge(Cities.LAS_VEGAS, Cities.LOS_ANGELES, GameColor.ANY, 2);
+        this.addUndirectedEdge(City.LAS_VEGAS, City.LOS_ANGELES, GameColor.ANY, 2);
 
-        this.addUndirectedEdge(Cities.LOS_ANGELES, Cities.PHOENIX, GameColor.ANY, 3);
-        this.addUndirectedEdge(Cities.LOS_ANGELES, Cities.EL_PASO, GameColor.BLACK, 6);
+        this.addUndirectedEdge(City.LOS_ANGELES, City.PHOENIX, GameColor.ANY, 3);
+        this.addUndirectedEdge(City.LOS_ANGELES, City.EL_PASO, GameColor.BLACK, 6);
 
-        this.addUndirectedEdge(Cities.EL_PASO, Cities.PHOENIX, GameColor.ANY, 3);
-        this.addUndirectedEdge(Cities.EL_PASO, Cities.HOUSTON, GameColor.GREEN, 6);
+        this.addUndirectedEdge(City.EL_PASO, City.PHOENIX, GameColor.ANY, 3);
+        this.addUndirectedEdge(City.EL_PASO, City.HOUSTON, GameColor.GREEN, 6);
 
-        this.addUndirectedEdge(Cities.PHOENIX, Cities.SANTA_FE, GameColor.ANY, 3);
-        this.addUndirectedEdge(Cities.PHOENIX, Cities.DENVER, GameColor.WHITE, 5);
+        this.addUndirectedEdge(City.PHOENIX, City.SANTA_FE, GameColor.ANY, 3);
+        this.addUndirectedEdge(City.PHOENIX, City.DENVER, GameColor.WHITE, 5);
 
-        this.addUndirectedEdge(Cities.DENVER, Cities.SALT_LAKE_CITY, GameColor.YELLOW, 3);
-        this.addUndirectedEdge(Cities.DENVER, Cities.SALT_LAKE_CITY, GameColor.RED, 3);
-        this.addUndirectedEdge(Cities.DENVER, Cities.KANSAS_CITY, GameColor.BLACK, 4);
-        this.addUndirectedEdge(Cities.DENVER, Cities.KANSAS_CITY, GameColor.ORANGE, 4);
-        this.addUndirectedEdge(Cities.DENVER, Cities.OKLAHOMA_CITY, GameColor.RED, 4);
-        this.addUndirectedEdge(Cities.DENVER, Cities.SANTA_FE, GameColor.ANY, 2);
-        this.addUndirectedEdge(Cities.DENVER, Cities.HELENA, GameColor.GREEN, 4);
-        this.addUndirectedEdge(Cities.DENVER, Cities.OMAHA, GameColor.PURPLE, 4);
+        this.addUndirectedEdge(City.DENVER, City.SALT_LAKE_CITY, GameColor.YELLOW, 3);
+        this.addUndirectedEdge(City.DENVER, City.SALT_LAKE_CITY, GameColor.RED, 3);
+        this.addUndirectedEdge(City.DENVER, City.KANSAS_CITY, GameColor.BLACK, 4);
+        this.addUndirectedEdge(City.DENVER, City.KANSAS_CITY, GameColor.ORANGE, 4);
+        this.addUndirectedEdge(City.DENVER, City.OKLAHOMA_CITY, GameColor.RED, 4);
+        this.addUndirectedEdge(City.DENVER, City.SANTA_FE, GameColor.ANY, 2);
+        this.addUndirectedEdge(City.DENVER, City.HELENA, GameColor.GREEN, 4);
+        this.addUndirectedEdge(City.DENVER, City.OMAHA, GameColor.PURPLE, 4);
 
-        this.addUndirectedEdge(Cities.SANTA_FE, Cities.EL_PASO, GameColor.ANY, 2);
+        this.addUndirectedEdge(City.SANTA_FE, City.EL_PASO, GameColor.ANY, 2);
 
-        this.addUndirectedEdge(Cities.OKLAHOMA_CITY, Cities.SANTA_FE, GameColor.BLUE, 3);
-        this.addUndirectedEdge(Cities.OKLAHOMA_CITY, Cities.EL_PASO, GameColor.YELLOW, 5);
-        this.addUndirectedEdge(Cities.OKLAHOMA_CITY, Cities.DALLAS, GameColor.ANY, 2);
-        this.addUndirectedEdge(Cities.OKLAHOMA_CITY, Cities.DALLAS, GameColor.ANY, 2);
-        this.addUndirectedEdge(Cities.OKLAHOMA_CITY, Cities.LITTLE_ROCK, GameColor.ANY, 2);
-        this.addUndirectedEdge(Cities.OKLAHOMA_CITY, Cities.KANSAS_CITY, GameColor.ANY, 2);
-        this.addUndirectedEdge(Cities.OKLAHOMA_CITY, Cities.KANSAS_CITY, GameColor.ANY, 2);
+        this.addUndirectedEdge(City.OKLAHOMA_CITY, City.SANTA_FE, GameColor.BLUE, 3);
+        this.addUndirectedEdge(City.OKLAHOMA_CITY, City.EL_PASO, GameColor.YELLOW, 5);
+        this.addUndirectedEdge(City.OKLAHOMA_CITY, City.DALLAS, GameColor.ANY, 2);
+        this.addUndirectedEdge(City.OKLAHOMA_CITY, City.DALLAS, GameColor.ANY, 2);
+        this.addUndirectedEdge(City.OKLAHOMA_CITY, City.LITTLE_ROCK, GameColor.ANY, 2);
+        this.addUndirectedEdge(City.OKLAHOMA_CITY, City.KANSAS_CITY, GameColor.ANY, 2);
+        this.addUndirectedEdge(City.OKLAHOMA_CITY, City.KANSAS_CITY, GameColor.ANY, 2);
 
-        this.addUndirectedEdge(Cities.DALLAS, Cities.EL_PASO, GameColor.RED, 4);
-        this.addUndirectedEdge(Cities.DALLAS, Cities.HOUSTON, GameColor.ANY, 1);
-        this.addUndirectedEdge(Cities.DALLAS, Cities.HOUSTON, GameColor.ANY, 1);
-        this.addUndirectedEdge(Cities.DALLAS, Cities.LITTLE_ROCK, GameColor.ANY, 2);
+        this.addUndirectedEdge(City.DALLAS, City.EL_PASO, GameColor.RED, 4);
+        this.addUndirectedEdge(City.DALLAS, City.HOUSTON, GameColor.ANY, 1);
+        this.addUndirectedEdge(City.DALLAS, City.HOUSTON, GameColor.ANY, 1);
+        this.addUndirectedEdge(City.DALLAS, City.LITTLE_ROCK, GameColor.ANY, 2);
 
-        this.addUndirectedEdge(Cities.HOUSTON, Cities.NEW_ORLEANS, GameColor.ANY, 2);
+        this.addUndirectedEdge(City.HOUSTON, City.NEW_ORLEANS, GameColor.ANY, 2);
 
-        this.addUndirectedEdge(Cities.NEW_ORLEANS, Cities.LITTLE_ROCK, GameColor.GREEN, 3);
-        this.addUndirectedEdge(Cities.NEW_ORLEANS, Cities.ATLANTA, GameColor.YELLOW, 4);
-        this.addUndirectedEdge(Cities.NEW_ORLEANS, Cities.ATLANTA, GameColor.ORANGE, 4);
-        this.addUndirectedEdge(Cities.NEW_ORLEANS, Cities.MIAMI, GameColor.RED, 6);
+        this.addUndirectedEdge(City.NEW_ORLEANS, City.LITTLE_ROCK, GameColor.GREEN, 3);
+        this.addUndirectedEdge(City.NEW_ORLEANS, City.ATLANTA, GameColor.YELLOW, 4);
+        this.addUndirectedEdge(City.NEW_ORLEANS, City.ATLANTA, GameColor.ORANGE, 4);
+        this.addUndirectedEdge(City.NEW_ORLEANS, City.MIAMI, GameColor.RED, 6);
 
-        this.addUndirectedEdge(Cities.ATLANTA, Cities.MIAMI, GameColor.BLUE, 5);
-        this.addUndirectedEdge(Cities.ATLANTA, Cities.CHARLESTON, GameColor.ANY, 2);
-        this.addUndirectedEdge(Cities.ATLANTA, Cities.RALEIGH, GameColor.ANY, 2);
-        this.addUndirectedEdge(Cities.ATLANTA, Cities.RALEIGH, GameColor.ANY, 2);
-        this.addUndirectedEdge(Cities.ATLANTA, Cities.NASHVILLE, GameColor.ANY, 1);
+        this.addUndirectedEdge(City.ATLANTA, City.MIAMI, GameColor.BLUE, 5);
+        this.addUndirectedEdge(City.ATLANTA, City.CHARLESTON, GameColor.ANY, 2);
+        this.addUndirectedEdge(City.ATLANTA, City.RALEIGH, GameColor.ANY, 2);
+        this.addUndirectedEdge(City.ATLANTA, City.RALEIGH, GameColor.ANY, 2);
+        this.addUndirectedEdge(City.ATLANTA, City.NASHVILLE, GameColor.ANY, 1);
 
-        this.addUndirectedEdge(Cities.LITTLE_ROCK, Cities.NASHVILLE, GameColor.WHITE, 3);
-        this.addUndirectedEdge(Cities.LITTLE_ROCK, Cities.SAINT_LOUIS, GameColor.ANY, 2);
+        this.addUndirectedEdge(City.LITTLE_ROCK, City.NASHVILLE, GameColor.WHITE, 3);
+        this.addUndirectedEdge(City.LITTLE_ROCK, City.SAINT_LOUIS, GameColor.ANY, 2);
 
-        this.addUndirectedEdge(Cities.SAINT_LOUIS, Cities.PITTSBURG, GameColor.GREEN, 5);
-        this.addUndirectedEdge(Cities.SAINT_LOUIS, Cities.NASHVILLE, GameColor.ANY, 2);
+        this.addUndirectedEdge(City.SAINT_LOUIS, City.PITTSBURG, GameColor.GREEN, 5);
+        this.addUndirectedEdge(City.SAINT_LOUIS, City.NASHVILLE, GameColor.ANY, 2);
 
-        this.addUndirectedEdge(Cities.KANSAS_CITY, Cities.SAINT_LOUIS, GameColor.PURPLE, 2);
-        this.addUndirectedEdge(Cities.KANSAS_CITY, Cities.SAINT_LOUIS, GameColor.BLUE, 2);
-        this.addUndirectedEdge(Cities.KANSAS_CITY, Cities.OMAHA, GameColor.ANY, 1);
-        this.addUndirectedEdge(Cities.KANSAS_CITY, Cities.OMAHA, GameColor.ANY, 1);
+        this.addUndirectedEdge(City.KANSAS_CITY, City.SAINT_LOUIS, GameColor.PURPLE, 2);
+        this.addUndirectedEdge(City.KANSAS_CITY, City.SAINT_LOUIS, GameColor.BLUE, 2);
+        this.addUndirectedEdge(City.KANSAS_CITY, City.OMAHA, GameColor.ANY, 1);
+        this.addUndirectedEdge(City.KANSAS_CITY, City.OMAHA, GameColor.ANY, 1);
 
-        this.addUndirectedEdge(Cities.OMAHA, Cities.CHICAGO, GameColor.BLUE, 4);
-        this.addUndirectedEdge(Cities.OMAHA, Cities.DULUTH, GameColor.ANY, 2);
-        this.addUndirectedEdge(Cities.OMAHA, Cities.DULUTH, GameColor.ANY, 2);
-        this.addUndirectedEdge(Cities.OMAHA, Cities.HELENA, GameColor.RED, 5);
+        this.addUndirectedEdge(City.OMAHA, City.CHICAGO, GameColor.BLUE, 4);
+        this.addUndirectedEdge(City.OMAHA, City.DULUTH, GameColor.ANY, 2);
+        this.addUndirectedEdge(City.OMAHA, City.DULUTH, GameColor.ANY, 2);
+        this.addUndirectedEdge(City.OMAHA, City.HELENA, GameColor.RED, 5);
 
-        this.addUndirectedEdge(Cities.DULUTH, Cities.HELENA, GameColor.ORANGE, 6);
-        this.addUndirectedEdge(Cities.DULUTH, Cities.WINNIPEG, GameColor.BLACK, 4);
-        this.addUndirectedEdge(Cities.DULUTH, Cities.SAULT_ST_MARIE, GameColor.ANY, 3);
-        this.addUndirectedEdge(Cities.DULUTH, Cities.TORONTO, GameColor.PURPLE, 6);
-        this.addUndirectedEdge(Cities.DULUTH, Cities.CHICAGO, GameColor.RED, 3);
+        this.addUndirectedEdge(City.DULUTH, City.HELENA, GameColor.ORANGE, 6);
+        this.addUndirectedEdge(City.DULUTH, City.WINNIPEG, GameColor.BLACK, 4);
+        this.addUndirectedEdge(City.DULUTH, City.SAULT_ST_MARIE, GameColor.ANY, 3);
+        this.addUndirectedEdge(City.DULUTH, City.TORONTO, GameColor.PURPLE, 6);
+        this.addUndirectedEdge(City.DULUTH, City.CHICAGO, GameColor.RED, 3);
 
-        this.addUndirectedEdge(Cities.CHICAGO, Cities.TORONTO, GameColor.WHITE, 4);
-        this.addUndirectedEdge(Cities.CHICAGO, Cities.PITTSBURG, GameColor.ORANGE, 3);
-        this.addUndirectedEdge(Cities.CHICAGO, Cities.PITTSBURG, GameColor.BLACK, 3);
-        this.addUndirectedEdge(Cities.CHICAGO, Cities.SAINT_LOUIS, GameColor.GREEN, 2);
+        this.addUndirectedEdge(City.CHICAGO, City.TORONTO, GameColor.WHITE, 4);
+        this.addUndirectedEdge(City.CHICAGO, City.PITTSBURG, GameColor.ORANGE, 3);
+        this.addUndirectedEdge(City.CHICAGO, City.PITTSBURG, GameColor.BLACK, 3);
+        this.addUndirectedEdge(City.CHICAGO, City.SAINT_LOUIS, GameColor.GREEN, 2);
 
-        this.addUndirectedEdge(Cities.PITTSBURG, Cities.NASHVILLE, GameColor.YELLOW, 4);
-        this.addUndirectedEdge(Cities.PITTSBURG, Cities.RALEIGH, GameColor.ANY, 2);
-        this.addUndirectedEdge(Cities.PITTSBURG, Cities.WASHINGTON, GameColor.ANY, 2);
-        this.addUndirectedEdge(Cities.PITTSBURG, Cities.NEW_YORK, GameColor.GREEN, 2);
-        this.addUndirectedEdge(Cities.PITTSBURG, Cities.NEW_YORK, GameColor.WHITE, 2);
-        this.addUndirectedEdge(Cities.PITTSBURG, Cities.TORONTO, GameColor.ANY, 2);
+        this.addUndirectedEdge(City.PITTSBURG, City.NASHVILLE, GameColor.YELLOW, 4);
+        this.addUndirectedEdge(City.PITTSBURG, City.RALEIGH, GameColor.ANY, 2);
+        this.addUndirectedEdge(City.PITTSBURG, City.WASHINGTON, GameColor.ANY, 2);
+        this.addUndirectedEdge(City.PITTSBURG, City.NEW_YORK, GameColor.GREEN, 2);
+        this.addUndirectedEdge(City.PITTSBURG, City.NEW_YORK, GameColor.WHITE, 2);
+        this.addUndirectedEdge(City.PITTSBURG, City.TORONTO, GameColor.ANY, 2);
 
-        this.addUndirectedEdge(Cities.NASHVILLE, Cities.RALEIGH, GameColor.BLACK, 3);
+        this.addUndirectedEdge(City.NASHVILLE, City.RALEIGH, GameColor.BLACK, 3);
 
-        this.addUndirectedEdge(Cities.RALEIGH, Cities.WASHINGTON, GameColor.ANY, 2);
-        this.addUndirectedEdge(Cities.RALEIGH, Cities.WASHINGTON, GameColor.ANY, 2);
-        this.addUndirectedEdge(Cities.RALEIGH, Cities.CHARLESTON, GameColor.ANY, 2);
+        this.addUndirectedEdge(City.RALEIGH, City.WASHINGTON, GameColor.ANY, 2);
+        this.addUndirectedEdge(City.RALEIGH, City.WASHINGTON, GameColor.ANY, 2);
+        this.addUndirectedEdge(City.RALEIGH, City.CHARLESTON, GameColor.ANY, 2);
 
-        this.addUndirectedEdge(Cities.CHARLESTON, Cities.MIAMI, GameColor.PURPLE, 4);
+        this.addUndirectedEdge(City.CHARLESTON, City.MIAMI, GameColor.PURPLE, 4);
 
-        this.addUndirectedEdge(Cities.WASHINGTON, Cities.NEW_YORK, GameColor.ORANGE, 2);
-        this.addUndirectedEdge(Cities.WASHINGTON, Cities.NEW_YORK, GameColor.BLACK, 2);
+        this.addUndirectedEdge(City.WASHINGTON, City.NEW_YORK, GameColor.ORANGE, 2);
+        this.addUndirectedEdge(City.WASHINGTON, City.NEW_YORK, GameColor.BLACK, 2);
 
-        this.addUndirectedEdge(Cities.NEW_YORK, Cities.BOSTON, GameColor.RED, 2);
-        this.addUndirectedEdge(Cities.NEW_YORK, Cities.BOSTON, GameColor.YELLOW, 2);
-        this.addUndirectedEdge(Cities.NEW_YORK, Cities.MONTREAL, GameColor.BLUE, 3);
+        this.addUndirectedEdge(City.NEW_YORK, City.BOSTON, GameColor.RED, 2);
+        this.addUndirectedEdge(City.NEW_YORK, City.BOSTON, GameColor.YELLOW, 2);
+        this.addUndirectedEdge(City.NEW_YORK, City.MONTREAL, GameColor.BLUE, 3);
 
-        this.addUndirectedEdge(Cities.BOSTON, Cities.MONTREAL, GameColor.ANY, 2);
-        this.addUndirectedEdge(Cities.BOSTON, Cities.MONTREAL, GameColor.ANY, 2);
+        this.addUndirectedEdge(City.BOSTON, City.MONTREAL, GameColor.ANY, 2);
+        this.addUndirectedEdge(City.BOSTON, City.MONTREAL, GameColor.ANY, 2);
 
-        this.addUndirectedEdge(Cities.MONTREAL, Cities.TORONTO, GameColor.ANY, 3);
-        this.addUndirectedEdge(Cities.MONTREAL, Cities.SAULT_ST_MARIE, GameColor.BLACK, 5);
+        this.addUndirectedEdge(City.MONTREAL, City.TORONTO, GameColor.ANY, 3);
+        this.addUndirectedEdge(City.MONTREAL, City.SAULT_ST_MARIE, GameColor.BLACK, 5);
 
-        this.addUndirectedEdge(Cities.SAULT_ST_MARIE, Cities.TORONTO, GameColor.ANY, 2);
-        this.addUndirectedEdge(Cities.SAULT_ST_MARIE, Cities.WINNIPEG, GameColor.ANY, 6);
+        this.addUndirectedEdge(City.SAULT_ST_MARIE, City.TORONTO, GameColor.ANY, 2);
+        this.addUndirectedEdge(City.SAULT_ST_MARIE, City.WINNIPEG, GameColor.ANY, 6);
 
-        this.addUndirectedEdge(Cities.WINNIPEG, Cities.HELENA, GameColor.BLUE, 4);
+        this.addUndirectedEdge(City.WINNIPEG, City.HELENA, GameColor.BLUE, 4);
 
-        this.addUndirectedEdge(Cities.HELENA, Cities.CALGARY, GameColor.ANY, 4);
+        this.addUndirectedEdge(City.HELENA, City.CALGARY, GameColor.ANY, 4);
 
-        this.addUndirectedEdge(Cities.CALGARY, Cities.WINNIPEG, GameColor.WHITE, 6);
+        this.addUndirectedEdge(City.CALGARY, City.WINNIPEG, GameColor.WHITE, 6);
     }
 
     /**
@@ -177,10 +177,10 @@ public class Graph
     {
         // todo add check, if an Edge exists, throw UnsupportedOperationException
 
-        this.addUndirectedEdge(Cities.SAN_FRANCISCO, Cities.LOS_ANGELES, GameColor.RED, 6);
-        this.addUndirectedEdge(Cities.SAN_FRANCISCO, Cities.SEATTLE, GameColor.GREEN, 10);
-        this.addUndirectedEdge(Cities.SAN_FRANCISCO, Cities.LAS_VEGAS, GameColor.ANY, 4);
-        this.addUndirectedEdge(Cities.LAS_VEGAS, Cities.PHOENIX, GameColor.ORANGE, 10);
+        this.addUndirectedEdge(City.SAN_FRANCISCO, City.LOS_ANGELES, GameColor.RED, 6);
+        this.addUndirectedEdge(City.SAN_FRANCISCO, City.SEATTLE, GameColor.GREEN, 10);
+        this.addUndirectedEdge(City.SAN_FRANCISCO, City.LAS_VEGAS, GameColor.ANY, 4);
+        this.addUndirectedEdge(City.LAS_VEGAS, City.PHOENIX, GameColor.ORANGE, 10);
     }
 
     /**
@@ -216,19 +216,19 @@ public class Graph
 
     /**
      * Creates a new Edge and adds it to the Graph.
-     * @param source Cities source node.
-     * @param destination Cities destination node.
+     * @param source City source node.
+     * @param destination City destination node.
      * @param routeColor GameColor enum route's color.
      * @param weight Weight of route.
      */
-    public void addUndirectedEdge(Cities source, Cities destination, GameColor routeColor, int weight)
+    public void addUndirectedEdge(City source, City destination, GameColor routeColor, int weight)
     {
         Edge sourceToDestination = new Edge(source, destination, routeColor, weight);
         Edge destinationToSource = new Edge(destination, source, routeColor, weight);
         this.adjList[source.ordinal()].add(0, sourceToDestination);
     }
 
-    public void removeUndirectedEdge(Cities source, Cities destination, GameColor routeColor)
+    public void removeUndirectedEdge(City source, City destination, GameColor routeColor)
     {
         // todo
         throw new UnsupportedOperationException();
@@ -238,15 +238,15 @@ public class Graph
      * Returns the edge/route specified with a source, destination, and a color. TIn this method, 3
      * keys are used to find a unique edge. An example of this would be there are no "shortcuts" nor
      * "alternate paths" between the same source and destination.
-     * @param source Cities enum specifiying first node.
-     * @param destination Cities enum specifiying last node.
+     * @param source City enum specifiying first node.
+     * @param destination City enum specifiying last node.
      * @param routeColor GameColor enum specifying route's color.
      * @return INDEX IF FOUND.<br>
      * -1 IF NOT FOUND. Other negative integers specify a specific code.<br>
      * -2 if no such source exists.<br>
      * -3 if no adjacency list exists.<br>
      */
-    public int findEdge(Cities source, Cities destination, GameColor routeColor)
+    public int findEdge(City source, City destination, GameColor routeColor)
     {
         if (this.adjList[source.ordinal()] == null ) return -2;
         if (this.adjList[source.ordinal()].size() == 0) return -3;
@@ -264,8 +264,8 @@ public class Graph
      * Returns the edge/route specified with a source, destination, and a color. In this method, 4
      * keys are used to find a unique edge. An example of this would be there are "shortcuts"
      * or an "alternate path" between the same source and destination.
-     * @param source Cities enum specifiying first node.
-     * @param destination Cities enum specifiying last node.
+     * @param source City enum specifiying first node.
+     * @param destination City enum specifiying last node.
      * @param routeColor GameColor enum specifying route's color.
      * @param weight Weight int specifying route's weight.
      * @return INDEX IF FOUND.<br>
@@ -273,7 +273,7 @@ public class Graph
      * -2 if no such source exists.<br>
      * -3 if no adjacency list exists.<br>
      */
-    public int findEdge(Cities source, Cities destination, GameColor routeColor, int weight)
+    public int findEdge(City source, City destination, GameColor routeColor, int weight)
     {
         if (this.adjList[source.ordinal()] == null ) return -2;
         if (this.adjList[source.ordinal()].size() == 0) return -3;
