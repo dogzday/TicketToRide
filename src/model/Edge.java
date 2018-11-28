@@ -29,13 +29,13 @@ public class Edge
 
     public City getDestination() { return this.destination; }
 
-    public GameColor getRouteColor() { return this.routeColor; }
-
-    public int getWeight() { return this.weight; }
+    public static int getWeightOfAllEdges() { return weightOfAllEdges; }
 
     public static int getNumberOfEdges() { return numberOfEdges; }
 
-    public static int getWeightOfAllEdges() { return weightOfAllEdges; }
+    public int getWeight() { return this.weight; }
+
+    public GameColor getRouteColor() { return this.routeColor; }
 
     // ============================== setters ==============================
 

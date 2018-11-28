@@ -1,11 +1,13 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Graph
 {
+    private List<Edge>[] adjList;
     private int vertices;
-    private ArrayList<Edge>[] adjList;
+    private int numberOfEdges = 0;
 
     // ============================== class ==============================
 
@@ -197,7 +199,7 @@ public class Graph
 
         for (int i = 0; i < vertices; ++i)
         {
-            ArrayList<Edge> list = adjList[i];
+            List<Edge> list = adjList[i];
 
             for (int j = 0; j < list.size(); ++j)
             {
@@ -212,26 +214,6 @@ public class Graph
 
         numberOfEdges = Edge.getNumberOfEdges();
         System.out.println(numberOfEdges);
-    }
-
-    /**
-     * Creates a new Edge and adds it to the Graph.
-     * @param source City source node.
-     * @param destination City destination node.
-     * @param routeColor GameColor enum route's color.
-     * @param weight Weight of route.
-     */
-    public void addUndirectedEdge(City source, City destination, GameColor routeColor, int weight)
-    {
-        Edge sourceToDestination = new Edge(source, destination, routeColor, weight);
-        Edge destinationToSource = new Edge(destination, source, routeColor, weight);
-        this.adjList[source.ordinal()].add(0, sourceToDestination);
-    }
-
-    public void removeUndirectedEdge(City source, City destination, GameColor routeColor)
-    {
-        // todo
-        throw new UnsupportedOperationException();
     }
 
     /**
@@ -254,7 +236,7 @@ public class Graph
         for (int i = 0; i < this.adjList[source.ordinal()].size(); ++i)
         {
             if ((this.adjList[source.ordinal()].get(i).getDestination() == destination) &&
-                (this.adjList[source.ordinal()].get(i).getRouteColor() == routeColor)) return i;
+                    (this.adjList[source.ordinal()].get(i).getRouteColor() == routeColor)) return i;
         }
 
         return -1;
@@ -281,10 +263,44 @@ public class Graph
         for (int i = 0; i < this.adjList[source.ordinal()].size(); ++i)
         {
             if ((this.adjList[source.ordinal()].get(i).getDestination() == destination) &&
-                (this.adjList[source.ordinal()].get(i).getRouteColor() == routeColor) &&
-                (this.adjList[source.ordinal()].get(i).getWeight() == weight)) return i;
+                    (this.adjList[source.ordinal()].get(i).getRouteColor() == routeColor) &&
+                    (this.adjList[source.ordinal()].get(i).getWeight() == weight)) return i;
         }
 
         return -1;
+    }
+
+    // ============================== getters ==============================
+
+    public int getNumberOfEdges() { return numberOfEdges; }
+
+    public List<Edge> getAdjacentEdges(City source)
+    {
+        //todo
+        throw new UnsupportedOperationException();
+        // return this.adjList[source.ordinal()];
+    }
+
+    // ============================== setters ==============================
+
+    /**
+     * Creates a new Edge and adds it to the Graph.
+     * @param source City source node.
+     * @param destination City destination node.
+     * @param routeColor GameColor enum route's color.
+     * @param weight Weight of route.
+     */
+    public void addUndirectedEdge(City source, City destination, GameColor routeColor, int weight)
+    {
+        Edge sourceToDestination = new Edge(source, destination, routeColor, weight);
+        Edge destinationToSource = new Edge(destination, source, routeColor, weight);
+        this.adjList[source.ordinal()].add(0, sourceToDestination);
+        ++this.numberOfEdges;
+    }
+
+    public void removeUndirectedEdge(City source, City destination, GameColor routeColor)
+    {
+        // todo
+        throw new UnsupportedOperationException();
     }
 }
