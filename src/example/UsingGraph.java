@@ -31,6 +31,7 @@ public class UsingGraph
         // graph1 is the board, graph2 contains a blank board
         // we can compare graph1 to graph2 for Edge existence
         graph1.createTicketToRideDefaultBoard();
+        System.out.println(graph1.getNumberOfEdges());
 
         adjEdges = graph1.getAdjacentEdges(City.DENVER);
 

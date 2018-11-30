@@ -1,7 +1,8 @@
 package model;
 
+import org.junit.After;
 import org.junit.Assert;
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -9,13 +10,20 @@ import java.util.List;
 
 public class GraphTest
 {
-    static Graph graph;
+    private Graph graph;
+    private int intToCheck;
 
-    @BeforeClass
-    public static void before()
+    @Before
+    public void before()
     {
         graph = new Graph(City.values().length);
         graph.createTicketToRideDefaultBoard();
+    }
+
+    @After
+    public void after()
+    {
+        System.out.println(graph.getNumberOfEdges());
     }
 
     @Test
@@ -27,13 +35,27 @@ public class GraphTest
     @Test
     public void correctEdgeTest()
     {
-        Assert.assertEquals(3, graph.findEdge(City.SAN_FRANCISCO, City.LOS_ANGELES, GameColor.YELLOW));
+        intToCheck = graph.findEdge(City.SAN_FRANCISCO, City.LOS_ANGELES, GameColor.YELLOW);
+
+        Assert.assertEquals(3, intToCheck);
     }
 
     @Test
     public void incorrectEdgeTest()
     {
-        Assert.assertEquals(-1, graph.findEdge(City.SAN_FRANCISCO, City.LOS_ANGELES, GameColor.BLACK));
+        intToCheck = graph.findEdge(City.SAN_FRANCISCO, City.LOS_ANGELES, GameColor.BLACK);
+
+        Assert.assertEquals(-1, intToCheck);
+    }
+
+    @Test
+    public void removeUndirectedEdgeTest()
+    {
+        graph.removeUndirectedEdge(City.SAN_FRANCISCO, City.LOS_ANGELES, GameColor.YELLOW);
+
+        intToCheck = graph.findEdge(City.SAN_FRANCISCO, City.LOS_ANGELES, GameColor.YELLOW);
+
+        Assert.assertEquals(-1, intToCheck);
     }
 
 //    @Test
@@ -50,7 +72,7 @@ public class GraphTest
 //        toCompare.add(edge3);
 //        toCompare.add(edge4);
 //
-//        for (int i = 0; i < graph.getNumberOfEdges(); ++i)
+//        for (int i = 0; i < graph.getNumberOfAllEdges(); ++i)
 //        {
 //
 //        }

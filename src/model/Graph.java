@@ -28,13 +28,14 @@ public class Graph
 
     // ============================== other ==============================
 
-    // todo add check, if an Edge exists, throw UnsupportedOperationException
     /**
      * Creates the full Ticket To Ride game board automatically.
      * @throws UnsupportedOperationException If board is initialized already, cannot create another.
      */
     public void createTicketToRideDefaultBoard() throws UnsupportedOperationException
     {
+        if (this.numberOfEdges > 0) throw new UnsupportedOperationException();
+
         this.addUndirectedEdge(City.VANCOUVER, City.CALGARY, GameColor.ANY, 3);
         this.addUndirectedEdge(City.VANCOUVER, City.SEATTLE, GameColor.ANY, 1);
         this.addUndirectedEdge(City.VANCOUVER, City.SEATTLE, GameColor.ANY, 1);
@@ -170,13 +171,14 @@ public class Graph
         this.addUndirectedEdge(City.CALGARY, City.WINNIPEG, GameColor.WHITE, 6);
     }
 
-    // todo add check, if an Edge exists, throw UnsupportedOperationException
     /**
      * Creates a small game board to experiment on.
      * @throws UnsupportedOperationException If board is initialized already, cannot create another.
      */
     public void createTicketToRideSampleBoard() throws UnsupportedOperationException
     {
+        if (this.numberOfEdges > 0) throw new UnsupportedOperationException();
+
         this.addUndirectedEdge(City.SAN_FRANCISCO, City.LOS_ANGELES, GameColor.RED, 6);
         this.addUndirectedEdge(City.SAN_FRANCISCO, City.SEATTLE, GameColor.GREEN, 10);
         this.addUndirectedEdge(City.SAN_FRANCISCO, City.LAS_VEGAS, GameColor.ANY, 4);
@@ -210,8 +212,7 @@ public class Graph
             }
         }
 
-        numberOfEdges = Edge.getNumberOfEdges();
-        System.out.println(numberOfEdges);
+        System.out.println("Number of Edges: " + this.numberOfEdges);
     }
 
     /**
@@ -300,9 +301,31 @@ public class Graph
         ++this.numberOfEdges;
     }
 
-    // todo create
+    // todo test
     public void removeUndirectedEdge(City source, City destination, GameColor routeColor) throws UnsupportedOperationException
     {
-        throw new UnsupportedOperationException();
+        List<Edge> temp = this.adjacencyList[source.ordinal()];
+
+        for (int i = 0; i < temp.size(); ++i)
+        {
+            if ((temp.get(i).getDestination() == destination) && (temp.get(i).getRouteColor() == routeColor))
+            {
+                Edge.setWeightOfAllEdges(Edge.getWeightOfAllEdges() - temp.get(i).getWeight());
+                Edge.setNumberOfAllEdges(Edge.getNumberOfAllEdges() - 1);
+                temp.remove(i);
+                --this.numberOfEdges;
+                break;
+            }
+        }
+    }
+
+    // ============================== helpers ==============================
+
+    private void sumEdges()
+    {
+        for (int i = 0; i < this.adjacencyList.length; ++i)
+        {
+            this.numberOfEdges += this.adjacencyList[i].size();
+        }
     }
 }

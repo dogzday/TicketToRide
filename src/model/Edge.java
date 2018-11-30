@@ -2,7 +2,7 @@ package model;
 
 public class Edge
 {
-    private static int numberOfEdges = 0;
+    private static int numberOfAllEdges = 0;
     private static int weightOfAllEdges = 0;
 
     private City source;
@@ -21,7 +21,7 @@ public class Edge
         this.routeColor = routeColor;
         this.visited = false;
 
-        ++numberOfEdges;
+        ++numberOfAllEdges;
         weightOfAllEdges += weight;
     }
 
@@ -46,7 +46,7 @@ public class Edge
 
     public static int getWeightOfAllEdges() { return weightOfAllEdges; }
 
-    public static int getNumberOfEdges() { return numberOfEdges; }
+    public static int getNumberOfAllEdges() { return numberOfAllEdges; }
 
     public int getWeight() { return this.weight; }
 
@@ -55,6 +55,18 @@ public class Edge
     public GameColor getRouteColor() { return this.routeColor; }
 
     // ============================== setters ==============================
+
+    public static void setWeightOfAllEdges(int weight) throws ArithmeticException
+    {
+        if (weight <= 0) throw new ArithmeticException();
+        weightOfAllEdges = weight;
+    }
+
+    public static void setNumberOfAllEdges(int number) throws ArithmeticException
+    {
+        if (number <= 0) throw new ArithmeticException();
+        numberOfAllEdges = number;
+    }
 
     public void setSource(City source) { this.source = source; }
 
