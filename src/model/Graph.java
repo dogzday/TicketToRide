@@ -22,7 +22,6 @@ public class Graph
         this.vertices = vertices;
         adjacencyList = new ArrayList[vertices];
 
-
         for (int i = 0; i < vertices; ++i)
         {
             adjacencyList[i] = new ArrayList<>();
@@ -270,7 +269,9 @@ public class Graph
         List<Edge> pathfinder = new ArrayList<>();
 
         List<TeamColor> teamColors = Arrays.asList(TeamColor.values());
-        List<Integer> teamLongesPaths = new ArrayList<>(TeamColor.values().length);
+        List<Integer> teamLongestPaths = new ArrayList<>(TeamColor.values().length);
+        
+        // todo doublecheck teamLongestPaths (fill with TeamColor?)
 
         // how to do?
         // maybe enqueue travel path until we reach end, for ALL paths in adjacency list that is NOT null
