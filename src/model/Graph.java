@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Graph
 {
-    private List<Edge>[] adjList;
+    private List<Edge>[] adjacencyList;
     private int vertices;
     private int numberOfEdges = 0;
 
@@ -18,24 +18,23 @@ public class Graph
     public Graph(int vertices)
     {
         this.vertices = vertices;
-        adjList = new ArrayList[vertices];
+        adjacencyList = new ArrayList[vertices];
 
         for (int i = 0; i < vertices; ++i)
         {
-            adjList[i] = new ArrayList<>();
+            adjacencyList[i] = new ArrayList<>();
         }
     }
 
     // ============================== other ==============================
 
+    // todo add check, if an Edge exists, throw UnsupportedOperationException
     /**
      * Creates the full Ticket To Ride game board automatically.
      * @throws UnsupportedOperationException If board is initialized already, cannot create another.
      */
     public void createTicketToRideDefaultBoard() throws UnsupportedOperationException
     {
-        // todo add check, if an Edge exists, throw UnsupportedOperationException
-
         this.addUndirectedEdge(City.VANCOUVER, City.CALGARY, GameColor.ANY, 3);
         this.addUndirectedEdge(City.VANCOUVER, City.SEATTLE, GameColor.ANY, 1);
         this.addUndirectedEdge(City.VANCOUVER, City.SEATTLE, GameColor.ANY, 1);
@@ -171,14 +170,13 @@ public class Graph
         this.addUndirectedEdge(City.CALGARY, City.WINNIPEG, GameColor.WHITE, 6);
     }
 
+    // todo add check, if an Edge exists, throw UnsupportedOperationException
     /**
      * Creates a small game board to experiment on.
      * @throws UnsupportedOperationException If board is initialized already, cannot create another.
      */
     public void createTicketToRideSampleBoard() throws UnsupportedOperationException
     {
-        // todo add check, if an Edge exists, throw UnsupportedOperationException
-
         this.addUndirectedEdge(City.SAN_FRANCISCO, City.LOS_ANGELES, GameColor.RED, 6);
         this.addUndirectedEdge(City.SAN_FRANCISCO, City.SEATTLE, GameColor.GREEN, 10);
         this.addUndirectedEdge(City.SAN_FRANCISCO, City.LAS_VEGAS, GameColor.ANY, 4);
@@ -199,14 +197,14 @@ public class Graph
 
         for (int i = 0; i < vertices; ++i)
         {
-            List<Edge> list = adjList[i];
+            List<Edge> list = adjacencyList[i];
 
             for (int j = 0; j < list.size(); ++j)
             {
-                sourceString = adjList[i].get(j).getSource().toString();
-                destinationString = adjList[i].get(j).getDestination().toString();
-                distanceString = Integer.toString(adjList[i].get(j).getWeight());
-                routeColorString = adjList[i].get(j).getRouteColor().toString();
+                sourceString = adjacencyList[i].get(j).getSource().toString();
+                destinationString = adjacencyList[i].get(j).getDestination().toString();
+                distanceString = Integer.toString(adjacencyList[i].get(j).getWeight());
+                routeColorString = adjacencyList[i].get(j).getRouteColor().toString();
 
                 System.out.println(sourceString + " to " + destinationString + " distance " + distanceString + " " + routeColorString);
             }
@@ -230,13 +228,13 @@ public class Graph
      */
     public int findEdge(City source, City destination, GameColor routeColor)
     {
-        if (this.adjList[source.ordinal()] == null ) return -2;
-        if (this.adjList[source.ordinal()].size() == 0) return -3;
+        if (this.adjacencyList[source.ordinal()] == null ) return -2;
+        if (this.adjacencyList[source.ordinal()].size() == 0) return -3;
 
-        for (int i = 0; i < this.adjList[source.ordinal()].size(); ++i)
+        for (int i = 0; i < this.adjacencyList[source.ordinal()].size(); ++i)
         {
-            if ((this.adjList[source.ordinal()].get(i).getDestination() == destination) &&
-                    (this.adjList[source.ordinal()].get(i).getRouteColor() == routeColor)) return i;
+            if ((this.adjacencyList[source.ordinal()].get(i).getDestination() == destination) &&
+                    (this.adjacencyList[source.ordinal()].get(i).getRouteColor() == routeColor)) return i;
         }
 
         return -1;
@@ -257,17 +255,23 @@ public class Graph
      */
     public int findEdge(City source, City destination, GameColor routeColor, int weight)
     {
-        if (this.adjList[source.ordinal()] == null ) return -2;
-        if (this.adjList[source.ordinal()].size() == 0) return -3;
+        if (this.adjacencyList[source.ordinal()] == null ) return -2;
+        if (this.adjacencyList[source.ordinal()].size() == 0) return -3;
 
-        for (int i = 0; i < this.adjList[source.ordinal()].size(); ++i)
+        for (int i = 0; i < this.adjacencyList[source.ordinal()].size(); ++i)
         {
-            if ((this.adjList[source.ordinal()].get(i).getDestination() == destination) &&
-                    (this.adjList[source.ordinal()].get(i).getRouteColor() == routeColor) &&
-                    (this.adjList[source.ordinal()].get(i).getWeight() == weight)) return i;
+            if ((this.adjacencyList[source.ordinal()].get(i).getDestination() == destination) &&
+                    (this.adjacencyList[source.ordinal()].get(i).getRouteColor() == routeColor) &&
+                    (this.adjacencyList[source.ordinal()].get(i).getWeight() == weight)) return i;
         }
 
         return -1;
+    }
+
+    // todo create
+    public List<Edge> findLongestPath() throws UnsupportedOperationException
+    {
+        throw new UnsupportedOperationException();
     }
 
     // ============================== getters ==============================
@@ -276,9 +280,7 @@ public class Graph
 
     public List<Edge> getAdjacentEdges(City source)
     {
-        //todo
-        throw new UnsupportedOperationException();
-        // return this.adjList[source.ordinal()];
+        return this.adjacencyList[source.ordinal()];
     }
 
     // ============================== setters ==============================
@@ -294,13 +296,13 @@ public class Graph
     {
         Edge sourceToDestination = new Edge(source, destination, routeColor, weight);
         Edge destinationToSource = new Edge(destination, source, routeColor, weight);
-        this.adjList[source.ordinal()].add(0, sourceToDestination);
+        this.adjacencyList[source.ordinal()].add(0, sourceToDestination);
         ++this.numberOfEdges;
     }
 
-    public void removeUndirectedEdge(City source, City destination, GameColor routeColor)
+    // todo create
+    public void removeUndirectedEdge(City source, City destination, GameColor routeColor) throws UnsupportedOperationException
     {
-        // todo
         throw new UnsupportedOperationException();
     }
 }

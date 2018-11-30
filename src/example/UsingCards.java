@@ -45,7 +45,6 @@ public class UsingCards
 
         for (int i = 0; i < players.size(); ++i)
         {
-            // todo needs error checking
             System.out.print("Enter " + players.get(i).getName() + "'s card color: ");
             playerCardColor = input.next();
             playerCardColors.add(GameColor.valueOf(playerCardColor));
