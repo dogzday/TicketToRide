@@ -8,10 +8,14 @@ import java.util.Random;
 
 public class Cards
 {
+    @SuppressWarnings("WeakerAccess")
     public static final int SHUFFLE_MULTIPLIER = 2;
+    @SuppressWarnings("WeakerAccess")
     public static final int TRAINCARDS_LIMIT = 110;
+    @SuppressWarnings("WeakerAccess")
     public static final int COLORED_TRAINCARDS_LIMIT = 12;
     public static final int WILDCARD_TRAINCARDS_LIMIT = 14;
+    @SuppressWarnings("WeakerAccess")
     public static final int DESTINATIONCARDS_LIMIT = 30;
 
     private Random trainCardsRandomShuffler;
@@ -88,6 +92,7 @@ public class Cards
      *     player.addDestinationCardToHand(cards.getNextDestinationCard());
      * @return The next DestinationCard from the top of the deck.
      */
+    @SuppressWarnings("WeakerAccess")
     public DestinationCard getNextDestinationCard() throws NullPointerException
     {
         if (destinationCardsList.isEmpty()) throw new NullPointerException();

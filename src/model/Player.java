@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Player
 {
+    @SuppressWarnings("WeakerAccess")
     public static final int TRAINPIECE_LIMIT = 45;
 
     private static int NUM_PLAYERS = 0;
@@ -51,6 +52,7 @@ public class Player
     /**
      * Prints all of a player's trainCards to console, 1 per line.
      */
+    @SuppressWarnings("WeakerAccess")
     public void displayTrainCards() { for (GameColor i : trainCards) System.out.println(i); }
 
     /**
@@ -84,9 +86,9 @@ public class Player
     {
         int trainCardQuantity = 0;
 
-        for (int i = 0; i < this.trainCards.size(); ++i)
+        for (GameColor trainCard1 : this.trainCards)
         {
-            if (this.trainCards.get(i) == trainCard) ++trainCardQuantity;
+            if (trainCard1 == trainCard) ++trainCardQuantity;
         }
 
         return (trainCardQuantity == quantity);
@@ -96,11 +98,11 @@ public class Player
     public String toString()
     {
         return (name + "\n" +
-                "Name: " + teamColor.toString() + "\n" +
-                "Pieces: " + Integer.toString(trainPieces) + "\n" +
-                "Score: " + Integer.toString(score) + "\n" +
-                "TrainCards: " + trainCards.toString() + "\n" +
-                "DestinationCards" + destinationCards.toString());
+                "Name: " + teamColor.toString() + "\n" +             // NON-NLS
+                "Pieces: " + Integer.toString(trainPieces) + "\n" +  // NON-NLS
+            "Score: " + Integer.toString(score) + "\n" +             // NON-NLS
+                "TrainCards: " + trainCards.toString() + "\n" +      // NON-NLS
+                "DestinationCards" + destinationCards.toString());   // NON-NLS
     }
 
     // ============================== getters ==============================
@@ -120,6 +122,7 @@ public class Player
      * @return The number of trainPieces a player has. In vanilla, when a Player has less than or
      * equal to 2 trainPieces remaining, each player has 1 final turn.
      */
+    @SuppressWarnings("WeakerAccess")
     public int getTrainPieces() { return this.trainPieces; }
 
     /**
@@ -154,6 +157,7 @@ public class Player
      * will need to add a destinationCard from Cards which contains the entire deck of cards.
      * @param destinationCard DestinationCard object.
      */
+    @SuppressWarnings("WeakerAccess")
     public void addDestinationCardToHand(DestinationCard destinationCard) { destinationCards.add(destinationCard); }
 
     /**

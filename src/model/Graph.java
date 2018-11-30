@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Graph
@@ -15,10 +16,12 @@ public class Graph
      * Creates a graph with specified number of vertices/nodes.
      * @param vertices Number of vertices/nodes.
      */
+    @SuppressWarnings("unchecked")
     public Graph(int vertices)
     {
         this.vertices = vertices;
         adjacencyList = new ArrayList[vertices];
+
 
         for (int i = 0; i < vertices; ++i)
         {
@@ -172,23 +175,10 @@ public class Graph
     }
 
     /**
-     * Creates a small game board to experiment on.
-     * @throws UnsupportedOperationException If board is initialized already, cannot create another.
-     */
-    public void createTicketToRideSampleBoard() throws UnsupportedOperationException
-    {
-        if (this.numberOfEdges > 0) throw new UnsupportedOperationException();
-
-        this.addUndirectedEdge(City.SAN_FRANCISCO, City.LOS_ANGELES, GameColor.RED, 6);
-        this.addUndirectedEdge(City.SAN_FRANCISCO, City.SEATTLE, GameColor.GREEN, 10);
-        this.addUndirectedEdge(City.SAN_FRANCISCO, City.LAS_VEGAS, GameColor.ANY, 4);
-        this.addUndirectedEdge(City.LAS_VEGAS, City.PHOENIX, GameColor.ORANGE, 10);
-    }
-
-    /**
      * Lists the graph 1 per line in the format:<br>
      * source + destination + weight + color
      */
+    @SuppressWarnings("WeakerAccess")
     public void printGraph()
     {
         String sourceString;
@@ -208,11 +198,11 @@ public class Graph
                 distanceString = Integer.toString(adjacencyList[i].get(j).getWeight());
                 routeColorString = adjacencyList[i].get(j).getRouteColor().toString();
 
-                System.out.println(sourceString + " to " + destinationString + " distance " + distanceString + " " + routeColorString);
+                System.out.println(sourceString + " to " + destinationString + " distance " + distanceString + " " + routeColorString); // NON-NLS
             }
         }
 
-        System.out.println("Number of Edges: " + this.numberOfEdges);
+        System.out.println("Number of Edges: " + this.numberOfEdges); // NON-NLS
     }
 
     /**
@@ -227,6 +217,7 @@ public class Graph
      * -2 if no such source exists.<br>
      * -3 if no adjacency list exists.<br>
      */
+    @SuppressWarnings("WeakerAccess")
     public int findEdge(City source, City destination, GameColor routeColor)
     {
         if (this.adjacencyList[source.ordinal()] == null ) return -2;
@@ -269,10 +260,45 @@ public class Graph
         return -1;
     }
 
-    // todo create
-    public List<Edge> findLongestPath() throws UnsupportedOperationException
+    // todo finish
+    public TeamColor findTeamWithLongestPath() throws UnsupportedOperationException
     {
-        throw new UnsupportedOperationException();
+        // todo remove when fully implemented
+        if (true) throw new UnsupportedOperationException();
+
+        // treat pathfinder as a queue
+        List<Edge> pathfinder = new ArrayList<>();
+
+        List<TeamColor> teamColors = Arrays.asList(TeamColor.values());
+        List<Integer> teamLongesPaths = new ArrayList<>(TeamColor.values().length);
+
+        // how to do?
+        // maybe enqueue travel path until we reach end, for ALL paths in adjacency list that is NOT null
+        // all while summing up the weight of each edge and store total weight
+        // and store teamcolor if the current total weight is greater than max
+        // when we backtrack, decrement the weight of the edge we will pop
+        // and then search or continue to other connected edges if any
+        // if there's nothing else to do, return the teamcolor with the larger total weight
+
+        // this for loop says: for every city that is not null (checking null for safety)...
+        // traverse all possible connections, backtrack if there are no connections
+        // if there are no connections, then size() of the list should be 0
+        for (int i = 0; i < this.adjacencyList.length; ++i)
+        {
+            if (this.adjacencyList[i] == null) continue;
+
+            for (int j = 0; j < this.adjacencyList[i].size(); ++i)
+            {
+                pathfinder.add(this.adjacencyList[i].get(j));
+
+                // todo things from above comments
+            }
+
+            pathfinder.remove(pathfinder.size() - 1);
+        }
+
+        // todo change return null to return TeamColor
+        return null;
     }
 
     // ============================== getters ==============================
@@ -293,6 +319,7 @@ public class Graph
      * @param routeColor GameColor enum route's color.
      * @param weight Weight of route.
      */
+    @SuppressWarnings("WeakerAccess")
     public void addUndirectedEdge(City source, City destination, GameColor routeColor, int weight)
     {
         Edge sourceToDestination = new Edge(source, destination, routeColor, weight);
@@ -301,7 +328,7 @@ public class Graph
         ++this.numberOfEdges;
     }
 
-    // todo test
+    @SuppressWarnings("WeakerAccess")
     public void removeUndirectedEdge(City source, City destination, GameColor routeColor) throws UnsupportedOperationException
     {
         List<Edge> temp = this.adjacencyList[source.ordinal()];
@@ -323,9 +350,9 @@ public class Graph
 
     private void sumEdges()
     {
-        for (int i = 0; i < this.adjacencyList.length; ++i)
+        for (List<Edge> anAdjacencyList : this.adjacencyList)
         {
-            this.numberOfEdges += this.adjacencyList[i].size();
+            this.numberOfEdges += anAdjacencyList.size();
         }
     }
 }

@@ -9,6 +9,7 @@ public class Edge
     private City destination;
     private GameColor routeColor;
     private int weight;
+    private TeamColor teamColor;
     private boolean visited;
 
     // ============================== class ==============================
@@ -19,6 +20,7 @@ public class Edge
         this.destination = destination;
         this.weight = weight;
         this.routeColor = routeColor;
+        teamColor = null;
         this.visited = false;
 
         ++numberOfAllEdges;
@@ -26,6 +28,13 @@ public class Edge
     }
 
     // ============================== other ==============================
+
+    public void claimRoute(TeamColor teamColor) throws UnsupportedOperationException
+    {
+        if (this.teamColor != null) throw new UnsupportedOperationException();
+
+        this.teamColor = teamColor;
+    }
 
     @Override
     public String toString()
@@ -44,24 +53,32 @@ public class Edge
 
     public City getDestination() { return this.destination; }
 
+    @SuppressWarnings("WeakerAccess")
     public static int getWeightOfAllEdges() { return weightOfAllEdges; }
 
+    @SuppressWarnings("WeakerAccess")
     public static int getNumberOfAllEdges() { return numberOfAllEdges; }
 
+    @SuppressWarnings("WeakerAccess")
     public int getWeight() { return this.weight; }
 
     public boolean getVisited() { return this.visited; }
 
+    public TeamColor getTeamColor() { return this.teamColor; }
+
+    @SuppressWarnings("WeakerAccess")
     public GameColor getRouteColor() { return this.routeColor; }
 
     // ============================== setters ==============================
 
+    @SuppressWarnings("WeakerAccess")
     public static void setWeightOfAllEdges(int weight) throws ArithmeticException
     {
         if (weight <= 0) throw new ArithmeticException();
         weightOfAllEdges = weight;
     }
 
+    @SuppressWarnings("WeakerAccess")
     public static void setNumberOfAllEdges(int number) throws ArithmeticException
     {
         if (number <= 0) throw new ArithmeticException();
@@ -81,6 +98,8 @@ public class Edge
     }
 
     public void setRouteColor(GameColor routeColor) { this.routeColor = routeColor; }
+
+    public void setTeamColor(TeamColor teamColor) { this.teamColor = teamColor; }
 
     public void setVisited(boolean visited) { this.visited = visited; }
 }

@@ -46,6 +46,7 @@ public class DestinationCard
 
     public City getDestination() { return destination; }
 
+    @SuppressWarnings("WeakerAccess")
     public int getScore() { return score; }
 
     public static int getNumberOfDestinationCards() { return numberOfDestinationCards; }
