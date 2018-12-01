@@ -30,6 +30,34 @@ public class Graph
 
     // ============================== other ==============================
 
+    @Override
+    public String toString()
+    {
+        String returnString = "";
+        String sourceString;
+        String destinationString;
+        String distanceString;
+        String routeColorString;
+        int numberOfEdges;
+
+        for (int i = 0; i < vertices; ++i)
+        {
+            List<Edge> list = adjacencyList[i];
+
+            for (int j = 0; j < list.size(); ++j)
+            {
+                sourceString = adjacencyList[i].get(j).getSource().toString();
+                destinationString = adjacencyList[i].get(j).getDestination().toString();
+                distanceString = Integer.toString(adjacencyList[i].get(j).getWeight());
+                routeColorString = adjacencyList[i].get(j).getRouteColor().toString();
+
+                returnString.concat(sourceString + " to " + destinationString + " distance " + distanceString + " " + routeColorString + "\n");
+            }
+        }
+
+        return returnString;
+    }
+
     /**
      * Creates the full Ticket To Ride game board automatically.
      * @throws UnsupportedOperationException If board is initialized already, cannot create another.
@@ -260,17 +288,26 @@ public class Graph
     }
 
     // todo finish
+    /**
+     * This returns the longest possible path in the graph. If you are to use this in the game
+     * Ticket to Ride, you should create 2 graphs - one for the game board, and one to track player
+     * game piece placement progress. If you evoke this method on the game board itself, it will
+     * simply determine the longest possible path. This will be time consuming to determine in that
+     * case.
+     * @return // todo
+     * @throws UnsupportedOperationException
+     */
     public TeamColor findTeamWithLongestPath() throws UnsupportedOperationException
     {
         // todo remove when fully implemented
         if (true) throw new UnsupportedOperationException();
 
         // treat pathfinder as a queue
-        List<Edge> pathfinder = new ArrayList<>();
+        List<Edge> pathfinder;
 
         List<TeamColor> teamColors = Arrays.asList(TeamColor.values());
         List<Integer> teamLongestPaths = new ArrayList<>(TeamColor.values().length);
-        
+
         // todo doublecheck teamLongestPaths (fill with TeamColor?)
 
         // how to do?
@@ -286,6 +323,7 @@ public class Graph
         // if there are no connections, then size() of the list should be 0
         for (int i = 0; i < this.adjacencyList.length; ++i)
         {
+            // skip all the cities that players have not built a route between
             if (this.adjacencyList[i] == null) continue;
 
             for (int j = 0; j < this.adjacencyList[i].size(); ++i)

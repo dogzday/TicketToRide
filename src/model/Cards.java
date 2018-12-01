@@ -54,6 +54,41 @@ public class Cards
         }
     }
 
+    // ============================== other ==============================
+
+    // todo create
+    // todo add documentation
+    @Override
+    public String toString() throws UnsupportedOperationException
+    {
+        if (true) throw new UnsupportedOperationException();
+        return super.toString();
+    }
+
+    // todo add documentation
+    public void displayAllTrainCardsInOrder()
+    {
+        GameColor card;
+
+        for (int i = 0; i < trainCardsList.size(); i++)
+        {
+            card = trainCardsList.get(i);
+            System.out.println(card.toString());
+        }
+    }
+
+    // todo add documentation
+    public void displayDestinationCardsInOrder()
+    {
+        DestinationCard card;
+
+        for (int i = 0; i < destinationCardsList.size(); i++)
+        {
+            card = destinationCardsList.get(i);
+            System.out.println(card.toString());
+        }
+    }
+
     // ============================== getters ==============================
 
     /**

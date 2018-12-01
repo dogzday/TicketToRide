@@ -1,7 +1,7 @@
 package example;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import model.Cards;
 import model.City;
@@ -14,7 +14,9 @@ public class UsingGraph
 {
     public static void main(String[] args)
     {
-        List<Edge> adjEdges = new ArrayList<>();
+        System.out.println(ResourceBundle.getBundle("Greeting"));
+
+        List<Edge> adjEdges;
 
         // create the player (only 1 for this example)
         String player1Name = "Harry";
@@ -39,5 +41,7 @@ public class UsingGraph
         {
             System.out.println(adjEdges.get(i).toString());
         }
+
+        System.out.println(ResourceBundle.getBundle("Farewell"));
     }
 }
