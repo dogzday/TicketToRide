@@ -304,6 +304,7 @@ public class Graph
 
         // treat pathfinder as a queue
         List<Edge> pathfinder;
+        Edge current;
 
         List<TeamColor> teamColors = Arrays.asList(TeamColor.values());
         List<Integer> teamLongestPaths = new ArrayList<>(TeamColor.values().length);
@@ -324,13 +325,13 @@ public class Graph
         for (int i = 0; i < this.adjacencyList.length; ++i)
         {
             // skip all the cities that players have not built a route between
-            if (this.adjacencyList[i] == null) continue;
+            if (this.adjacencyList[i].size() == 0) break;
 
-            for (int j = 0; j < this.adjacencyList[i].size(); ++i)
+            current = this.adjacencyList[i].get(0);
+
+            while (current != null)
             {
-                pathfinder.add(this.adjacencyList[i].get(j));
 
-                // todo things from above comments
             }
 
             pathfinder.remove(pathfinder.size() - 1);
@@ -344,8 +345,11 @@ public class Graph
 
     public int getNumberOfEdges() { return numberOfEdges; }
 
-    public List<Edge> getAdjacentEdges(City source)
+    public List<Edge> getAdjacentEdges(City source) throws NullPointerException
     {
+        if (source == null) throw new NullPointerException();
+        if (this.adjacencyList[source.ordinal()] == null) throw new NullPointerException();
+
         return this.adjacencyList[source.ordinal()];
     }
 

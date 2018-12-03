@@ -42,9 +42,19 @@ public class DestinationCard
 
     // ============================== getters ==============================
 
-    public City getSource() { return source; }
+    public City getSource() throws NullPointerException
+    {
+        if (this.source == null) throw new NullPointerException();
 
-    public City getDestination() { return destination; }
+        return source;
+    }
+
+    public City getDestination() throws NullPointerException
+    {
+        if (this.destination == null) throw new NullPointerException();
+
+        return destination;
+    }
 
     @SuppressWarnings("WeakerAccess")
     public int getScore() { return score; }

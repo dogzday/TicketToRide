@@ -116,7 +116,12 @@ public class Player
      * @return TeamColor enum representing the team a Player is on. Used for distinguising game
      * token pieces from Player to Player. Can be used for team-based gaming.
      */
-    public TeamColor getTeamColor() { return this.teamColor; }
+    public TeamColor getTeamColor() throws NullPointerException
+    {
+        if (this.teamColor == null) throw new NullPointerException();
+
+        return this.teamColor;
+    }
 
     /**
      * @return The number of trainPieces a player has. In vanilla, when a Player has less than or
@@ -133,12 +138,22 @@ public class Player
     /**
      * @return A List of a Player's trainCards.
      */
-    public List<GameColor> getTrainCards() { return this.trainCards; }
+    public List<GameColor> getTrainCards() throws NullPointerException
+    {
+        if (this.trainCards == null) throw new NullPointerException();
+
+        return this.trainCards;
+    }
 
     /**
      * @return A List of a Player's destinationCards.
      */
-    public List<DestinationCard> getDestinationCards() { return this.destinationCards; }
+    public List<DestinationCard> getDestinationCards() throws NullPointerException
+    {
+        if (this.destinationCards == null) throw new NullPointerException();
+
+        return this.destinationCards;
+    }
 
     // ============================== setters ==============================
 
