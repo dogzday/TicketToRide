@@ -5,9 +5,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class GraphTest
 {
     private Graph graph;
@@ -35,7 +32,7 @@ public class GraphTest
     @Test
     public void correctEdgeTest()
     {
-        intToCheck = graph.findEdge(City.SAN_FRANCISCO, City.LOS_ANGELES, GameColor.YELLOW);
+        intToCheck = graph.findSpecificEdge(City.SAN_FRANCISCO, City.LOS_ANGELES, GameColor.YELLOW);
 
         Assert.assertEquals(3, intToCheck);
     }
@@ -43,7 +40,7 @@ public class GraphTest
     @Test
     public void incorrectEdgeTest()
     {
-        intToCheck = graph.findEdge(City.SAN_FRANCISCO, City.LOS_ANGELES, GameColor.BLACK);
+        intToCheck = graph.findSpecificEdge(City.SAN_FRANCISCO, City.LOS_ANGELES, GameColor.BLACK);
 
         Assert.assertEquals(-1, intToCheck);
     }
@@ -53,7 +50,7 @@ public class GraphTest
     {
         graph.removeUndirectedEdge(City.SAN_FRANCISCO, City.LOS_ANGELES, GameColor.YELLOW);
 
-        intToCheck = graph.findEdge(City.SAN_FRANCISCO, City.LOS_ANGELES, GameColor.YELLOW);
+        intToCheck = graph.findSpecificEdge(City.SAN_FRANCISCO, City.LOS_ANGELES, GameColor.YELLOW);
 
         Assert.assertEquals(-1, intToCheck);
     }

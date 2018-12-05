@@ -245,7 +245,7 @@ public class Graph
      * -3 if no adjacency list exists.<br>
      */
     @SuppressWarnings("WeakerAccess")
-    public int findEdge(City source, City destination, GameColor routeColor)
+    public int findSpecificEdge(City source, City destination, GameColor routeColor)
     {
         if (this.adjacencyList[source.ordinal()] == null ) return -2;
         if (this.adjacencyList[source.ordinal()].size() == 0) return -3;
@@ -272,7 +272,7 @@ public class Graph
      * -2 if no such source exists.<br>
      * -3 if no adjacency list exists.<br>
      */
-    public int findEdge(City source, City destination, GameColor routeColor, int weight)
+    public int findSpecificEdge(City source, City destination, GameColor routeColor, int weight)
     {
         if (this.adjacencyList[source.ordinal()] == null ) return -2;
         if (this.adjacencyList[source.ordinal()].size() == 0) return -3;
@@ -282,6 +282,53 @@ public class Graph
             if ((this.adjacencyList[source.ordinal()].get(i).getDestination() == destination) &&
                     (this.adjacencyList[source.ordinal()].get(i).getRouteColor() == routeColor) &&
                     (this.adjacencyList[source.ordinal()].get(i).getWeight() == weight)) return i;
+        }
+
+        return -1;
+    }
+
+    public int findUnspecificEdge(City node1, City node2, GameColor routeColor)
+    {
+        if (this.adjacencyList[node1.ordinal()] == null ) return -2;
+        if (this.adjacencyList[node1.ordinal()].size() == 0) return -3;
+
+        if (this.adjacencyList[node2.ordinal()] == null ) return -4;
+        if (this.adjacencyList[node2.ordinal()].size() == 0) return -5;
+
+        for (int i = 0; i < this.adjacencyList[node1.ordinal()].size(); ++i)
+        {
+            if ((this.adjacencyList[node1.ordinal()].get(i).getDestination() == node2) &&
+                    (this.adjacencyList[node1.ordinal()].get(i).getRouteColor() == routeColor)) return i;
+        }
+
+        for (int i = 0; i < this.adjacencyList[node2.ordinal()].size(); ++i)
+        {
+            if ((this.adjacencyList[node2.ordinal()].get(i).getDestination() == node1) &&
+                    (this.adjacencyList[node2.ordinal()].get(i).getRouteColor() == routeColor)) return i;
+        }
+
+        return -1;
+    }
+
+    public int findUnspecificEdge(City node1, City node2, GameColor routeColor, int weight)
+    {
+        if (this.adjacencyList[node1.ordinal()] == null ) return -2;
+        if (this.adjacencyList[node1.ordinal()].size() == 0) return -3;
+
+        if (this.adjacencyList[node2.ordinal()] == null ) return -4;
+        if (this.adjacencyList[node2.ordinal()].size() == 0) return -5;
+
+        for (int i = 0; i < this.adjacencyList[node1.ordinal()].size(); ++i)
+        {
+            if ((this.adjacencyList[node1.ordinal()].get(i).getDestination() == node2) &&
+                    (this.adjacencyList[node1.ordinal()].get(i).getRouteColor() == routeColor) &&
+                    (this.adjacencyList[node1.ordinal()].get(i).getWeight() == weight)) return i;
+        }
+
+        for (int i = 0; i < this.adjacencyList[node2.ordinal()].size(); ++i)
+        {
+            if ((this.adjacencyList[node2.ordinal()].get(i).getDestination() == node1) &&
+                    (this.adjacencyList[node2.ordinal()].get(i).getRouteColor() == routeColor)) return i;
         }
 
         return -1;
@@ -297,19 +344,22 @@ public class Graph
      * @return // todo
      * @throws UnsupportedOperationException
      */
+    //@SuppressWarnings("UnusedAssignment")
     public TeamColor findTeamWithLongestPath() throws UnsupportedOperationException
     {
         // todo remove when fully implemented
         if (true) throw new UnsupportedOperationException();
 
-        // treat pathfinder as a queue
+        // treat pathfinder as a queue, the variables below track path data
         List<Edge> pathfinder;
-        Edge current;
+        Edge currentEdge;
+        int currentWeight = 0;
+        int edgeListIndex = 0;
 
         List<TeamColor> teamColors = Arrays.asList(TeamColor.values());
         List<Integer> teamLongestPaths = new ArrayList<>(TeamColor.values().length);
 
-        // todo doublecheck teamLongestPaths (fill with TeamColor?)
+        setAllEdgesVisitStatus(false);
 
         // how to do?
         // maybe enqueue travel path until we reach end, for ALL paths in adjacency list that is NOT null
@@ -324,17 +374,7 @@ public class Graph
         // if there are no connections, then size() of the list should be 0
         for (int i = 0; i < this.adjacencyList.length; ++i)
         {
-            // skip all the cities that players have not built a route between
-            if (this.adjacencyList[i].size() == 0) break;
 
-            current = this.adjacencyList[i].get(0);
-
-            while (current != null)
-            {
-
-            }
-
-            pathfinder.remove(pathfinder.size() - 1);
         }
 
         // todo change return null to return TeamColor
@@ -355,6 +395,17 @@ public class Graph
 
     // ============================== setters ==============================
 
+    public void setAllEdgesVisitStatus(boolean state)
+    {
+        for (int i = 0; i < adjacencyList.length; ++i)
+        {
+            for (Edge edge : adjacencyList[i])
+            {
+                edge.setVisited(state);
+            }
+        }
+    }
+
     /**
      * Creates a new Edge and adds it to the Graph.
      * @param source City source node.
@@ -366,7 +417,6 @@ public class Graph
     public void addUndirectedEdge(City source, City destination, GameColor routeColor, int weight)
     {
         Edge sourceToDestination = new Edge(source, destination, routeColor, weight);
-        Edge destinationToSource = new Edge(destination, source, routeColor, weight);
         this.adjacencyList[source.ordinal()].add(0, sourceToDestination);
         ++this.numberOfEdges;
     }
