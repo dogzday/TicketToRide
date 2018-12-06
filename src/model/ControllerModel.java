@@ -30,18 +30,21 @@ public class ControllerModel
 
         for (int i = 0; i < numberOfPlayers; ++i)
         {
+            System.out.print("Please enter a valid name for player #" + (i+1) + ": ");
+            tempName = input.next();
+
             while (!input.hasNext())
             {
                 System.out.print("Please enter a valid name for player #" + i + ": ");
                 tempName = input.next();
-                System.out.println();
+//                System.out.println();
             }
 
             System.out.println();
 
             while (!input.hasNextInt())
             {
-                System.out.print("Please enter " + tempName + "'s team [" + "0 - " + TeamColor.values().length + "]: ");
+                System.out.print("Please enter " + tempName + "'s team [" + "0 - " + TeamColor.values().length + "]: "); //todo team? or teamcolor?
                 tempTeamOrdinal = input.nextInt();
                 System.out.println();
             }
