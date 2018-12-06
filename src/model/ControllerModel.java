@@ -40,13 +40,13 @@ public class ControllerModel
     {
         Scanner input = new Scanner(System.in);
 
-        System.out.println("1 for Draw Train Cards");
+        System.out.println("\n1 for Draw Train Cards");
         System.out.println("2 for Claim a Route");
         System.out.println("3 for Draw Destination Tickets");
         System.out.print("Choose an option: ");
-        System.out.println();
 
         int choice = input.nextInt();
+        System.out.println();
 
         while (choice < 1 || choice > 3)
         {
@@ -76,10 +76,10 @@ public class ControllerModel
         boolean wildcard = false;
         System.out.println("Please draw Two cards...");
 
-        //loop till player picks up at least 2 train cards or picks up 1 wild card from face up
-        //if choice is 1 pick up from face up, timesdrawn++
-        //2 pick up from face down, timesdrawn++
-        //end loop
+        /* loop till player picks up at least 2 train cards or picks up 1 wild card from face up
+        if choice is 1 pick up from face up, timesdrawn++
+        2 pick up from face down, timesdrawn++
+        end loop */
         while(timesDrawn < 2 || wildcard == true)
         {
             System.out.println("1 for Draw From Face Up Deck");
@@ -92,16 +92,16 @@ public class ControllerModel
             switch(choice)
             {
                 case 1:
-                    System.out.println("Drawing from face up Deck"); // add face up deck
+                    System.out.println("\nDrawing from face up Deck:"); // add face up deck
                     // draw from face up deck and add to player hand
                     // todo if card is wildcard, wildcard = true;
                     ++timesDrawn;
                     break;
                 case 2:
-                    System.out.println("Drawing from face down Deck");
+                    System.out.println("\nDrawing from face down Deck:");
                     // draw from face down and add to player hand
                     player.addTrainCardToHand(cards.getNextTrainCard());
-                    // player.displayTrainCards();
+                    player.displayTrainCards();
                     ++timesDrawn;
                     break;
                 default:
@@ -113,11 +113,11 @@ public class ControllerModel
 
     private static void claimRoute(Player player, Cards cards)
     {
-        System.out.println("Choose a Train Car color");
+        System.out.println("Choose a Train Car color: ");
         // display players different train car card colors
-        player.displayTrainCards(); // doesnt work...
+        player.displayTrainCards();
 
-        System.out.println("Choose a route: ");
+        System.out.println("Choose a route: "); // todo use train car color to choose a route? or have player type in a starting point
         // display routes for user to choose from
 
         // if train card color == routes Color and players train cards == number of route cards
@@ -181,7 +181,7 @@ public class ControllerModel
                 System.out.println("Destination already selected.");
             }
         }
-
-        // player.displayDestinationCards();
+        System.out.println("\nTotal Destination Cards:");
+        player.displayDestinationCards();
     }
 }
