@@ -30,9 +30,6 @@ public class ControllerModel
 
         for (int i = 0; i < numberOfPlayers; ++i)
         {
-            System.out.print("Please enter a valid name for player #" + (i+1) + ": ");
-            tempName = input.next();
-
             while (!input.hasNext())
             {
                 System.out.print("Please enter a valid name for player #" + i + ": ");
