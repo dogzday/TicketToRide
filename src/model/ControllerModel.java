@@ -1,57 +1,20 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class ControllerModel
 {
     public static void main(String[] args)
     {
-        Graph gameBoard = new Graph(City.values().length);
+        Graph gameBoard = new Graph(Cities.values().length);
         Cards cards = new Cards();
-        List<Player> players = new ArrayList<>();
-
-        Scanner input = new Scanner(System.in);
-        String tempName = null;
-        int tempTeamOrdinal = 0;
-        int numberOfPlayers = 0;
-        TeamColor tempTeamColor;
 
         gameBoard.createTicketToRideDefaultBoard();
         gameBoard.printGraph();
 
-        System.out.println("Welcome to Ticket To Ride.");
-        System.out.println("How many players will play the game?");
-
-        numberOfPlayers = input.nextInt();
-
-        System.out.println();
-
-        for (int i = 0; i < numberOfPlayers; ++i)
-        {
-            while (!input.hasNext())
-            {
-                System.out.print("Please enter a valid name for player #" + i + ": ");
-                tempName = input.next();
-//                System.out.println();
-            }
-
-            System.out.println();
-
-            while (!input.hasNextInt())
-            {
-                System.out.print("Please enter " + tempName + "'s team [" + "0 - " + TeamColor.values().length + "]: "); //todo team? or teamcolor?
-                tempTeamOrdinal = input.nextInt();
-                System.out.println();
-            }
-
-            tempTeamColor = TeamColor.fromOrdinal(tempTeamOrdinal);
-
-            System.out.println();
-
-            players.add(new Player(tempName, tempTeamColor));
-        }
+        Player jas = new Player("Jas", TeamColor.BLACK);
+        Player rey = new Player("Rey", TeamColor.RED);
+        Player gabe = new Player("Gabe", TeamColor.GREEN);
 
         // this is our end condition when a player has <= 2 trains left
         boolean playersHaveTrains = true;
@@ -59,29 +22,27 @@ public class ControllerModel
         // at start of game, players each draw 3 destinationCards
         // players must choose 2 or 3 before continuing
         // then, every player getse a total of 4 cards to start
+        // then, main game loop where players choose what they want to do
 
         // main game loop
         while(playersHaveTrains)
         {
-            // todo pre-game from above comment
+            playerTurn(jas, cards);
+            playerTurn(rey, cards);
+            playerTurn(gabe, cards);
 
-            for (Player player : players)
-            {
-                playerTurn(player, cards);
-
-                // the SOLE end condition for the game
-                if (player.getTrainPieces() <= 2) playersHaveTrains = false;
-            }
+            // the SOLE end condition for the game
+            if (rey.getTrainPieces() <= 2 || jas.getTrainPieces() <= 2 || gabe.getTrainPieces() <= 2) break;
         }
     }
 
-    private static void playerTurn(Player player, Cards cards)
+    private static boolean playerTurn(Player player, Cards cards)
     {
         Scanner input = new Scanner(System.in);
 
-        System.out.println("[1] to draw Train cards.");
-        System.out.println("[2] to claim a route.");
-        System.out.println("[3] for draw Destination Tickets.");
+        System.out.println("\n1 for Draw Train Cards");
+        System.out.println("2 for Claim a Route");
+        System.out.println("3 for Draw Destination Tickets");
         System.out.print("Choose an option: ");
 
         int choice = input.nextInt();
@@ -105,20 +66,21 @@ public class ControllerModel
                 drawDestinationTickets(player, cards);
                 break;
         }
+
+        return false;
     }
 
-    // todo modify
-    private static void drawTrainCards(Player player, Cards cards)
-    {
-        int timesDrawn = 0;
-        boolean hasDrawnWildcard = false;
-        System.out.println("Please draw two cards.");
+    private static void drawTrainCards(Player player, Cards cards) {
 
-        //loop till player picks up at least 2 train cards or picks up 1 wild card from face up
-        //if choice is 1 pick up from face up, timesdrawn++
-        //2 pick up from face down, timesdrawn++
-        //end loop
-        while(timesDrawn < 2 || hasDrawnWildcard)
+        int timesDrawn = 0;
+        boolean wildcard = false;
+        System.out.println("Please draw Two cards...");
+
+        /* loop till player picks up at least 2 train cards or picks up 1 wild card from face up
+        if choice is 1 pick up from face up, timesdrawn++
+        2 pick up from face down, timesdrawn++
+        end loop */
+        while(timesDrawn < 2 || wildcard == true)
         {
             System.out.println("1 for Draw From Face Up Deck");
             System.out.println("2 for Draw From Face Down Deck");
@@ -149,7 +111,6 @@ public class ControllerModel
         }
     }
 
-    // todo modify
     private static void claimRoute(Player player, Cards cards)
     {
         System.out.println("Choose a Train Car color: ");
@@ -165,23 +126,26 @@ public class ControllerModel
         // take out the claimed route from map.
     }
 
-    // todo modify
     private static void drawDestinationTickets(Player player, Cards cards)
     {
+        // draw 3 and show the player
+
         int desCards = 0;
         int choice = 0;
         boolean[] prevChoices = {false, false, false}; // marks true so that player does not choose same card
         Scanner input = new Scanner(System.in);
         System.out.println("Choose which destinations to keep...");
 
+        // get the destination cards
         DestinationCard destinationCard1 = cards.getNextDestinationCard();
         DestinationCard destinationCard2 = cards.getNextDestinationCard();
         DestinationCard destinationCard3 = cards.getNextDestinationCard();
-
+        // display 3 destination cards
         System.out.println("1 - " + destinationCard1.toString());
         System.out.println("2 - " + destinationCard2.toString());
         System.out.println("3 - " + destinationCard3.toString());
         System.out.println(("4 - for Done"));
+        // todo handle discarded destination cards
 
         while((desCards < 3 && choice != 4) || desCards == 0) //while picked cards are < 3 then keep picking or if done = true stop loop
         {
@@ -215,26 +179,6 @@ public class ControllerModel
             else if(choice != 4)
             {
                 System.out.println("Destination already selected.");
-            }
-        }
-        // adds discarded destination cards to the bottom of the deck
-        // if one of the choices was not picked (false) we need to know if the index was 0,1,2
-        for(int i = 0; i < 3; i++)
-        {
-            if(prevChoices[i] == false)
-            {
-                switch (i)
-                {
-                    case 0:
-                        cards.addDestinationCardToBottom(destinationCard1);
-                        break;
-                    case 1:
-                        cards.addDestinationCardToBottom(destinationCard2);
-                        break;
-                    case 2:
-                        cards.addDestinationCardToBottom(destinationCard3);
-                        break;
-                }
             }
         }
         System.out.println("\nTotal Destination Cards:");
