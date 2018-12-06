@@ -220,6 +220,8 @@ public class ControllerModel
                 System.out.println("Destination already selected.");
             }
         }
+        // adds discarded destination cards to the bottom of the deck
+        // if one of the choices was not picked (false) we need to know if the index was 0,1,2
         for(int i = 0; i < 3; i++)
         {
             if(prevChoices[i] == false)
