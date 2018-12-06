@@ -30,21 +30,18 @@ public class ControllerModel
 
         for (int i = 0; i < numberOfPlayers; ++i)
         {
-            System.out.print("Please enter a valid name for player #" + (i+1) + ": ");
-            tempName = input.next();
-
             while (!input.hasNext())
             {
                 System.out.print("Please enter a valid name for player #" + i + ": ");
                 tempName = input.next();
-//                System.out.println();
+                System.out.println();
             }
 
             System.out.println();
 
             while (!input.hasNextInt())
             {
-                System.out.print("Please enter " + tempName + "'s team [" + "0 - " + TeamColor.values().length + "]: "); //todo team? or teamcolor?
+                System.out.print("Please enter " + tempName + "'s team [" + "0 - " + TeamColor.values().length + "]: ");
                 tempTeamOrdinal = input.nextInt();
                 System.out.println();
             }
@@ -185,6 +182,7 @@ public class ControllerModel
         System.out.println("2 - " + destinationCard2.toString());
         System.out.println("3 - " + destinationCard3.toString());
         System.out.println(("4 - for Done"));
+        // todo handle discarded destination cards
 
         while((desCards < 3 && choice != 4) || desCards == 0) //while picked cards are < 3 then keep picking or if done = true stop loop
         {
@@ -218,26 +216,6 @@ public class ControllerModel
             else if(choice != 4)
             {
                 System.out.println("Destination already selected.");
-            }
-        }
-        // adds discarded destination cards to the bottom of the deck
-        // if one of the choices was not picked (false) we need to know if the index was 0,1,2
-        for(int i = 0; i < 3; i++)
-        {
-            if(prevChoices[i] == false)
-            {
-                switch (i)
-                {
-                    case 0:
-                        cards.addDestinationCardToBottom(destinationCard1);
-                        break;
-                    case 1:
-                        cards.addDestinationCardToBottom(destinationCard2);
-                        break;
-                    case 2:
-                        cards.addDestinationCardToBottom(destinationCard3);
-                        break;
-                }
             }
         }
         System.out.println("\nTotal Destination Cards:");
