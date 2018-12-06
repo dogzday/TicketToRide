@@ -237,6 +237,7 @@ public class ControllerModel
                 }
             }
         }
+        
         System.out.println("\nTotal Destination Cards:");
         player.displayDestinationCards();
     }
