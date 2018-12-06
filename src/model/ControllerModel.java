@@ -182,7 +182,6 @@ public class ControllerModel
         System.out.println("2 - " + destinationCard2.toString());
         System.out.println("3 - " + destinationCard3.toString());
         System.out.println(("4 - for Done"));
-        // todo handle discarded destination cards
 
         while((desCards < 3 && choice != 4) || desCards == 0) //while picked cards are < 3 then keep picking or if done = true stop loop
         {
@@ -216,6 +215,24 @@ public class ControllerModel
             else if(choice != 4)
             {
                 System.out.println("Destination already selected.");
+            }
+        }
+        for(int i = 0; i < 3; i++)
+        {
+            if(prevChoices[i] == false)
+            {
+                switch (i)
+                {
+                    case 0:
+                        cards.addDestinationCardToBottom(destinationCard1);
+                        break;
+                    case 1:
+                        cards.addDestinationCardToBottom(destinationCard2);
+                        break;
+                    case 2:
+                        cards.addDestinationCardToBottom(destinationCard3);
+                        break;
+                }
             }
         }
         System.out.println("\nTotal Destination Cards:");
