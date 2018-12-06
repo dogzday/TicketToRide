@@ -33,10 +33,8 @@ nbdist/
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 # User-specific stuff
-.idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/**/usage.statistics.xml
-.idea/**/dictionaries
 .idea/**/shelf
 
 # Generated files
@@ -48,11 +46,9 @@ nbdist/
 .idea/**/dataSources.local.xml
 .idea/**/sqlDataSources.xml
 .idea/**/dynamic.xml
-.idea/**/uiDesigner.xml
 .idea/**/dbnavigator.xml
 
 # Gradle
-.idea/**/gradle.xml
 .idea/**/libraries
 
 # Gradle and Maven with auto-import
@@ -74,6 +70,7 @@ cmake-build-*/
 
 # IntelliJ
 out/
+.idea/
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
@@ -95,16 +92,3 @@ fabric.properties
 
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
-/.idea/misc.xml
-.idea/artifacts/
-.idea/codeStyles/
-.idea/compiler.xml
-.idea/copyright/
-.idea/description.html
-.idea/encodings.xml
-.idea/inspectionProfiles/
-.idea/misc.xml
-.idea/modules.xml
-.idea/resourceBundles.xml
-.idea/vcs.xml
-TicketToRide.iml
