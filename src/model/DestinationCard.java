@@ -5,13 +5,20 @@ public class DestinationCard
     private static int numberOfDestinationCards = 0;
     private static int scoreOfAllCards = 0;
 
-    private Cities source;
-    private Cities destination;
+    private City source;
+    private City destination;
     private int score;
 
     // ============================== class ==============================
 
-    public DestinationCard(Cities source, Cities destination, int score)
+    /**
+     * Creates a custom destination card for the game Ticket To Ride which links two cities with
+     * a route. Destination cards have a score when a player completes the path.
+     * @param source Source City enum.
+     * @param destination Destination City enum.
+     * @param score Integer >= 0 for the card's score.
+     */
+    public DestinationCard(City source, City destination, int score)
     {
         this.source = source;
         this.destination = destination;
@@ -23,6 +30,10 @@ public class DestinationCard
 
     // ============================== other ==============================
 
+    /**
+     * String concatenation of the destination card.
+     * @return source + destination + score
+     */
     @Override
     public String toString()
     {
@@ -31,10 +42,21 @@ public class DestinationCard
 
     // ============================== getters ==============================
 
-    public Cities getSource() { return source; }
+    public City getSource() throws NullPointerException
+    {
+        if (this.source == null) throw new NullPointerException();
 
-    public Cities getDestination() { return destination; }
+        return source;
+    }
 
+    public City getDestination() throws NullPointerException
+    {
+        if (this.destination == null) throw new NullPointerException();
+
+        return destination;
+    }
+
+    @SuppressWarnings("WeakerAccess")
     public int getScore() { return score; }
 
     public static int getNumberOfDestinationCards() { return numberOfDestinationCards; }
@@ -43,9 +65,9 @@ public class DestinationCard
 
     // ============================== setters ==============================
 
-    public void setSource(Cities source) { this.source = source; }
+    public void setSource(City source) { this.source = source; }
 
-    public void setDestination(Cities destination) { this.destination= destination; }
+    public void setDestination(City destination) { this.destination= destination; }
 
     public void setScore(int score) { this.score= score; }
 }

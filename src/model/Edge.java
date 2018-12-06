@@ -2,48 +2,92 @@ package model;
 
 public class Edge
 {
-    private static int numberOfEdges = 0;
+    private static int numberOfAllEdges = 0;
     private static int weightOfAllEdges = 0;
 
-    private Cities source;
-    private Cities destination;
+    private City source;
+    private City destination;
     private GameColor routeColor;
     private int weight;
+    private TeamColor teamColor;
+    private boolean visited;
 
     // ============================== class ==============================
 
-    public Edge(Cities source, Cities destination, GameColor routeColor, int weight)
+    public Edge(City source, City destination, GameColor routeColor, int weight)
     {
         this.source = source;
         this.destination = destination;
         this.weight = weight;
         this.routeColor = routeColor;
+        teamColor = null;
+        this.visited = false;
 
-        ++numberOfEdges;
+        ++numberOfAllEdges;
         weightOfAllEdges += weight;
+    }
+
+    // ============================== other ==============================
+
+    public void claimRoute(TeamColor teamColor) throws UnsupportedOperationException
+    {
+        if (this.teamColor != null) throw new UnsupportedOperationException();
+
+        this.teamColor = teamColor;
+    }
+
+    @Override
+    public String toString()
+    {
+        String sourceString = this.source.toString();
+        String destinationString = this.destination.toString();
+        String routeColorString = this.routeColor.toString();
+        String weightString = Integer.toString(weight);
+
+        return (sourceString + " " + destinationString + " " + routeColorString + " " + weightString);
     }
 
     // ============================== getters ==============================
 
-    public Cities getSource() { return this.source; }
+    public City getSource() { return this.source; }
 
-    public Cities getDestination() { return this.destination; }
+    public City getDestination() { return this.destination; }
 
-    public GameColor getRouteColor() { return this.routeColor; }
+    @SuppressWarnings("WeakerAccess")
+    public static int getWeightOfAllEdges() { return weightOfAllEdges; }
 
+    @SuppressWarnings("WeakerAccess")
+    public static int getNumberOfAllEdges() { return numberOfAllEdges; }
+
+    @SuppressWarnings("WeakerAccess")
     public int getWeight() { return this.weight; }
 
-    public static int getNumberOfEdges() { return numberOfEdges; }
+    public boolean getVisited() { return this.visited; }
 
-    public static int getWeightOfAllEdges() { return weightOfAllEdges; }
+    public TeamColor getTeamColor() { return this.teamColor; }
+
+    @SuppressWarnings("WeakerAccess")
+    public GameColor getRouteColor() { return this.routeColor; }
 
     // ============================== setters ==============================
 
-    public void setSource(Cities source) { this.source = source; }
+    @SuppressWarnings("WeakerAccess")
+    public static void setWeightOfAllEdges(int weight) throws ArithmeticException
+    {
+        if (weight <= 0) throw new ArithmeticException();
+        weightOfAllEdges = weight;
+    }
 
-    public void setDestination(Cities destination) { this.destination = destination; }
+    @SuppressWarnings("WeakerAccess")
+    public static void setNumberOfAllEdges(int number) throws ArithmeticException
+    {
+        if (number <= 0) throw new ArithmeticException();
+        numberOfAllEdges = number;
+    }
 
-    public void setRouteColor(GameColor routeColor) { this.routeColor = routeColor; }
+    public void setSource(City source) { this.source = source; }
+
+    public void setDestination(City destination) { this.destination = destination; }
 
     public void setWeight(int weight) throws IllegalArgumentException
     {
@@ -52,4 +96,10 @@ public class Edge
         weightOfAllEdges -= this.weight;
         weightOfAllEdges += weight;
     }
+
+    public void setRouteColor(GameColor routeColor) { this.routeColor = routeColor; }
+
+    public void setTeamColor(TeamColor teamColor) { this.teamColor = teamColor; }
+
+    public void setVisited(boolean visited) { this.visited = visited; }
 }

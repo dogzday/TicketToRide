@@ -13,7 +13,7 @@ import model.TeamColor;
 // this is mainly a quick example using cards
 // players draw cards until they have enough cards of a specific color they specify for their team
 
-public class ControllerExample
+public class UsingCards
 {
     public static void main(String[] args)
     {
@@ -45,7 +45,6 @@ public class ControllerExample
 
         for (int i = 0; i < players.size(); ++i)
         {
-            // todo needs error checking
             System.out.print("Enter " + players.get(i).getName() + "'s card color: ");
             playerCardColor = input.next();
             playerCardColors.add(GameColor.valueOf(playerCardColor));
