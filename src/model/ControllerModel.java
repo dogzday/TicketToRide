@@ -34,14 +34,14 @@ public class ControllerModel
             {
                 System.out.print("Please enter a valid name for player #" + i + ": ");
                 tempName = input.next();
-                System.out.println();
+//                System.out.println();
             }
 
             System.out.println();
 
             while (!input.hasNextInt())
             {
-                System.out.print("Please enter " + tempName + "'s team [" + "0 - " + TeamColor.values().length + "]: ");
+                System.out.print("Please enter " + tempName + "'s team [" + "0 - " + TeamColor.values().length + "]: "); //todo team? or teamcolor?
                 tempTeamOrdinal = input.nextInt();
                 System.out.println();
             }
@@ -83,9 +83,9 @@ public class ControllerModel
         System.out.println("[2] to claim a route.");
         System.out.println("[3] for draw Destination Tickets.");
         System.out.print("Choose an option: ");
-        System.out.println();
 
         int choice = input.nextInt();
+        System.out.println();
 
         while (choice < 1 || choice > 3)
         {
@@ -130,16 +130,16 @@ public class ControllerModel
             switch(choice)
             {
                 case 1:
-                    System.out.println("Drawing from face up Deck"); // add face up deck
+                    System.out.println("\nDrawing from face up Deck:"); // add face up deck
                     // draw from face up deck and add to player hand
                     // todo if card is wildcard, wildcard = true;
                     ++timesDrawn;
                     break;
                 case 2:
-                    System.out.println("Drawing from face down Deck");
+                    System.out.println("\nDrawing from face down Deck:");
                     // draw from face down and add to player hand
                     player.addTrainCardToHand(cards.getNextTrainCard());
-                    // player.displayTrainCards();
+                    player.displayTrainCards();
                     ++timesDrawn;
                     break;
                 default:
@@ -152,11 +152,11 @@ public class ControllerModel
     // todo modify
     private static void claimRoute(Player player, Cards cards)
     {
-        System.out.println("Choose a Train Car color");
+        System.out.println("Choose a Train Car color: ");
         // display players different train car card colors
-        player.displayTrainCards(); // doesnt work...
+        player.displayTrainCards();
 
-        System.out.println("Choose a route: ");
+        System.out.println("Choose a route: "); // todo use train car color to choose a route? or have player type in a starting point
         // display routes for user to choose from
 
         // if train card color == routes Color and players train cards == number of route cards
@@ -182,7 +182,6 @@ public class ControllerModel
         System.out.println("2 - " + destinationCard2.toString());
         System.out.println("3 - " + destinationCard3.toString());
         System.out.println(("4 - for Done"));
-        // todo handle discarded destination cards
 
         while((desCards < 3 && choice != 4) || desCards == 0) //while picked cards are < 3 then keep picking or if done = true stop loop
         {
@@ -218,7 +217,28 @@ public class ControllerModel
                 System.out.println("Destination already selected.");
             }
         }
+        // adds discarded destination cards to the bottom of the deck
+        // if one of the choices was not picked (false) we need to know if the index was 0,1,2
+        for(int i = 0; i < 3; i++)
+        {
+            if(prevChoices[i] == false)
+            {
+                switch (i)
+                {
+                    case 0:
+                        cards.addDestinationCardToBottom(destinationCard1);
+                        break;
+                    case 1:
+                        cards.addDestinationCardToBottom(destinationCard2);
+                        break;
+                    case 2:
+                        cards.addDestinationCardToBottom(destinationCard3);
+                        break;
+                }
+            }
+        }
 
-        // player.displayDestinationCards();
+        System.out.println("\nTotal Destination Cards:");
+        player.displayDestinationCards();
     }
 }
