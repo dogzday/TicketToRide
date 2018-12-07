@@ -30,7 +30,6 @@ public class Player
      *     <li>private List&lt;GameColor&gt; trainCards;</li>
      *     <li>private List&lt;DestinationCard&gt; destinationCards;</li>
      * </ul>
-     *
      * @param name Initializes a Player's name. Can be any name, nickname recommended.
      * @param teamColor TeamColor enum.
      */

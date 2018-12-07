@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Graph
@@ -345,40 +344,47 @@ public class Graph
      * @throws UnsupportedOperationException
      */
     //@SuppressWarnings("UnusedAssignment")
-    public TeamColor findTeamWithLongestPath() throws UnsupportedOperationException
+    public TeamColor findTeamWithLongestPath() throws UnsupportedOperationException // todo change throws when finished
     {
         // todo remove when fully implemented
         if (true) throw new UnsupportedOperationException();
 
-        // treat pathfinder as a queue, the variables below track path data
+        // todo change return null to return TeamColor
+        return null;
+    }
+
+    // todo check and finish
+    public List<Edge> findLongestPathOfTeam(City vertex, TeamColor teamColor) throws UnsupportedOperationException // todo change throws when finished
+    {
+        // todo remove when fully implemented
+        if (true) throw new UnsupportedOperationException();
+
+        int vertexIndex = vertex.ordinal();
+
+        if (vertex == null) throw new NullPointerException();
+        if (teamColor == null) throw new NullPointerException();
+
+        if (this.adjacencyList[vertexIndex].size() == 0) return null;
+
         List<Edge> pathfinder;
         Edge currentEdge;
         int currentWeight = 0;
-        int edgeListIndex = 0;
+        boolean finished = false;
 
-        List<TeamColor> teamColors = Arrays.asList(TeamColor.values());
-        List<Integer> teamLongestPaths = new ArrayList<>(TeamColor.values().length);
+        currentEdge = this.adjacencyList[vertexIndex].get(0);
 
-        setAllEdgesVisitStatus(false);
-
-        // how to do?
-        // maybe enqueue travel path until we reach end, for ALL paths in adjacency list that is NOT null
-        // all while summing up the weight of each edge and store total weight
-        // and store teamcolor if the current total weight is greater than max
-        // when we backtrack, decrement the weight of the edge we will pop
-        // and then search or continue to other connected edges if any
-        // if there's nothing else to do, return the teamcolor with the larger total weight
-
-        // this for loop says: for every city that is not null (checking null for safety)...
-        // traverse all possible connections, backtrack if there are no connections
-        // if there are no connections, then size() of the list should be 0
-        for (int i = 0; i < this.adjacencyList.length; ++i)
+        while (!finished)
         {
+            if (currentEdge.getTeamColor() != teamColor) continue;
 
+            pathfinder.add(currentEdge);
+            currentWeight += currentEdge.getWeight();
+            currentEdge.setVisited(true);
+
+            currentEdge = this.adjacencyList[currentEdge.getSource().ordinal()].get(currentEdge.getDestination().ordinal());
         }
 
-        // todo change return null to return TeamColor
-        return null;
+        return pathfinder;
     }
 
     // ============================== getters ==============================
